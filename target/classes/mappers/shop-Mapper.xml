@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kong.mappers.shopMapper">
+
+
+	<!-- 카테고리별 상품 리스트 : 1차 분류 -->
+	<select id="list_1" resultType="com.kong.domain.itemViewVO">
+		select
+		g.itemNum, g.itemName,
+		g.cateCode, c.cateCodeRef, c.cateName,
+		itemPrice, itemStock, itemDes,
+		regDate, g.itemImg, g.itemThumbImg
+		from kong_item g
+		inner join category
+		c
+		on g.cateCode = c.cateCode
+		where g.cateCode = #{cateCode}
+		or
+		c.cateCodeRef = #{cateCodeRef}
+	</select>
+
+	<!-- 카테고리별 상품 리스트 : 2차 분류 -->
+	<select id="list_2" resultType="com.kong.domain.itemViewVO">
+		select
+		g.itemNum, g.itemName,
+		g.cateCode, c.cateCodeRef, c.cateName,
+		itemPrice, itemStock, itemDes,
+		regDate, g.itemImg, g.itemThumbImg
+		from kong_item g
+		inner join category
+		c
+		on g.cateCode = c.cateCode
+		where g.cateCode = #{cateCode}
+	</select>
+
+	<!-- 상품 조회 + 카테고리 조인 -->
+	<select id="itemView" resultType="com.kong.domain.itemViewVO">
+		select
+		g.itemNum, g.itemName,
+		g.cateCode, c.cateCodeRef, c.cateName, itemPrice,
+		itemStock, itemDes,
+		itemImg, regDate , g.itemImg, g.itemThumbImg
+		from kong_item g inner
+		join category c
+		on
+		g.cateCode =
+		c.cateCode
+		where g.itemNum = #{itemNum}
+	</select>
+
+	<!-- 상품 소감(댓글) 작성 -->
+	<insert id="registerReply">
+		insert into kong_itemreply (itemNum, userId, repCon)
+		values (#{itemNum}, #{userId}, #{repCon})
+	</insert>
+
+	<!-- 상품 소감(댓글) 리스트 -->
+	<select id="replyList"
+		resultType="com.kong.domain.itemReplyListVO">
+		select
+		r.itemNum, r.userId, r.repNum, r.repCon, r.regDate,
+		m.userName
+		from kong_itemreply r
+		inner join kong_member m
+		on r.userId =
+		m.userId
+		where itemNum = #{itemNum}
+	</select>
+
+	<!-- 상품 소감(댓글) 삭제 -->
+	<delete id="deleteReply">
+		delete from kong_itemreply
+		where repNum = #{repNum}
+		and
+		userId = #{userId}
+	</delete>
+
+	<!-- 아이디 체크 -->
+	<select id="replyUserIdCheck" resultType="String">
+		select userId
+		from
+		kong_itemreply
+		where repNum = #{repNum}
+	</select>
+
+	<!-- 상품 소감(댓글) 수정 -->
+	<update id="modifyReply">
+		update kong_itemreply
+		set
+		repCon = #{repCon}
+		where
+		repNum = #{repNum}
+		and userId = #{userId}
+	</update>
+
+	<!-- 카트 담기 -->
+	<insert id="addCart">
+		insert into kong_cart (userId, itemNum, cartStock)
+		values (#{userId}, #{itemNum}, #{cartStock})
+	</insert>
+
+	<!-- 카트 리스트 -->
+	<select id="cartList" resultType="com.kong.domain.CartListVO">
+		select
+		row_number() over(order
+		by c.cartNum desc) as num,
+		c.cartNum, c.userId, c.itemNum, c.cartStock,
+		c.addDate,
+		g.itemName, g.itemPrice, g.itemThumbImg
+		from kong_cart c
+		inner join kong_item g
+		on c.itemNum = g.itemNum
+		where c.userId =
+		#{userId}
+	</select>
+
+	<!-- 카트 삭제 -->
+	<delete id="deleteCart">
+		delete from kong_cart
+		where cartNum = #{cartNum}
+		and
+		userId = #{userId}
+	</delete>
+
+	<!-- 주문 정보 -->
+	<insert id="orderInfo">
+		insert into kong_order(orderId, userId, orderRec,
+		userAddr1, userAddr2,
+		userAddr3, orderPhon, amount)
+		values(#{orderId},
+		#{userId}, #{orderRec}, #{userAddr1}, #{userAddr2}, #{userAddr3},
+		#{orderPhon}, #{amount})
+	</insert>
+
+	<!-- 주문 상세 정보 -->
+	<insert id="orderInfo_Details">
+		insert into kong_order_details(orderId,
+		itemNum,cartStock)
+		select #{orderId}, itemNum, cartStock
+		from kong_cart
+	</insert>
+
+	<!-- 카트 비우기 -->
+	<delete id="cartAllDelete">
+		delete from kong_cart
+		where userId = #{userId}
+	</delete>
+
+	<!-- 특정 유저의 주문 목록 -->
+	<select id="orderList" resultType="com.kong.domain.OrderVO">
+		select
+		orderId, userId,
+		orderRec, userAddr1, userAddr2, userAddr3, orderPhon, amount,
+		orderDate , delivery
+		from kong_order
+		where userId = #{userId}
+	</select>
+
+	<!-- 특정 주문 목록 -->
+	<select id="orderView" resultType="com.kong.domain.OrderListVO">
+		select
+		o.orderId, o.userId, o.orderRec, o.userAddr1, o.userAddr2, o.userAddr3,
+		o.orderPhon, o.amount, o.orderDate, o.delivery,
+		d.orderDetailsNum, d.itemNum, d.cartStock,
+		g.itemName, g.itemThumbImg, g.itemPrice
+		from kong_order o
+		inner join kong_order_details d
+		on o.orderId = d.orderId
+		inner join kong_item g
+		on d.itemNum = g.itemNum
+		where o.userId = #{userId}
+		and o.orderId = #{orderId}
+	</select>
+
+</mapper>

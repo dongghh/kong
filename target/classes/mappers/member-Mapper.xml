@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kong.mapper.MemberMapper">
+	<!-- 회원가입 -->
+	<insert id="register">
+		INSERT INTO kong_member(
+		USERID
+		,USERPASS
+		,USERNAME
+		,USEREMAIL
+		,USERADDRESS
+		,USERPNUMBER
+		,VERIFY)
+		VALUES(
+		#{userId}
+		, #{userPass}
+		, #{userName}
+		, #{userEmail}
+		, #{userAddress}
+		, #{userPnumber}
+		, 0
+		)
+	</insert>
+
+	<!-- 로그인 -->
+	<select id="login" resultType="com.kong.domain.MemberVO">
+		SELECT USERID, USERPASS, USERNAME , USEREMAIL , USERADDRESS,
+		USERPNUMBER , VERIFY
+		FROM
+		kong_member
+		WHERE USERID = #{userId}
+		<!--AND USERPASS = #{userPass} -->
+	</select>
+
+	<!-- 회원정보 수정 -->
+	<update id="memberUpdate">
+		UPDATE KONG_MEMBER SET
+		USERNAME = #{userName},
+		USEREMAIL = #{userEmail},
+		USERADDRESS = #{userAddress},
+		USERPNUMBER =
+		#{userPnumber}
+		WHERE USERID = #{userId}
+	</update>
+
+	<!-- 회원탈퇴 -->
+	<delete id="memberDelete">
+		DELETE FROM KONG_MEMBER
+		WHERE USERID = #{userId}
+		AND
+		<!--USERPASS = #{userPass} -->
+	</delete>
+
+	<!-- 패스워드 체크 -->
+	<select id="passChk" resultType="int">
+		SELECT COUNT(*) FROM KONG_MEMBER
+		WHERE USERID = #{userId}
+		AND USERPASS = #{userPass}
+	</select>
+
+	<!-- 아이디 중복 체크 -->
+	<select id="idChk" resultType="int">
+		SELECT COUNT(*) FROM KONG_MEMBER
+		WHERE USERID = #{userId}
+	</select>
+
+</mapper>
