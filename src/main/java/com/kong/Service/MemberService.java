@@ -1,7 +1,5 @@
 package com.kong.Service;
 
-import java.util.List;
-
 import com.kong.domain.MemberVO;
 
 public interface MemberService {

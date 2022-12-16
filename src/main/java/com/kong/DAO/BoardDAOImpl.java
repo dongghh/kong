@@ -62,10 +62,11 @@ public class BoardDAOImpl implements BoardDAO {
 
 		session.delete(namespace + ".delete", bno);
 	}
+	
 	// 게시물 조회수
 	@Override
 	public void boardCnt(int bno) throws Exception {
-		// TODO Auto-generated method stub
+
 		session.update(namespace + ".boardCnt", bno);
 	}
 }

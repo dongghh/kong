@@ -7,12 +7,8 @@
 
 	<!-- 카테고리별 상품 리스트 : 1차 분류 -->
 	<select id="list_1" resultType="com.kong.domain.itemViewVO">
-		select
-		g.itemNum, g.itemName,
-		g.cateCode, c.cateCodeRef, c.cateName,
-		itemPrice, itemStock, itemDes,
-		regDate, g.itemImg, g.itemThumbImg
-		from kong_item g
+		SELECT g.itemNum, g.itemName, g.cateCode, c.cateCodeRef, c.cateName, itemPrice, itemStock, itemDes, regDate, g.itemImg, g.itemThumbImg FROM
+		kong_item g
 		inner join category
 		c
 		on g.cateCode = c.cateCode
@@ -104,8 +100,7 @@
 	<!-- 카트 리스트 -->
 	<select id="cartList" resultType="com.kong.domain.CartListVO">
 		select
-		row_number() over(order
-		by c.cartNum desc) as num,
+		row_number() over(order by c.cartNum desc) as num,
 		c.cartNum, c.userId, c.itemNum, c.cartStock,
 		c.addDate,
 		g.itemName, g.itemPrice, g.itemThumbImg

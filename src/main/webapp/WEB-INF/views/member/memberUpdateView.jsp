@@ -3,20 +3,9 @@
 <html>
 <head>
 <title>회원가입</title>
+<link rel="stylesheet" href="/resources/css/memberUpdateView.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<style type="text/css">
-html, body {
-	width: 100%;
-	height: 100%;
-}
-
-#container {
-	width: 80%;
-	height: 100%;
-	padding: 20px;
-}
-</style>
 </head>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -63,38 +52,39 @@ html, body {
 <body>
 	<%@include file="../layout/header.jsp"%>
 	<section id="container">
+	<p id="title">회원정보수정</p>
 		<form id="updateForm" action="/member/memberUpdate" method="post">
-			<div class="form-group has-feedback">
-				<label class="control-label" for="userId">아이디</label> <input
-					class="form-control" type="text" id="userId" name="userId"
-					value="${member.userId}" readonly="readonly" />
-			</div>
-			<div class="form-group has-feedback">
-				<label class="control-label" for="userPass">패스워드</label> <input
-					class="form-control" type="password" id="userPass" name="userPass" />
-			</div>
-			<div class="form-group has-feedback">
-				<label class="control-label" for="userName">성명</label> <input
-					class="form-control" type="text" id="userName" name="userName"
-					value="${member.userName}" />
-			</div> 
-			<div class="form-group has-feedback">
-				<label class="control-label" for="userEmail">이메일</label> <input
-					class="form-control" type="email" id="userEmail" name="userEmail"
-					value="${member.userEmail}" />
-			</div>
-			<div class="form-group has-feedback">
-				<label class="control-label" for="userAddress">주소</label> <input
-					class="form-control" type="text" id="userAddress"
-					name="userAddress" value="${member.userAddress}" />
-			</div>
-			<div class="form-group has-feedback">
-				<label class="control-label" for="userPnumber">핸드폰번호</label> <input
-					class="form-control" type="text" id="userPnumber"
-					name="userPnumber" value="${member.userPnumber}" />
-			</div>
+			<ul class="info">
+				<li><label class="control-label" for="userId">아이디</label></li> 
+				<li><input class="form-control" type="text" id="userId" name="userId"
+					value="${member.userId}" readonly="readonly" /></li>
+			</ul>
+			<ul class="info">
+				<li><label class="control-label" for="userPass">패스워드</label></li> 
+				<li><input class="form-control" type="password" id="userPass" name="userPass" /></li>
+			</ul>
+			<ul class="info">
+				<li><label class="control-label" for="userName">성명</label></li> 
+				<li><input class="form-control" type="text" id="userName" name="userName"
+					value="${member.userName}" /></li>
+			</ul> 
+			<ul class="info">
+				<li><label class="control-label" for="userEmail">이메일</label></li> 
+				<li><input class="form-control" type="email" id="userEmail" name="userEmail"
+					value="${member.userEmail}" /></li>
+			</ul>
+			<ul class="info">
+				<li><label class="control-label" for="userAddress">주소</label></li>
+				<li><input class="form-control" type="text" id="userAddress"
+					name="userAddress" value="${member.userAddress}" /></li>
+			</ul>
+			<ul class="info">
+				<li><label class="control-label" for="userPnumber">핸드폰번호</label></li>
+				<li><input class="form-control" type="text" id="userPnumber"
+					name="userPnumber" value="${member.userPnumber}" /></li>
+			</ul>
 		</form>
-		<div class="form-group has-feedback">
+		<div id="button">
 			<button class="btn btn-success" type="button" id="submit">회원정보수정</button>
 			<button class="cencle btn btn-danger" type="button">취소</button>
 		</div>

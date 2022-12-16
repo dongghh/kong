@@ -1,0 +1,86 @@
+.section {
+	width: 80%;
+	margin: auto;
+	padding-top: 20px;
+	margin-bottom : 20px;
+}
+
+#container {
+	margin: auto;
+}
+
+#wrap-content {
+	width: 700px;
+	margin: auto;
+	text-align: left;
+	font-size: large;
+	margin-top: 80px;
+}
+
+#wrap-content>button>span {
+	font-size: 18px;
+	margin-left: 90px;
+}
+
+#user-none {
+	width: 100%;
+	display: flex;
+	margin-bottom: 30px;
+}
+
+#user, #none {
+	border: 1px solid lightgray;
+	width: 50%;
+	padding: 20px;
+	font-weight: bold;
+}
+
+#user {
+	background-color: white;
+	border-radius: 5px 0px 0px 5px;
+	border-color: black;
+}
+
+#none {
+	border-color: aliceblue;
+	color: gray;
+	border-radius: 0px 5px 5px 0px;
+	background-color: rgba(0, 0, 0, 0.034);
+}
+
+#input input {
+	display: block;
+	width: 100%;
+	padding: 20px;
+	border: 1px solid lightgray;
+}
+
+input::placeholder {
+	color: black;
+	font-size: large;
+}
+
+#input {
+	margin-bottom: 30px;
+}
+
+#login-btn {
+	background-color: rgba(0, 0, 0, 0.747);
+	color: white;
+	font-weight: bold;
+	font-size: larger;
+	width: 100%;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+#sub_btn {
+	display: flex;
+	padding: 20px 0px;
+	font-size: small;
+	justify-content: space-between;
+}
+
+button {
+	cursor: pointer;
+}

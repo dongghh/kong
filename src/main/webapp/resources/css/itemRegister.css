@@ -1,0 +1,24 @@
+#section {
+	height: 80%;
+	width: 80%;
+	margin: auto;
+}
+
+#title {
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	color: gray;
+}
+
+.select_img img {
+	margin: 20px 0;
+}
+
+.ck-editor__editable {
+	min-height: 400px;
+}
+
+.inputArea {
+	margin-bottom: 20px;
+}

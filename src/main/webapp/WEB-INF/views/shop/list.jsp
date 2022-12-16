@@ -6,27 +6,32 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-section#content {
-	width: 80%;
+#container {
+	width: 70%;
+	margin-top: 20px;
 	margin: auto;
 }
 
-section#content ul li {
+section#container ul {
+	text-align : center;
+}
+
+section#container ul li {
 	display: inline-block;
 	margin: 10px;
 }
 
-section#content div.itemThumb img {
+section#container div.itemThumb img {
 	width: 200px;
 	height: 200px;
 }
 
-section#content div.itemName {
+section#container div.itemName {
 	padding: 10px 0;
 	text-align: center;
 }
 
-section#content div.itemName a {
+section#container div.itemName a {
 	color: #000;
 }
 </style>
@@ -34,23 +39,18 @@ section#content div.itemName a {
 <body>
 	<%@include file="../layout/header.jsp"%>
 	<section id="container">
-
-		<section id="content">
-
-			<ul>
-				<c:forEach items="${list}" var="list">
-					<li>
-						<div class="itemThumb">
-							<img src="${list.itemThumbImg}">
-						</div>
-						<div class="itemName">
-							<a href="/shop/view?n=${list.itemNum}">${list.itemName}</a>
-						</div>
-					</li>
-				</c:forEach>
-			</ul>
-
-		</section>
+		<ul>
+			<c:forEach items="${list}" var="list">
+				<li>
+					<div class="itemThumb">
+						<img src="${list.itemThumbImg}">
+					</div>
+					<div class="itemName">
+						<a href="/shop/view?n=${list.itemNum}">${list.itemName}</a>
+					</div>
+				</li>
+			</c:forEach>
+		</ul>
 	</section>
 	<%@include file="../layout/footer.jsp"%>
 </body>

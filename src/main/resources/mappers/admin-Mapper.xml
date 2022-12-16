@@ -94,15 +94,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 상품 목록 -->
 	<select id="itemlist" resultType="com.kong.domain.itemViewVO">
 		select
-		g.itemNum, g.itemName,
-		g.cateCode, c.cateCodeRef, c.cateName, itemPrice, itemStock,
-		itemDes,
-		itemImg, regDate,
-		g.itemImg, g.itemThumbImg
-		from kong_item g
+		g.itemNum, g.itemName, g.cateCode, c.cateCodeRef, c.cateName, itemPrice, itemStock,itemDes,itemImg, regDate,g.itemImg, g.itemThumbImg
+		from 
+		kong_item g
 		inner join
 		category c
-		on g.cateCode = c.cateCode
+		on
+		 g.cateCode = c.cateCode
 	</select>
 
 	<!-- 상품 조회 + 카테고리 조인 -->

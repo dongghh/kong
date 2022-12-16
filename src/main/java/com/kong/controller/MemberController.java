@@ -1,7 +1,5 @@
 package com.kong.controller;
 
-import java.util.List;
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -9,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -56,6 +53,12 @@ public class MemberController {
 			throw new RuntimeException();
 		}
 		return "redirect:/";
+	}
+
+	// 로그인 get
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public void getLogin() throws Exception {
+		logger.info("get login");
 	}
 
 	// 로그인 post

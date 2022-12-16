@@ -10,30 +10,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 회원가입 -->
 	<insert id="register">
 		INSERT INTO kong_member(
-		USERID
-		,USERPASS
-		,USERNAME
-		,USEREMAIL
-		,USERADDRESS
-		,USERPNUMBER
-		,VERIFY)
+		USERID,USERPASS,USERNAME,USEREMAIL,USERADDRESS,USERPNUMBER,VERIFY)
 		VALUES(
-		#{userId}
-		, #{userPass}
-		, #{userName}
-		, #{userEmail}
-		, #{userAddress}
-		, #{userPnumber}
-		, 0
-		)
+		#{userId}, #{userPass}, #{userName}, #{userEmail}, #{userAddress}, #{userPnumber}, 0)
 	</insert>
 
 	<!-- 로그인 -->
 	<select id="login" resultType="com.kong.domain.MemberVO">
-		SELECT USERID, USERPASS, USERNAME , USEREMAIL , USERADDRESS,
-		USERPNUMBER , VERIFY
-		FROM
-		kong_member
+		SELECT USERID, USERPASS, USERNAME , USEREMAIL , USERADDRESS, USERPNUMBER , VERIFY
+		FROM kong_member
 		WHERE USERID = #{userId}
 		<!--AND USERPASS = #{userPass} -->
 	</select>

@@ -1,0 +1,37 @@
+#container {
+	width: 80%;
+	height: 80%;
+	margin: auto;
+	position: relative;
+	color: #767676;
+	font-size: 13px;
+}
+
+.info {
+	padding: 24px 0;
+	border-bottom: 1px solid #eaeaea;
+	list-style: none;
+	overflow: hidden;
+	margin: 15px 0px 15px 0px;
+}
+
+.info li {
+	float: left;
+	width: 125px;
+}
+
+.info li input {
+	width: 148%;
+	vertical-align: middle;
+	padding: 5px;
+}
+
+#title {
+	margin: 45px 0 45px;
+	font-size: 24px;
+	text-align: center;
+}
+
+button {
+	padding: 5px;
+}

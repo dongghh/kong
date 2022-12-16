@@ -1,7 +1,5 @@
 package com.kong.DAO;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;

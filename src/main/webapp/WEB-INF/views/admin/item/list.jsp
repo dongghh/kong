@@ -7,7 +7,7 @@
 <title>상품 목록</title>
 <link rel="stylesheet" href="/resources/css/admin-list.css">
 <style>
-section#content {
+#container {
 	height: 80%;
 	width: 80%;
 	margin: auto;

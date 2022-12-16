@@ -1,0 +1,42 @@
+#container {
+	width: 80%;
+	margin: auto;
+}
+
+#updateTable {
+	width: 100%;
+	margin-bottom: 20px;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+#editTitle {
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	color: gray;
+	margin-bottom: 20px;
+}
+
+#updateTable th {
+	width: 10%;
+	text-align: left;
+}
+
+#updateTable td {
+	width: 100%;
+	text-align: left;
+	padding: 5px;
+}
+
+
+#updateTable input {
+	width: 100%;
+	border: none;
+}
+
+#editBox {
+	text-align: right;
+	width: 100%;
+	margin-bottom: 20px;
+}

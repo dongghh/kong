@@ -1,5 +1,41 @@
-@charset "UTF-8";
+#container {
+	height: 80%;
+	width: 80%;
+	position: relative;
+	margin: auto;
+	color: #767676;
+	font-size: 13px;
+}
 
-#container{
-	margin: 10px;
+.join {
+	padding: 24px 0;
+	border-bottom: 1px solid #eaeaea;
+	list-style: none;
+	overflow: hidden;
+	margin: 15px 0px 15px 0px;
+}
+
+.join li {
+	float: left;
+	width: 125px;
+}
+
+.join li input {
+	width: 148%;
+	vertical-align: middle;
+	padding: 5px;
+}
+
+#title {
+	margin: 45px 0 45px;
+	font-size: 24px;
+	text-align: center;
+}
+
+.star {
+	color: red;
+}
+
+button {
+	padding: 5px;
 }

@@ -1,7 +1,5 @@
 package com.kong.DAO;
 
-import java.util.List;
-
 import com.kong.domain.MemberVO;
 
 public interface MemberDAO {

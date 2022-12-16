@@ -10,68 +10,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="insert">
 		insert into kong_board (
-		title
-		, content
-		, writer )
-		values( #{title}
-		,#{content}
-		,#{writer} )
+		title, content, writer )
+		values( #{title},#{content},#{writer} )
 	</insert>
 
 	<select id="list" resultType="com.kong.domain.BoardVO">
-		SELECT
-		bno
-		, TITLE
-		, WRITER
-		, REGDATE
-		FROM
-		kong_board
+		SELECTbno, TITLE, WRITER, REGDATE
+		FROM kong_board
 		ORDER BY bno DESC
 	</select>
 
 	<select id="read" parameterType="int"
 		resultType="com.kong.domain.BoardVO">
-		SELECT BNO
-		, TITLE
-		, CONTENT
-		, WRITER
-		, REGDATE
+		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE
 		FROM kong_board
 		WHERE bno = #{bno}
 	</select>
 
 	<update id="update" parameterType="com.kong.domain.BoardVO">
 		UPDATE kong_board
-		SET TITLE =
-		#{title},
-		CONTENT = #{content}
+		SET TITLE = #{title}, CONTENT = #{content}
 		WHERE BNO = #{bno}
 	</update>
 
 	<delete id="delete" parameterType="int">
 		DELETE
 		FROM kong_board
-		WHERE BNO
-		= #{bno}
+		WHERE BNO = #{bno}
 	</delete>
 
 	<select id="listPage" resultType="com.kong.domain.BoardVO"
 		parameterType="com.kong.domain.Criteria">
-		SELECT BNO,
-		TITLE,
-		CONTENT,
-		WRITER,
-		REGDATE,
-		CNT
-		FROM (
-		SELECT BNO,
-		TITLE,
-		CONTENT,
-		WRITER,
-		REGDATE,
-		CNT,
-		ROW_NUMBER() OVER(ORDER
-		BY BNO DESC) AS RNUM
+		SELECT BNO,TITLE,CONTENT,WRITER,REGDATE,CNT
+		FROM (SELECT BNO,TITLE,CONTENT,WRITER,REGDATE,CNT,
+		ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
 		FROM kong_board
 		WHERE 1=1
 		<include refid="search"></include>
@@ -80,8 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY BNO DESC
 	</select>
 
-	<select id="listCount"
-		parameterType="com.kong.domain.SearchCriteria" resultType="int">
+	<select id="listCount" parameterType="com.kong.domain.SearchCriteria" resultType="int">
 		SELECT COUNT(BNO)
 		FROM kong_board
 		WHERE 1=1
@@ -101,8 +72,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 게시판 조회수 -->
 	<update id="boardCnt" parameterType="int">
-		UPDATE KONG_BOARD SET
-		CNT = CNT+1
+		UPDATE KONG_BOARD 
+		SET CNT = CNT+1
 		WHERE BNO = #{bno}
 	</update>
 

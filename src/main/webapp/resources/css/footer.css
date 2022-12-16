@@ -1,0 +1,44 @@
+#footer {
+	width: 80%;
+	height : 10%;
+	text-align: left;
+	margin: auto;
+	bottom:0;
+}
+
+.footer h2 { /*고객센터*/
+	color: rgba(0, 0, 0, 0.7);
+}
+
+#footer_txt0 { /*평일 10:00 ~*/
+	font-size: small;
+	font-weight: bold;
+	margin-bottom: 30px;
+	color: rgba(0, 0, 0, 0.3);
+}
+
+#footer_txt { /*이용약관~*/
+	list-style: none;
+	display: flex;
+	color: rgb(80, 80, 80);
+}
+
+#footer_txt>li {
+	margin: 0 30px 0 0;
+	font-weight: bold;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+#footer_txt2 { /*(주)회사이름~*/
+	font-size: 11px;
+	padding-bottom: 20px;
+	width: 50%;
+	line-height: 20px;
+	color: gray;
+}
+
+hr{
+	width : 100%;
+	margin-bottom: 20px;
+}

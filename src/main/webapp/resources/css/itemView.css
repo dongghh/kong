@@ -1,0 +1,172 @@
+#container {
+	width: 70%;
+	margin: auto;
+}
+
+#items {
+	width: 100%;
+	height: 450px;
+}
+
+#items .itemImg {
+	float: left;
+	width: 50%;
+	height: 100%;
+}
+
+#items .itemImg img {
+	width: 100%;
+	height: 100%;
+}
+
+#items .itemInfo {
+	float: right;
+	width: 45%;
+	font-size: 20px;
+	height: 100%;	
+}
+
+#items .itemInfo button{
+	background : #fff;
+	border-color : lightgray;
+	border-radius : 3px 3px 3px 3px;
+}
+
+#items .itemDes {
+	font-size: 18px;
+	clear: both;
+	padding-top: 30px;
+}
+
+#itemHr {
+	margin: 30px 0 30px 0;
+}
+
+.addCart_btn{
+  width  : 80%;
+  padding : 10px;
+}
+
+/* reply */
+#reply {
+	width: 100%;
+	margin-top: 50px;
+}
+
+.replyForm {
+	margin-bottom : 30px;
+}
+
+.replyForm div.input_area {
+	margin: 10px 0;
+}
+
+.replyForm textarea {
+	font-size: 16px;
+	font-family: '맑은 고딕', verdana;
+	padding: 10px;
+	width: 100%;
+	height: 100px;
+	border-radius: 5px 5px 5px 5px;
+	resize: none;
+}
+
+.replyForm button {
+	font-size: 20px;
+	padding: 5px 10px;
+	margin: 10px 0;
+	background: #fff;
+	border-radius: 5px 5px 5px 5px;
+	border-color : lightgray;
+	float: right;
+}
+
+.replyList {
+	padding: 30px 0;
+}
+
+
+.replyList ol li {
+	padding: 10px 0;
+	border-bottom: 2px solid #eee;
+	list-style: none;
+}
+
+.replyList div.userInfo .userName {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.replyList div.userInfo .date {
+	color: #999;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.replyContent {
+	padding: 10px;
+	margin: 15px 0;
+	display : inline-block;
+}
+
+.replyFooter button {
+	font-size: 15px;
+	border-radius: 3px 3px 3px 3px;
+	border-color: lightgray;
+	background: none;
+	margin-right: 10px;
+}
+
+.replyFooter {
+	float : right;
+	display : inline-block;
+	padding : 10px;
+	margin: 15px 0;
+}
+
+div.replyModal {
+	position: relative;
+	z-index: 1;
+	display: none;
+}
+
+div.modalBackground {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: -1;
+}
+
+div.modalContent {
+	position: fixed;
+	top: 20%;
+	left: calc(50% - 250px);
+	width: 500px;
+	height: 290px;
+	padding: 20px 10px;
+	background: #fff;
+	border: 2px solid #666;
+}
+
+div.modalContent textarea {
+	font-size: 16px;
+	font-family: '맑은 고딕', verdana;
+	padding: 10px;
+	width: 100%;
+	height: 200px;
+}
+
+div.modalContent button {
+	font-size: 20px;
+	padding: 5px 10px;
+	margin: 10px 0;
+	background: #fff;
+	border: 1px solid #ccc;
+}
+
+div.modalContent button.modal_cancel {
+	margin-left: 20px;
+}

@@ -3,37 +3,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/resources/css/itemRegister.css">
 <meta charset="UTF-8">
 <title>상품 등록</title>
 <script src="/resources/ckeditor/ckeditor.js"></script>
 </head>
-<style>
-#section {
-	height: 80%;
-	width: 80%;
-	background-color: #E8F5FF;
-	margin: auto;
-}
-
-.select_img img {
-	margin: 20px 0;
-}
-
-.ck-editor__editable {
-	min-height: 400px;
-}
-
-.inputArea {
-	margin: 20px 20px;
-}
-</style>
 <body>
 	<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	<section id="container">
 		<div id="section">
 			<form role="form" method="post" autocomplete="off"
 				enctype="multipart/form-data">
-
+				<h2 id="title">상품 등록</h2>
 				<div class="inputArea">
 					<label>1차 분류</label> <select class="category1">
 						<option value="">전체</option>
@@ -84,15 +65,12 @@
 									if (this.files && this.files[0]) {
 										var reader = new FileReader;
 										reader.onload = function(data) {
-											$(".select_img img").attr("src",
-													data.target.result).width(
-													500);
+											$(".select_img img").attr("src",data.target.result).width(500);
 										}
 										reader.readAsDataURL(this.files[0]);
 									}
 								});
 					</script>
-					<%=request.getRealPath("/")%>
 				</div>
 
 

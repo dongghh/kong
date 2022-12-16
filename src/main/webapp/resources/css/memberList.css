@@ -1,0 +1,39 @@
+#userTable {
+	margin: auto;
+	width: 100%;
+	border-top: solid 1px lightgray;
+	border-bottom: solid 1px lightgray;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+#container {
+	height: 90%;
+	width: 100%;
+}
+
+#userBox {
+	height: 100%;
+	width: 80%;
+	margin: auto;
+}
+
+#tr-top {
+	border-bottom: solid 1px lightgray;
+}
+
+#title {
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	color: gray;
+}
+
+#tr-top th {
+	height: 50px;
+}
+
+#tr-bottom {
+	border-bottom: solid 1px lightgray;
+	height: 70px;
+}

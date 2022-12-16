@@ -31,7 +31,7 @@ import com.kong.domain.itemViewVO;
 @RequestMapping("/shop/*")
 public class ShopController {
 
-	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ShopController.class);
 
 	@Inject
 	ShopService service;

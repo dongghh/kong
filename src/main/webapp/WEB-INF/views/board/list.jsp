@@ -27,6 +27,13 @@ html, body {
 	width: 80%;
 	height: 100%;
 }
+
+#title {
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	color: gray;
+}
 </style>
 
 </head>
@@ -35,9 +42,9 @@ html, body {
 	<section id="container">
 		<div class="container">
 			<div>
-				<h1>
-					<a href="/">게시판</a>
-				</h1>
+				<h2 id="title">
+					<a href="/">공지사항</a>
+				</h2>
 			</div>
 			<hr />
 
@@ -60,12 +67,11 @@ html, body {
 						<c:forEach items="${list}" var="list">
 							<tr>
 								<td><c:out value="${list.bno}" /></td>
-								<td><a
-									href="/board/readView?bno=${list.bno}
-								&page=${scri.page}
-								&perPageNum=${scri.perPageNum}
-								&searchType=${scri.searchType}
-								&keyword=${scri.keyword}">
+								<td><a href="/board/readView?bno=${list.bno}
+															&page=${scri.page}
+															&perPageNum=${scri.perPageNum}
+															&searchType=${scri.searchType}
+															&keyword=${scri.keyword}">
 										<c:out value="${list.title}" />
 								</a></td>
 								<td><c:out value="${list.writer}" /></td>

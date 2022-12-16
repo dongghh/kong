@@ -1,0 +1,61 @@
+#container {
+	width: 80%;
+	margin: auto;
+}
+
+#title {
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	color: gray;
+}
+
+.orderInfo {
+	border: 5px solid #eee;
+	padding: 10px 20px;
+	margin: 20px 0;
+}
+
+.orderInfo span {
+	font-size: 20px;
+	font-weight: bold;
+	display: inline-block;
+	width: 90px;
+}
+
+.orderView li {
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #999;
+	list-style: none;
+}
+
+.orderView li::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.thumb {
+	float: left;
+	width: 200px;
+}
+
+.thumb img {
+	width: 200px;
+	height: 200px;
+}
+
+.itemInfo {
+	float: right;
+	width: calc(100% - 220px);
+	line-height: 2;
+}
+
+.itemInfo span {
+	font-size: 20px;
+	font-weight: bold;
+	display: inline-block;
+	width: 100px;
+	margin-right: 10px;
+}

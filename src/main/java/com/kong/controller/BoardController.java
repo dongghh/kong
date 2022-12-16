@@ -3,6 +3,7 @@ package com.kong.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +16,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kong.Service.BoardService;
 import com.kong.Service.ReplyService;
+import com.kong.domain.BoardReplyVO;
 import com.kong.domain.BoardVO;
 import com.kong.domain.PageMaker;
-import com.kong.domain.BoardReplyVO;
 import com.kong.domain.SearchCriteria;
 
 @Controller // 컨트롤로 명시
@@ -33,20 +34,20 @@ public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
 	// 게시판 글 작성 화면
-	@RequestMapping(value = "/board/writeView", method = RequestMethod.GET)
+	@RequestMapping(value = "/writeView", method = RequestMethod.GET)
 	public void writeView() throws Exception {
 		logger.info("writeView");
 
 	}
 
 	// 게시판 글 작성
-	@RequestMapping(value = "/board/write", method = RequestMethod.POST)
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public String write(BoardVO vo) throws Exception {
 		logger.info("write");
 
 		service.write(vo);
 
-		return "redirect:/";
+		return "redirect:/board/list";
 	}
 
 	// 게시판 목록 조회
@@ -68,7 +69,7 @@ public class BoardController {
 
 	// 게시판 조회
 	@RequestMapping(value = "/readView", method = RequestMethod.GET)
-	public String read(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
+	public String read(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, Model model,HttpSession session) throws Exception {
 		logger.info("read");
 
 		model.addAttribute("read", service.read(boardVO.getBno()));
@@ -76,7 +77,8 @@ public class BoardController {
 
 		List<BoardReplyVO> replyList = replyService.readReply(boardVO.getBno());
 		model.addAttribute("replyList", replyList);
-
+		session.getAttribute("member");
+		
 		return "board/readView";
 	}
 
@@ -92,10 +94,9 @@ public class BoardController {
 		return "board/updateView";
 	}
 
-	// 게시판 수정
+	// 게시글 수정
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr)
-			throws Exception {
+	public String update(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		logger.info("update");
 
 		service.update(boardVO);
@@ -108,10 +109,9 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
-	// 게시판 삭제
+	// 게시글 삭제
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String delete(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr)
-			throws Exception {
+	public String delete(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		logger.info("delete");
 
 		service.delete(boardVO.getBno());
@@ -147,7 +147,7 @@ public class BoardController {
 
 		model.addAttribute("replyUpdate", replyService.selectReply(vo.getRno()));
 		model.addAttribute("scri", scri);
-
+		
 		return "board/replyUpdateView";
 	}
 
@@ -167,19 +167,8 @@ public class BoardController {
 		return "redirect:/board/readView";
 	}
 
-	// 댓글 삭제 GET
-	@RequestMapping(value = "/replyDeleteView", method = RequestMethod.GET)
-	public String replyDeleteView(BoardReplyVO vo, SearchCriteria scri, Model model) throws Exception {
-		logger.info("reply Write");
-
-		model.addAttribute("replyDelete", replyService.selectReply(vo.getRno()));
-		model.addAttribute("scri", scri);
-
-		return "board/replyDeleteView";
-	}
-
 	// 댓글 삭제
-	@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
+	@RequestMapping(value = "/replyDelete", method = RequestMethod.GET)
 	public String replyDelete(BoardReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		logger.info("reply Write");
 

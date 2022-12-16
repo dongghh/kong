@@ -6,133 +6,63 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/swiper.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<title>Insert title here</title>
-<style>
-html, body {
-	width: 100%;
-	height: 1784px;
-	background-color: #fff;
-}
-
-header {
-	width: 80%;
-	height: 10%;
-	background-color: dddddd;
-	margin: auto;
-}
-
-#container {
-	margin-top: 30px;
-	margin-bottom: 30px;
-}
-
-* {
-	margin: 0;
-	padding: 0;
-	font-family: NanumBarunGothic;
-	word-break: keep-all;
-	box-sizing: border-box;
-}
-
-a {
-	color: black;
-	text-decoration: none;
-}
-
-ul {
-	list-style: none;
-}
-
-#header-top {
-	height: 70%;
-}
-
-#header-top ul {
-	float: right;
-}
-
-#header-top-top {
-	display: inline-block;
-}
-
-#header-top-bottom {
-	display: inline-block;
-	float: right;
-}
-
-#header-top-bottom ul li {
-	text-align: center;
-}
-
-#header-bottom a {
-	color: black;
-	text-decoration: none;
-	margin: auto;
-}
-
-#header-bottom a:hover {
-	text-decoration: underline;
-}
-
-#header-bottom li {
-	float: left;
-	margin-right: 20px;
-	position: relative;
-}
-
-#header-bottom {
-	height: 30%;
-}
-
-#header-bottom li:hover {
-	background: #eee;
-}
-
-#header-bottom li>ul.low {
-	display: none;
-	position: absolute;
-	top: 0;
-	left: 180px;
-}
-
-#header-bottom li:hover>ul.low {
-	display: block;
-}
-
-#header-bottom li:hover>ul.low li a {
-	background: #eee;
-	border: 1px solid #eee;
-}
-
-#header-bottom li:hover>ul.low li a:hover {
-	background: #fff;
-}
-
-#header-bottom li>ul.low li {
-	width: 180px;
-}
-</style>
+<script type="text/javascript" src="/resources/js/custom.js"></script>
+<script type="text/javascript" src="/resources/js/swiper.min.js"></script>
+<script src="/resources/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 	<header>
 		<div id="header-top">
-			<div id="header-top-top">
-				<h1>
-					<a href="/">Style Two</a> <span>Example Tagline Text</span>
-				</h1>
-			</div>
-			<div id="header-top-bottom">
-				<ul>
-					<li>login</li>
-					<li>join</li>
-					<li><a href="/shop/cartList">cart</a></li>
-					<li><a href="/shop/orderList">order</a></li>
-					<li><input></li>
-				</ul>
+			<h1 id="logo">
+				<a href="/">Kong</a>
+			</h1>
+			<div id="headerMenu">
+				<c:if test="${member == null}">
+					<ul>
+						<li><a href="/member/login">Login</a></li>
+						<li><a href="/member/register">Join</a></li>
+						<li><a href="/shop/cartList">Cart</a></li>
+						<li><a href="/shop/orderList">Order</a></li>
+						<li><a href="/board/list">Notice</a></li>
+						<li><div id="search">
+								<input type="text" id="search_txt">
+							</div></li>
+					</ul>
+				</c:if>
+				<c:if test="${member != null }">
+					<c:if test="${member.verify == 0 }">
+						<ul>
+							<li><p>${member.userId}님환영합니다.</p></li>
+							<li><a href="/member/logout">Logout</a></li>
+							<li><a href="/member/memberUpdateView">MyInfo</a></li>
+							<li><a href="/board/list">Notice</a></li>
+							<li><a href="/shop/cartList">Cart</a></li>
+							<li><a href="/shop/orderList">Order</a></li>
+							<li><div id="search">
+									<input type="text" id="search_txt">
+								</div></li>
+						</ul>
+					</c:if>
+					<c:if test="${member.verify == 9 }">
+						<ul>
+							<li><p>${member.userId}님환영합니다.</p></li>
+							<li><a href="/member/logout">Logout</a></li>
+							<li><a href="/admin/memberList">userList</a></li>
+							<li><a href="/admin/item/register">itemRegister</a></li>
+							<li><a href="/shop/orderList">Order</a></li>
+							<li><a href="/shop/cartList">Cart</a></li>
+							<li><a href="/admin/shop/orderList">orderList</a></li>
+							<li><a href="/board/list">Notice</a></li>
+						</ul>
+					</c:if>
+				</c:if>
 			</div>
 		</div>
+		<hr id="header_hr">
 		<div id="header-bottom">
 			<ul>
 				<li><a href="/">BEST</a></li>
@@ -164,6 +94,5 @@ ul {
 			</ul>
 		</div>
 	</header>
-	<hr>
 </body>
 </html>

@@ -1,0 +1,41 @@
+#container {
+	height: 80%;
+	width: 80%;
+	margin: auto;
+}
+
+#writeTitle {
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	color: gray;
+}
+
+#writeTable {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0 40px;
+}
+
+#ck {
+	width: 100%;
+	resize: none;
+	margin: 20 0 20 0;
+}
+
+tr th {
+	width: 10%
+}
+
+#title {
+	width: 100%;
+	padding : 5px;
+}
+
+#botton {
+	text-align: right;
+}
+
+.btn, .write_btn {
+	padding: 5px;
+}

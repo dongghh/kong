@@ -2,13 +2,9 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-<style>
-#container {
-	height: 80%;
-	width: 100%;
-}
-</style>
-<script src="/resources/js/summernote-ko-KR.js"></script>
+<link rel="stylesheet" href="/resources/css/writeView.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <title>게시판</title>
 </head>
 <script type="text/javascript">
@@ -32,48 +28,35 @@
 			}
 		}
 	}
-
-	$(document).ready(function() {
-		$('#summernote').summernote({
-			placeholder : 'content',
-			minHeight : 370,
-			maxHeight : null,
-			focus : true,
-			lang : 'ko-KR'
-		});
-	});
 </script>
 <body>
 	<%@include file="../layout/header.jsp"%>
-	<section id="container">
-		<div id="root">
-			<hr />
-
-			<div>
-				<%@include file="nav.jsp"%>
-			</div>
-			<hr />
-
 			<section id="container">
+			<h2 id="writeTitle">공지사항</h2>
 				<form name="writeForm" method="post" action="/board/write">
-					<table>
+					<table id="writeTable">
 						<tbody>
 							<c:if test="${member.userId != null}">
+							<input type="hidden" value="${member.userId }" id="writer" name="writer">
 								<tr>
-									<td><label for="title">제목</label><input type="text"
-										id="title" name="title" class="chk" title="제목을 입력하세요." /></td>
+									<th><label for="title">제목</label></th>
+									<td><input type="text" id="title" name="title" class="chk" placeholder="제목을 입력하세요." /></td>
+								</tr>
+								<tr id="ck">
+									<td colspan="2"><textarea rows="5" cols="50" id="content" name="content" placeholder="내용을 입력하세요."></textarea>
+									<script>
+										var ckeditor_config = {
+											resize_enaleb : false,
+											enterMode : CKEDITOR.ENTER_BR,
+											shiftEnterMode : CKEDITOR.ENTER_P,
+											filebrowserUploadUrl : "/admin/item/ckUpload"};
+										    CKEDITOR.replace("content", ckeditor_config);
+										</script></td>   			
 								</tr>
 								<tr>
-									<td><label for="content">내용</label> <textarea id="content"
-											name="content" class="chk" title="내용을 입력하세요."></textarea></td>
-								</tr>
-								<tr>
-									<td><label for="writer">작성자</label><input type="text"
-										id="writer" name="writer" class="chk" title="작성자를 입력하세요."
-										value="${member.userId}" readonly /></td>
-								<tr>
-									<td>
-										<button class="write_btn" type="submit">작성</button>
+									<td id="botton" colspan="2">
+										<button type="button" class="btn" onclick="location.href='/board/list'">목록</button>
+										<button type="submit" class="write_btn">작성</button>
 									</td>
 								</tr>
 							</c:if>
@@ -84,10 +67,7 @@
 						</tbody>
 					</table>
 				</form>
-
 			</section>
-		</div>
-	</section>
 	<%@include file="../layout/footer.jsp"%>
 </body>
 </html>

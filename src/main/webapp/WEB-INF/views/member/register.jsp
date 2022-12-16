@@ -3,63 +3,7 @@
 
 <html>
 <head>
-<style>
-#container {
-	height: 80%;
-	width: 70%;
-	position: relative;
-	margin: auto;
-	margin-bottom: 100px;
-	padding-bottom: 50px;
-	color: #767676;
-	font-size: 13px;
-	margin-bottom: 100px;
-}
-
-.join {
-	margin-bottom: 10px;
-}
-
-div {
-	margin: auto;
-}
-
-ul {
-	padding: 24px 0;
-	border-bottom: 1px solid #eaeaea;
-	list-style: none;
-	overflow: hidden;
-}
-
-li {
-	float: left;
-	width: 125px;
-}
-
-li input {
-	width: 100%;
-	height: 30px;
-	vertical-align: middle;
-}
-
-#title {
-	margin: 45px 0 45px;
-	font-size: 24px;
-	text-align: center;
-}
-
-.star {
-	color: red;
-}
-
-#middle {
-	margin: 0 2px;
-}
-
-button {
-	height: 30px;
-}
-</style>
+<link rel="stylesheet" href="/resources/css/register.css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -177,14 +121,12 @@ button {
 	<%@include file="../layout/header.jsp"%>
 	<section id="container">
 		<p id="title">회원가입</p>
-		<div id="container">
 			<form action="/member/register" method="post" id="regForm">
 				<ul class="join">
 					<li>아이디<span class="star">*</span></li>
 					<li><input class="form-control" type="text" id="userId"
 						placeholder="아이디를 입력하세요" name="userId" /></li>
-					<button class="idChk" type="button" id="idChk"
-						onclick="fn_idChk();" value="N">중복확인</button>
+					<button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
 				</ul>
 				<ul class="join">
 					<li>패스워드<span class="star">*</span></li>
@@ -217,7 +159,6 @@ button {
 				<button type="button" id="submit">회원가입</button>
 				<button type="button">취소</button>
 			</div>
-		</div>
 	</section>
 	<%@include file="../layout/footer.jsp"%>
 </body>

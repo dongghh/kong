@@ -1,0 +1,34 @@
+#container {
+	width: 80%;
+	height: 80%;
+	margin: auto;
+}
+
+#orderTable {
+	margin: auto;
+	width: 100%;
+	border-top: solid 1px lightgray;
+	border-bottom: solid 1px lightgray;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+#order-top {
+	border-bottom: solid 1px lightgray;
+}
+
+#title {
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	color: gray;
+}
+
+#order-top th {
+	height: 50px;
+}
+
+#order-bottom {
+	border-bottom: solid 1px lightgray;
+	height: 70px;
+}

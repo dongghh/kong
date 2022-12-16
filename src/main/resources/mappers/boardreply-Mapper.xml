@@ -16,15 +16,8 @@
 	<!-- 댓글 쓰기 -->
 	<insert id="writeReply">
 		INSERT INTO kong_boardreply(
-		BNO
-		, RNO
-		, CONTENT
-		, WRITER
-		)
-		VALUES( #{bno}
-		, #{rno}
-		, #{content}
-		, #{writer} )
+		BNO, RNO, CONTENT, WRITER) VALUES
+		( #{bno}, #{rno}, #{content}, #{writer} )
 	</insert>
 
 	<!-- 댓글 수정 -->
