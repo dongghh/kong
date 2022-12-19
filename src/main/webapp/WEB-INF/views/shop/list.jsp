@@ -13,7 +13,7 @@
 }
 
 section#container ul {
-	text-align : center;
+	text-align: center;
 }
 
 section#container ul li {
@@ -27,12 +27,26 @@ section#container div.itemThumb img {
 }
 
 section#container div.itemName {
-	padding: 10px 0;
-	text-align: center;
+	padding: 20px 0 10px 0;
+	text-align: left;
 }
 
 section#container div.itemName a {
 	color: #000;
+	font-size: larger;
+}
+
+#Kong {
+	font-size: small;
+	float: left;
+}
+
+#span-box {
+	margin-bottom: 10px;
+}
+
+#price {
+	float : right;
 }
 </style>
 </head>
@@ -45,8 +59,15 @@ section#container div.itemName a {
 					<div class="itemThumb">
 						<img src="${list.itemThumbImg}">
 					</div>
+					<div id="span-box">
+						<span id="Kong">kong</span>
+					</div>
 					<div class="itemName">
 						<a href="/shop/view?n=${list.itemNum}">${list.itemName}</a>
+					</div>
+					<div id="price-box">
+						<span id="price"><fmt:formatNumber value="${list.itemPrice}"
+								pattern="###,###,###" />원</span>
 					</div>
 				</li>
 			</c:forEach>

@@ -80,7 +80,7 @@
 			</c:if>
 			</form>
 			<!-- 댓글 출력  -->
-				<div id="reply">
+			<div id="reply">
 				<ol class="replyList">
 					<c:forEach items="${replyList}" var="replyList">
 						<div id="reply1">
