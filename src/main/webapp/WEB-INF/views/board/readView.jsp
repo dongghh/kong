@@ -47,10 +47,12 @@
 				</tr>
 			</table>
 			<!-- table edit area -->
+			<c:if test="${member.userId == read.writer || member.verify == 9}">
 				<div id="editBox">
 					<button type="button" class="update_btn">수정</button>
 					<button type="button" class="delete_btn">삭제</button>
 				</div>
+			</c:if>
 			<hr style="width : 100%;">
 
 			<!-- 댓글 -->
@@ -90,7 +92,7 @@
 								pattern="yyyy년MM월dd일" />
 							</div>
 							<div style="margin : 10 0 10 0"><p>${replyList.content}</p></div>
-							<c:if test="${member.userId == replyList.writer && member != null}">
+							<c:if test="${member.userId == replyList.writer || member.verify == 9}">
 								<div id="reply-button">
 									<button type="button" class="replyUpdateBtn"
 										data-rno="${replyList.rno}">수정</button>
