@@ -109,7 +109,7 @@
 							    		    	  location.href = "/shop/cartList";}
 							    		    } 
 							    	  else {
-							    		     alert("회원만 사용할 수 있습니다.")
+							    		     alert("로그인 후 이용해주세요.")
 							    		     $(".numBox").val("1");}
 							    		   },
 							    		   error : function(){
@@ -259,7 +259,7 @@ $(document).on("click", ".modify", function(){
 	
 $(document).on("click", ".delete", function(){
  
-var deleteConfirm = confirm("정말로 삭제하시겠습니까?");
+var deleteConfirm = confirm("삭제하시겠습니까?");
 	   
 if(deleteConfirm){
  var data = {repNum : $(this).attr("data-repNum")};
@@ -285,7 +285,7 @@ if(deleteConfirm){
  }
 });
 $(".modal_modify_btn").click(function(){
-	   var modifyConfirm = confirm("정말로 수정하시겠습니까?");
+	   var modifyConfirm = confirm("수정하시겠습니까?");
 	   
 	   if(modifyConfirm) {
 	    var data = {

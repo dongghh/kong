@@ -246,4 +246,17 @@ public class ShopController {
 		model.addAttribute("orderView", orderView);
 	}
 
+	// 전체 상품 리스트
+	@RequestMapping(value = "/allList" , method = RequestMethod.GET)
+	public String allList(Model model) throws Exception {
+		logger.info("get allList");
+
+		List<itemViewVO> list = service.allList();
+
+		model.addAttribute("list", list);
+		
+		return "shop/allList";
+
+	}
+
 }

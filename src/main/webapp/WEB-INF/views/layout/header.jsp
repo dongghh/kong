@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/header.css">
 <link rel="stylesheet" href="/resources/css/swiper.min.css">
+<link rel="icon" href="/resources/favicon/favicon.ico" type="image/x-icon" >
+<link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon"/>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/custom.js"></script>
@@ -65,7 +67,7 @@
 		<hr id="header_hr">
 		<div id="header-bottom">
 			<ul>
-				<li><a href="/">BEST</a></li>
+				<li><a href="/shop/allList">전체상품</a></li>
 				<li><a href="/shop/list?c=100&l=1">서재</a>
 					<ul class="low">
 						<li><a href="/shop/list?c=101&l=2">데스크</a></li>

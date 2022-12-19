@@ -60,4 +60,7 @@ public interface ShopDAO {
 	
 	// 특정 주문 목록 
 	public List<OrderListVO> orderView(OrderVO order) throws Exception;
+	
+	//전체 상품 리스트
+	public List<itemViewVO> allList() throws Exception;
 }

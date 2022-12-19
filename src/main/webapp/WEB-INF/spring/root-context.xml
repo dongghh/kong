@@ -20,7 +20,7 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver"></property>
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/MySQL?characterEncoding=utf8&amp;serverTimezone=UTC"></property>
+			value="jdbc:mysql://localhost:3306/MySQL?serverTimezone=UTC&amp;useSSL=false"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="3868"></property>
 	</bean>

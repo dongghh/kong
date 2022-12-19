@@ -168,5 +168,12 @@
 		where o.userId = #{userId}
 		and o.orderId = #{orderId}
 	</select>
+	
+	<!-- 전체상품 조회 -->
+	<select id="allList" resultType="com.kong.domain.itemViewVO">
+	SELECT * 
+	FROM kong_item 
+	ORDER BY itemNum
+	</select>
 
 </mapper>

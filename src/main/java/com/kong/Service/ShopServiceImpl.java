@@ -124,4 +124,10 @@ public class ShopServiceImpl implements ShopService {
 	public List<OrderListVO> orderView(OrderVO order) throws Exception {
 		return dao.orderView(order);
 	}
+	
+	// 전체 상품 리스트
+	@Override
+	public List<itemViewVO> allList() throws Exception {
+		return dao.allList();
+	}
 }

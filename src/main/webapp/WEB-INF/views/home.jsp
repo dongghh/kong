@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"
 	contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="layout/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/main.css">
 <title>Kong</title>
@@ -113,66 +114,16 @@
 		<caption>
 			<h3>전체 상품</h3>
 		</caption>
+		<c:forEach items="${list}" var="list"> 
 		<tr>
-			<td><img src="/images/none.png" alt="전체1"></td>
-			<td><img src="/images/none.png" alt="전체2"></td>
-			<td><img src="/images/none.png" alt="전체3"></td>
-			<td><img src="/images/none.png" alt="전체4"></td>
+			<td><img src="${list.itemThumbImg}" alt="전체1"></td>
 		</tr>
 		<tr>
 			<td id="price">[선택]상품명<br>10,000원<br>
 				<p id="review_txt">리뷰 : 0</p>
 			</td>
-			<td id="price">[선택]상품명<br>10,000원<br>
-				<p id="review_txt">리뷰 : 0</p>
-			</td>
-			<td id="price">[선택]상품명<br>10,000원<br>
-				<p id="review_txt">리뷰 : 0</p>
-			</td>
-			<td id="price">[선택]상품명<br>10,000원<br>
-				<p id="review_txt">리뷰 : 0</p>
-			</td>
 		</tr>
-		<tr>
-			<td><img src="/images/none.png" alt="전체5"></td>
-			<td><img src="/images/none.png" alt="전체6"></td>
-			<td><img src="/images/none.png" alt="전체7"></td>
-			<td><img src="/images/none.png" alt="전체8"></td>
-		</tr>
-		<tr>
-			<td id="price">[선택]상품명<br>10,000원<br>
-				<p id="review_txt">리뷰 : 0</p>
-			</td>
-			<td id="price">[선택]상품명<br>10,000원<br>
-				<p id="review_txt">리뷰 : 0</p>
-			</td>
-			<td id="price">[선택]상품명<br>10,000원<br>
-				<p id="review_txt">리뷰 : 0</p>
-			</td>
-			<td id="price">[선택]상품명<br>10,000원<br>
-				<p id="review_txt">리뷰 : 0</p>
-			</td>
-		</tr>
-		<tr>
-			<td><img src="/images/none.png" alt="전체9"></td>
-			<td><img src="/images/none.png" alt="전체10"></td>
-			<td><img src="/images/none.png" alt="전체11"></td>
-			<td><img src="/images/none.png" alt="전체12"></td>
-		</tr>
-		<tr>
-			<td id="price">[선택]상품명<br>10,000원<br>
-				<p id="review_txt">리뷰 : 0</p>
-			</td>
-			<td id="price">[선택]상품명<br>10,000원<br>
-				<p id="review_txt">리뷰 : 0</p>
-			</td>
-			<td id="price">[선택]상품명<br>10,000원<br>
-				<p id="review_txt">리뷰 : 0</p>
-			</td>
-			<td id="price">[선택]상품명<br>10,000원<br>
-				<p id="review_txt">리뷰 : 0</p>
-			</td>
-		</tr>
+		</c:forEach>
 	</table>
 </section>
 <%@include file="layout/footer.jsp"%>

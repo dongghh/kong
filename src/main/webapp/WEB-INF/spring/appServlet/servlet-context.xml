@@ -36,8 +36,7 @@
 	</beans:bean>
 
 	<!-- 일반 파일 업로드 경로 -->
-	<resources mapping="/imgUpload/**"
-		location="/resources/imgUpload/" />
+	<resources mapping="/imgUpload/**" location="/resources/imgUpload/" />
 
 	<beans:bean
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
@@ -47,13 +46,14 @@
 
 	<!-- 대체 이미지 경로 -->
 	<resources mapping="/images/**" location="/resources/images/" />
+	
+	<!-- favicon 경로 -->
+	<resources mapping="/favicon/**" location="/resources/favicon/" />
 
 	<!-- ck에디터 파일 업로드 경로 -->
-	<resources mapping="/ckUpload/**"
-		location="/resources/ckUpload/" />
+	<resources mapping="/ckUpload/**" location="/resources/ckUpload/" />
 
-	<beans:bean id="AdminInterceptor"
-		class="com.kong.interceptor.AdminInterceptor" />
+	<beans:bean id="AdminInterceptor" class="com.kong.interceptor.AdminInterceptor" />
 	<!-- 관리자 페이지 접근 권한 -->
 	<interceptors>
 		<interceptor>

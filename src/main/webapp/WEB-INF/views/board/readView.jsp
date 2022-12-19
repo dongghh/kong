@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>게시판</title>
+<title>Kong</title>
 <link rel="stylesheet" href="/resources/css/noticeReadView.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -41,9 +41,9 @@
 				</tr>
 				<tr id="table-content">
 					<td colspan="2">
-<textarea name="content" id="text" readonly="readonly">
-<c:out value="${read.content}"/>
-</textarea>
+						<textarea name="content" id="text" readonly="readonly">
+						<c:out value="${read.content}"/>
+						</textarea>
 					</td>
 				</tr>
 			</table>
@@ -84,14 +84,14 @@
 								pattern="yyyy년MM월dd일" />
 							</div>
 							<div style="margin : 10 0 10 0"><p>${replyList.content}</p></div>
-							<c:if test="${replyList.writer == member.getUserId}">
+			
 								<div>
 									<button type="button" class="replyUpdateBtn"
 										data-rno="${replyList.rno}">수정</button>
 									<button type="button" class="replyDeleteBtn"
 										data-rno="${replyList.rno}">삭제</button>
 								</div>
-							</c:if>
+							
 						</div>
 					</c:forEach>
 				</ol>
@@ -102,7 +102,7 @@ var formObj = $("form[name='readForm']");
 
 // 작성
 $(".reply-save-button").on("click", function() {
-formObj.attr("action", "replyWrite");
+formObj.attr("action", "/replyWrite");
 formObj.submit();
 })
 

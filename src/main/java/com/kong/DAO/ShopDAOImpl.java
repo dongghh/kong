@@ -128,5 +128,11 @@ public class ShopDAOImpl implements ShopDAO {
 	public List<OrderListVO> orderView(OrderVO order) throws Exception {
 		return session.selectList(namespace + ".orderView", order);
 	}
+	
+	// 전체 상품 리스트
+		@Override
+		public List<itemViewVO> allList() throws Exception {
+			return session.selectList(namespace + ".allList");
+		}
 
 }
