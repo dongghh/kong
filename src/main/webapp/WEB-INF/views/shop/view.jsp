@@ -48,40 +48,24 @@
 					<c:if test="${view.itemStock != 0}">
 						<tr>
 						<th class="cartStock">구입 수량</th>
-						<td>	<button type="button" class="plus">+</button>
+						<td>
 							<input type="number" class="numBox" min="1"
-								max="${view.itemStock}" value="0" readonly="readonly" />
-							<button type="button" class="minus">-</button>
-							<script>
-					    $(".plus").click(function(){
-					     var num = $(".numBox").val();
-					     var plusNum = Number(num) + 1;
-					     
-					     if(plusNum > ${view.itemStock}) {
-					      $(".numBox").val(num);
-					     } else {
-					      $(".numBox").val(plusNum);            
-					     }
-					    });
-					    
-					    $(".minus").click(function(){
-					     var num = $(".numBox").val();
-					     var minusNum = Number(num) - 1;
-					     
-					     if(minusNum <= 0) {
-					      $(".numBox").val(num);
-					     } else {
-					      $(".numBox").val(minusNum);            
-					     }
-					    });
-					   </script>
+								max="${view.itemStock}" value="0"  />
+							
 						</td>
 						</tr>
 						<tr>
 							<th>합계</th>
-							<c:set var="sum" value="${sum + (view.itemPrice * cartStock)}" />
-							<td><fmt:formatNumber pattern="###,###,###" value="${sum}" />원</td>
+							<td><span id="total">0원</span></td>
 						</tr>
+						<script>
+							$(".numBox").click(function(){
+								$("#total").empty();
+								var amount = (${view.itemPrice}*$(".numBox").val());
+							 	amount = amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+								$("#total").append(amount+"원");
+							});
+						</script>
 						<tr>
 						<th class="addToCart" colspan="2">
 							<button type="button" class="addCart_btn">장바구니</button>

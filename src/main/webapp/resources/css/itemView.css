@@ -3,6 +3,10 @@
 	margin: auto;
 }
 
+table td {
+	text-align: center;
+}
+
 #items {
 	width: 100%;
 	height: 450px;
@@ -23,13 +27,13 @@
 	float: right;
 	width: 45%;
 	font-size: 20px;
-	height: 100%;	
+	height: 100%;
 }
 
-#items .itemInfo button{
-	background : #fff;
-	border-color : lightgray;
-	border-radius : 3px 3px 3px 3px;
+#items .itemInfo button {
+	background: #fff;
+	border-color: lightgray;
+	border-radius: 3px 3px 3px 3px;
 }
 
 #items .itemDes {
@@ -42,9 +46,9 @@
 	margin: 30px 0 30px 0;
 }
 
-.addCart_btn{
-  width  : 80%;
-  padding : 10px;
+.addCart_btn {
+	width: 80%;
+	padding: 10px;
 }
 
 /* reply */
@@ -54,7 +58,7 @@
 }
 
 .replyForm {
-	margin-bottom : 30px;
+	margin-bottom: 30px;
 }
 
 .replyForm div.input_area {
@@ -77,14 +81,13 @@
 	margin: 10px 0;
 	background: #fff;
 	border-radius: 5px 5px 5px 5px;
-	border-color : lightgray;
+	border-color: lightgray;
 	float: right;
 }
 
 .replyList {
 	padding: 30px 0;
 }
-
 
 .replyList ol li {
 	padding: 10px 0;
@@ -106,7 +109,7 @@
 .replyContent {
 	padding: 10px;
 	margin: 15px 0;
-	display : inline-block;
+	display: inline-block;
 }
 
 .replyFooter button {
@@ -118,9 +121,9 @@
 }
 
 .replyFooter {
-	float : right;
-	display : inline-block;
-	padding : 10px;
+	float: right;
+	display: inline-block;
+	padding: 10px;
 	margin: 15px 0;
 }
 
