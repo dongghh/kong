@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/resources/css/header.css">
 <link rel="stylesheet" href="/resources/css/swiper.min.css">
 <link rel="icon" href="/resources/favicon/favicon.ico" type="image/x-icon" >
-<link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="/resources/favicon/favicon.ico" type="image/x-icon"/>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/custom.js"></script>
@@ -49,7 +49,7 @@
 								</div></li>
 						</ul>
 					</c:if>
-					<c:if test="${member.verify == 9 }">
+					<c:if test="${member.verify == 9}">
 						<ul>
 							<li><p>${member.userId}님환영합니다.</p></li>
 							<li><a href="/member/logout">Logout</a></li>

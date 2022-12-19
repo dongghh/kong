@@ -48,7 +48,7 @@
 	<resources mapping="/images/**" location="/resources/images/" />
 	
 	<!-- favicon 경로 -->
-	<resources mapping="/favicon/**" location="/resources/favicon/" />
+	<resources mapping="/favicon.ico" location="/favicon.ico" />
 
 	<!-- ck에디터 파일 업로드 경로 -->
 	<resources mapping="/ckUpload/**" location="/resources/ckUpload/" />

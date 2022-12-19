@@ -75,12 +75,26 @@
 	padding: 5px;
 }
 
+#content2 {
+	display: inline-block;
+	width: 100%;
+	height: 80px;
+	border-radius: 5px;
+	resize: none;
+	padding: 5px;
+}
+
 #reply-box {
 	margin-bottom: 20px;
 	height: 15%;
 }
 
-#reply-content {
+#reply-box2 {
+	text-align: center;
+	margin: 50px;
+}
+
+.reply-content {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
@@ -100,6 +114,10 @@
 	margin: 10px 0px 10px 0px;
 	border-bottom: solid 1px lightgray;
 	height: 13%;
+}
+
+#reply-button{
+	float: right;
 }
 
 div p {

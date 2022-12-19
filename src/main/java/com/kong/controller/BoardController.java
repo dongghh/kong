@@ -143,7 +143,7 @@ public class BoardController {
 	// 댓글 수정 GET
 	@RequestMapping(value = "/replyUpdateView", method = RequestMethod.GET)
 	public String replyUpdateView(BoardReplyVO vo, SearchCriteria scri, Model model) throws Exception {
-		logger.info("reply Write");
+		logger.info("reply update");
 
 		model.addAttribute("replyUpdate", replyService.selectReply(vo.getRno()));
 		model.addAttribute("scri", scri);
@@ -154,7 +154,7 @@ public class BoardController {
 	// 댓글 수정 POST
 	@RequestMapping(value = "/replyUpdate", method = RequestMethod.POST)
 	public String replyUpdate(BoardReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
-		logger.info("reply Write");
+		logger.info("reply update");
 
 		replyService.updateReply(vo);
 
@@ -170,7 +170,7 @@ public class BoardController {
 	// 댓글 삭제
 	@RequestMapping(value = "/replyDelete", method = RequestMethod.GET)
 	public String replyDelete(BoardReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
-		logger.info("reply Write");
+		logger.info("reply delete");
 
 		replyService.deleteReply(vo);
 

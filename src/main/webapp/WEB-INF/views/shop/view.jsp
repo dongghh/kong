@@ -5,7 +5,6 @@
 <head>
 <link rel="stylesheet" href="/resources/css/itemView.css">
 <meta charset="UTF-8">
-<title>상세보기</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -241,7 +240,7 @@
 
 			<script>
 $(".modal_cancel").click(function(){
-   $(".replyModal").fadeOut(200);
+  $(".replyModal").fadeOut(200);
 });
 
 
@@ -278,7 +277,7 @@ if(deleteConfirm){
  	    }
  	   },
  	   error : function(){
- 	    alert("로그인하셔야합니다.")
+ 	    alert("로그인 후 이용해주세.")
  	    console.log(result)
  	   }
  	});

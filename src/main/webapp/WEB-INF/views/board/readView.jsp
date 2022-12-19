@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>Kong</title>
 <link rel="stylesheet" href="/resources/css/noticeReadView.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -61,15 +60,22 @@
 				<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
 				<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}">
 				<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}">
+			<c:if test="${member != null }">
 			<div id="reply-box">
 				<input type="hidden" id="writer" name="writer" value="${member.userId }" readonly />
-				<div id="reply-content">
+				<div class="reply-content">
 					<textarea placeholder="댓글을 입력해주세요." id="content" name="content"></textarea>
 				</div>
 				<div id="reply-button">
 					<button class="reply-save-button" type="button">댓글 작성</button>
 				</div>
 			</div>
+			</c:if>
+			<c:if test="${member == null }">
+			<div class="reply-content">
+			<textarea placeholder="로그인 후 작성할 수 있습니다." id="content2" readonly="readonly"></textarea>
+			</div>
+			</c:if>
 			</form>
 			<!-- 댓글 출력  -->
 				<div id="reply">
@@ -84,14 +90,14 @@
 								pattern="yyyy년MM월dd일" />
 							</div>
 							<div style="margin : 10 0 10 0"><p>${replyList.content}</p></div>
-			
-								<div>
+							<c:if test="${member.userId == replyList.writer && member != null}">
+								<div id="reply-button">
 									<button type="button" class="replyUpdateBtn"
 										data-rno="${replyList.rno}">수정</button>
 									<button type="button" class="replyDeleteBtn"
 										data-rno="${replyList.rno}">삭제</button>
 								</div>
-							
+							</c:if>
 						</div>
 					</c:forEach>
 				</ol>
@@ -102,8 +108,8 @@ var formObj = $("form[name='readForm']");
 
 // 작성
 $(".reply-save-button").on("click", function() {
-formObj.attr("action", "/replyWrite");
-formObj.submit();
+	formObj.attr("action", "/replyWrite");
+	formObj.submit();
 })
 
 // 수정 
