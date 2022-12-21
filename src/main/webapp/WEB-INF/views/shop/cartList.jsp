@@ -1,15 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<title>장바구니</title>
+<%@include file="../layout/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/cartList.css">
-<meta charset="UTF-8">
 <script type="text/javascript" src="/resources/js/DaumPost.js"></script>
-</head>
 <body>
-	<%@include file="../layout/header.jsp"%>
 	<section id="container">
 	<h2 id="title">장바구니</h2>
 	<input type="hidden" name="cartList" value="${cartList}" />

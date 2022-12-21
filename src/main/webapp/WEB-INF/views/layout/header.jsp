@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Kong</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/header.css">
 <link rel="stylesheet" href="/resources/css/swiper.min.css">

@@ -1,10 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Kong</title>
+<%@include file="../layout/header.jsp"%>
 <style>
 #container {
 	width: 70%;
@@ -46,33 +40,28 @@ section#container div.itemName a {
 }
 
 #price {
-	float : right;
+	float: right;
 }
 </style>
-</head>
-<body>
-	<%@include file="../layout/header.jsp"%>
-	<section id="container">
-		<ul>
-			<c:forEach items="${list}" var="list">
-				<li>
-					<div class="itemThumb">
-						<img src="${list.itemThumbImg}">
-					</div>
-					<div id="span-box">
-						<span id="Kong">kong</span>
-					</div>
-					<div class="itemName">
-						<a href="/shop/view?n=${list.itemNum}">${list.itemName}</a>
-					</div>
-					<div id="price-box">
-						<span id="price"><fmt:formatNumber value="${list.itemPrice}"
-								pattern="###,###,###" />원</span>
-					</div>
-				</li>
-			</c:forEach>
-		</ul>
-	</section>
-	<%@include file="../layout/footer.jsp"%>
-</body>
-</html>
+<section id="container">
+	<ul>
+		<c:forEach items="${list}" var="list">
+			<li>
+				<div class="itemThumb">
+					<img src="${list.itemThumbImg}">
+				</div>
+				<div id="span-box">
+					<span id="Kong">kong</span>
+				</div>
+				<div class="itemName">
+					<a href="/shop/view?n=${list.itemNum}">${list.itemName}</a>
+				</div>
+				<div id="price-box">
+					<span id="price"><fmt:formatNumber value="${list.itemPrice}"
+							pattern="###,###,###" />원</span>
+				</div>
+			</li>
+		</c:forEach>
+	</ul>
+</section>
+<%@include file="../layout/footer.jsp"%>

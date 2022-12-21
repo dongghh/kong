@@ -1,15 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
+<%@include file="../layout/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/itemView.css">
-<meta charset="UTF-8">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</head>
-<body>
-	<%@include file="../layout/header.jsp"%>
 	<section id="container">
 			<form role="form" method="post">
 				<input type="hidden" name="itemNum" value="${view.itemNum}" />
