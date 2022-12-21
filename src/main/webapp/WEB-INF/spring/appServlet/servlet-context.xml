@@ -43,6 +43,10 @@
 		id="multipartResolver">
 		<beans:property name="maxUploadSize" value="10485760" />
 	</beans:bean>
+	
+	<beans:bean id="AdminInterceptor" class="com.kong.interceptor.AdminInterceptor" />
+	
+	<beans:bean id="CartInterceptor" class="com.kong.interceptor.CartInterceptor" />
 
 	<!-- 대체 이미지 경로 -->
 	<resources mapping="/images/**" location="/resources/images/" />
@@ -52,13 +56,18 @@
 
 	<!-- ck에디터 파일 업로드 경로 -->
 	<resources mapping="/ckUpload/**" location="/resources/ckUpload/" />
-
-	<beans:bean id="AdminInterceptor" class="com.kong.interceptor.AdminInterceptor" />
-	<!-- 관리자 페이지 접근 권한 -->
+	
+	<!-- 페이지 접근 권한 -->
 	<interceptors>
 		<interceptor>
 			<mapping path="/admin/**" />
 			<beans:ref bean="AdminInterceptor" />
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/shop/cartList" />
+			<mapping path="/shop/orderList" />
+			<beans:ref bean="CartInterceptor" />
 		</interceptor>
 	</interceptors>
 
