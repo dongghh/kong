@@ -4,7 +4,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -36,41 +38,52 @@
 	</beans:bean>
 
 	<!-- 일반 파일 업로드 경로 -->
-	<resources mapping="/imgUpload/**" location="/resources/imgUpload/" />
+	<resources mapping="/imgUpload/**"
+		location="/resources/imgUpload/" />
 
 	<beans:bean
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		id="multipartResolver">
 		<beans:property name="maxUploadSize" value="10485760" />
 	</beans:bean>
-	
-	<beans:bean id="AdminInterceptor" class="com.kong.interceptor.AdminInterceptor" />
-	
-	<beans:bean id="CartInterceptor" class="com.kong.interceptor.CartInterceptor" />
+
+	<beans:bean id="AdminInterceptor"
+		class="com.kong.interceptor.AdminInterceptor" />
+
+	<beans:bean id="CartInterceptor"
+		class="com.kong.interceptor.CartInterceptor" />
+
+	<beans:bean id="chattingHandler"
+		class="com.kong.controller.ChatController" />
 
 	<!-- 대체 이미지 경로 -->
 	<resources mapping="/images/**" location="/resources/images/" />
-	
+
 	<!-- favicon 경로 -->
 	<resources mapping="/favicon.ico" location="/favicon.ico" />
 
 	<!-- ck에디터 파일 업로드 경로 -->
-	<resources mapping="/ckUpload/**" location="/resources/ckUpload/" />
-	
+	<resources mapping="/ckUpload/**"
+		location="/resources/ckUpload/" />
+
 	<!-- 페이지 접근 권한 -->
 	<interceptors>
 		<interceptor>
 			<mapping path="/admin/**" />
 			<beans:ref bean="AdminInterceptor" />
 		</interceptor>
-		
+
 		<interceptor>
 			<mapping path="/shop/cartList" />
 			<mapping path="/shop/orderList" />
 			<beans:ref bean="CartInterceptor" />
 		</interceptor>
 	</interceptors>
-
-
+	
+	<!-- webSocket -->
+	<websocket:handlers>
+		<websocket:mapping handler="chattingHandler" path="/chat" />
+		<websocket:sockjs></websocket:sockjs>
+	</websocket:handlers>
 
 </beans:beans>

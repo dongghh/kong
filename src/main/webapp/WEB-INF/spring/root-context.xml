@@ -50,6 +50,8 @@
 		transaction-manager="transactionManager" />
 
 	<context:component-scan
+		base-package="com.Kong.controller" />
+	<context:component-scan
 		base-package="com.kong.Service" />
 	<context:component-scan
 		base-package="com.kong.DAO" />
@@ -57,5 +59,7 @@
 		base-package="com.kong.domain" />
 	<context:component-scan
 		base-package="com.kong.utils" />
+	<context:component-scan
+		base-package="com.kong.handler" />
 
 </beans>
