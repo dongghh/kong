@@ -9,11 +9,6 @@
       <div id="wrap-content">
          <h2>로그인</h2>
          <br>
-         <div id="user-none">
-            <button id="user">기존 회원이세요?</button>
-            <button id="none">비회원 배송 조회</button>
-         </div>
-
          <div id="input">
             <form action="/member/login" method="POST" name="homeForm">
                <input type="text" placeholder="아이디" id="userId" name="userId"

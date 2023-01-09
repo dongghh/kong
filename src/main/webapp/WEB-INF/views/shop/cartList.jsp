@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@include file="../layout/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/cartList.css">
 <script type="text/javascript" src="/resources/js/DaumPost.js"></script>
@@ -67,9 +69,9 @@
 							<input type="checkbox" name="chBox" class="chBox"
 								data-cartNum="${cartList.cartNum}" />
 <script>
-$(".chBox").click(function() {
-$("#allCheck").prop("checked", false);});
-</script>
+						$(".chBox").click(function() {
+						$("#allCheck").prop("checked", false);});
+						</script>
 						</div>
 						</td>
 						<td><img src="${cartList.itemThumbImg}" /></td>
@@ -115,11 +117,11 @@ $("#allCheck").prop("checked", false);});
 				</div>
 				<div class="orderOpne">
 					<button type="button" class="orderOpne_bnt">주문 정보 입력</button>
-<script>
-$(".orderOpne_bnt").click(function() {
-$(".orderInfo").slideDown();
-$(".orderOpne_bnt").slideUp();});
-</script>
+				<script>
+				$(".orderOpne_bnt").click(function() {
+				$(".orderInfo").slideDown();
+				$(".orderOpne_bnt").slideUp();});
+				</script>
 				</div>
 			</div>
 			<div class="orderInfo">
@@ -165,11 +167,11 @@ $(".orderOpne_bnt").slideUp();});
 					<div class="inputArea">
 						<button type="submit" class="order_btn">주문</button>
 						<button type="button" class="cancel_btn">취소</button>
-<script>
-$(".cancel_btn").click(function() {
-$(".orderInfo").slideUp();
-$(".orderOpne_bnt").slideDown();});
-</script>
+						<script>
+						$(".cancel_btn").click(function() {
+						$(".orderInfo").slideUp();
+						$(".orderOpne_bnt").slideDown();});
+						</script>
 					</div>
 				</form>
 			</div>

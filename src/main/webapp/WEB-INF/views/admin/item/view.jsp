@@ -7,9 +7,7 @@
 <title>상품 조회</title>
 <style>
 #section {
-	height: 80%;
-	width: 80%;
-	background-color: #E8F5FF;
+	width: 60%;
 	margin: auto;
 }
 
@@ -18,83 +16,113 @@
 	height: 500px;
 }
 
-.inputArea {
-	margin: 20px 20px;
+.thumbImg {
+	width: 500px;
+	height: 500px;
 }
 
 .itemDes Img {
 	max-width: 600px;
 	height: auto;
 }
+
+#itemBox2 {
+	width: 100%;
+	height: 60%;
+}
+
+#Box {
+	width: 100%;
+	height : 450px;
+}
+
+table td {
+	text-align: center;
+}
+
+#itemInfo {
+	float: right;
+	width: 50%;
+	font-size: 20px;
+	height: 100%;
+}
+
+.itemImg {
+	float: left;
+	height: 100%;
+	width: 50%
+}
+
+.itemImg img {
+	height: 400px;
+	width: 400px;
+	float: left;
+}
 </style>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/layout/header.jsp"%>
-	<section id="container">
-		<div id="section">
-			<form role="form" method="post" autocomplete="off">
-
-				<input type="hidden" name="n" value="${item.itemNum}" />
-
-				<div class="inputArea">
-					<label>1차 분류</label> <span class="category1"></span> <label>2차
-						분류</label> <span class="category2">${item.cateCode}</span>
-				</div>
-
-				<div class="inputArea">
-					<label for="itemName">상품명</label> <span>${item.itemName}</span>
-				</div>
-
-				<div class="inputArea">
-					<label for="itemPrice">상품가격</label> <span><fmt:formatNumber
-							value="${item.itemPrice}" pattern="###,###,###" /></span>
-				</div>
-
-				<div class="inputArea">
-					<label for="itemStock">상품수량</label> <span>${item.itemStock}</span>
-				</div>
-
-				<div class="inputArea">
-					<label for="itemDes">상품소개</label>
-					<div class="itemDes">${item.itemDes}</div>
-				</div>
-
-				<div class="inputArea">
-					<label for="gdsImg">이미지</label>
-					<p>원본 이미지</p>
+	<div id="section">
+		<form role="form" method="post" autocomplete="off">
+			<input type="hidden" name="n" value="${item.itemNum}" />
+			<div id="Box">
+				<div class="itemImg">
 					<img src="${item.itemImg}" class="oriImg" />
-
-					<p>썸네일</p>
-					<img src="${item.itemThumbImg}" class="thumbImg" />
 				</div>
+				<table id="itemInfo">
+					<tr>
+						<th>분류 코드</th>
+						<td>${item.cateCode}</td>
+					</tr>
+					<tr>
+						<th>상품명</th>
+						<td>${item.itemName}</td>
+					</tr>
+					<tr>
+						<th>상품가격</th>
+						<td><fmt:formatNumber value="${item.itemPrice}"
+								pattern="###,###,###" /></td>
+					</tr>
+					<tr>
+						<th>상품수량</th>
+						<td>${item.itemStock}</td>
+					</tr>
+					<tr>
+						<th>상품소개</th>
+						<td class="itemDes">${item.itemDes}</td>
+					</tr>
+					<tr>
+						<th colspan="2">
+							<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>
+							<button type="button" id="delete_Btn" class="btn btn-danger">삭제</button>
+							<script>
+								var formObj = $("form[role='form']");
 
-				<div class="inputArea">
-					<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>
-					<button type="button" id="delete_Btn" class="btn btn-danger">삭제</button>
+								$("#modify_Btn").click(
+										function() {
+											formObj.attr("action",
+													"/admin/item/modify");
+											formObj.attr("method", "get")
+											formObj.submit();
+										});
 
-					<script>
-						var formObj = $("form[role='form']");
+								$("#delete_Btn").click(
+										function() {
 
-						$("#modify_Btn").click(function() {
-							formObj.attr("action", "/admin/item/modify");
-							formObj.attr("method", "get")
-							formObj.submit();
-						});
+											var con = confirm("정말로 삭제하시겠습니까?");
 
-						$("#delete_Btn").click(function() {
-
-							var con = confirm("정말로 삭제하시겠습니까?");
-
-							if (con) {
-								formObj.attr("action", "/admin/item/delete");
-								formObj.submit();
-							}
-						});
-					</script>
-				</div>
-			</form>
-		</div>
-	</section>
+											if (con) {
+												formObj.attr("action",
+														"/admin/item/delete");
+												formObj.submit();
+											}
+										});
+							</script>
+						</th>
+				</table>
+			</div>
+		</form>
+	</div>
 	<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 </body>
 </html>

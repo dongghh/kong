@@ -1,3 +1,5 @@
+<%@ page language="java" pageEncoding="UTF-8"
+	contentType="text/html; charset=UTF-8"%>
 <%@include file="../layout/header.jsp"%>
 <style>
 #container {
@@ -21,7 +23,7 @@ section#container div.itemThumb img {
 }
 
 section#container div.itemName {
-	padding: 20px 0 10px 0;
+	padding: 10px 0 10px 0;
 	text-align: left;
 }
 
@@ -29,6 +31,7 @@ section#container div.itemName a {
 	color: #000;
 	font-size: larger;
 }
+
 #Kong {
 	font-size: small;
 	float: left;
@@ -39,14 +42,19 @@ section#container div.itemName a {
 }
 
 #price {
-	float : right;
+	float: left;
+}
+
+#item-box {
+	border-radius: 20px 20px 20px 20px;
+	box-sizing: border-box;
 }
 </style>
 <body>
 	<section id="container">
 		<ul>
 			<c:forEach items="${list}" var="list">
-				<li>
+				<li id="item-box">
 					<div class="itemThumb">
 						<img src="${list.itemThumbImg}">
 					</div>
@@ -65,5 +73,3 @@ section#container div.itemName a {
 		</ul>
 	</section>
 	<%@include file="../layout/footer.jsp"%>
-</body>
-</html>

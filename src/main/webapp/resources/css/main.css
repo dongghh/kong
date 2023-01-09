@@ -13,17 +13,10 @@ section {
 	word-break: break-all;
 }
 
-.menu th, td {
-	padding: 20px;
-}
-
-.menu th:hover {
-	border: 1px solid black;
-}
-
-th:hover {
-	cursor: pointer;
-	color: black;
+#title {
+	padding-top: 30px;
+	margin: 40px 0;
+	text-align: center;
 }
 
 a:hover {
@@ -33,18 +26,6 @@ a:hover {
 a {
 	color: black;
 	text-decoration: none;
-}
-
-.table {
-	width: 75%;
-	padding-bottom: 10%;
-	font-size: small;
-	border: 1px solid black;
-}
-
-.table td, th {
-	border: 0;
-	text-align: center;
 }
 
 input[type=text] {
@@ -70,32 +51,10 @@ hr {
 	border: 1px lightgray solid;
 }
 
-.new {
-	width: 100%;
-	text-align: center;
-	margin: auto;
-	margin-top: 5%;
-}
-
-.new tr, td {
-	padding: 7px;
-	cursor: pointer;
-}
-
-.new img {
-	max-width: 100%;
-	cursor: pointer;
-}
-
 #review_txt {
 	font-size: small;
 	margin-top: 5px;
 }
-
-#price {
-	line-height: 25px;
-}
-
 .banner {
 	width: 60%;
 	text-align: center;
@@ -111,25 +70,57 @@ hr {
 	cursor: pointer;
 }
 
-.all {
+#itemList {
 	width: 80%;
 	text-align: center;
 	margin: auto;
+	list-style: none;
 }
 
-.all tr, td {
+#itemList tr, td {
 	padding: 7px;
 	cursor: pointer;
 }
 
-.all img {
+#itemList img {
 	max-width: 100%;
 	cursor: pointer;
 }
 
-caption {
-	color: rgba(0, 0, 0, 0.7);
-	font-weight: bold;
+#itemUl {
+	margin: auto;
+	width: 100%;
+	text-align :justify;
+}
+
+#itemUl li {
+	list-style: none;
+	display: inline-block;
+	margin: 15px;
+	width : 17%;
+}
+
+#Kong {
+	font-size: small;
+	float: left;
+}
+
+#span-box {
+	margin-bottom: 10px;
+}
+div.itemThumb img {
+	width: 180px;
+	height: 200px;
+}
+
+div.itemName {
+	padding: 20px 0 10px 0;
+	text-align: left;
+}
+
+div.itemName a {
+	color: #000;
+	font-size: larger;
 }
 
 /* 메인슬라이드 */
@@ -171,18 +162,6 @@ caption {
 	border-radius: 50% !important;
 }
 
-/* 베스트 아이템 */
-.best-wrap {
-	width: 100%;
-	margin: auto;
-	text-align: center;
-}
-
-.best-wrap h2 {
-	padding: 20px 0;
-	font-size: 24px;
-}
-
 #best-box {
 	width: 100%;
 }
@@ -201,18 +180,18 @@ caption {
 	height: 100%
 }
 
-.slide p{
-	padding : 10px;
+.slide p {
+	padding: 10px;
 }
 
-.slide b{
-	color : red;
+.slide b {
+	color: red;
 }
 
 .slide b span {
-	font-size : 12px;
-	color : #666;
-	padding-left : 5px;
+	font-size: 12px;
+	color: #666;
+	padding-left: 5px;
 }
 
 .slide img {

@@ -7,7 +7,7 @@
 <head>
 <title>Kong</title>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet" href="/resources/css/swiper.min.css">
 <link rel="icon" href="/resources/favicon/favicon.ico" type="image/x-icon" >
 <link rel="shortcut icon" href="/resources/favicon/favicon.ico" type="image/x-icon"/>
@@ -39,7 +39,7 @@
 				<c:if test="${member != null }">
 					<c:if test="${member.verify == 0 }">
 						<ul>
-							<li><p>${member.userId}님환영합니다.</p></li>
+							<li><p>${member.userId}님 환영합니다.</p></li>
 							<li><a href="/member/logout">Logout</a></li>
 							<li><a href="/member/memberUpdateView">MyInfo</a></li>
 							<li><a href="/board/list">Notice</a></li>
@@ -52,10 +52,11 @@
 					</c:if>
 					<c:if test="${member.verify == 9}">
 						<ul>
-							<li><p>${member.userId}님환영합니다.</p></li>
+							<li><p>${member.userId}님 환영합니다.</p></li>
 							<li><a href="/member/logout">Logout</a></li>
 							<li><a href="/admin/memberList">userList</a></li>
 							<li><a href="/admin/item/register">itemRegister</a></li>
+							<li><a href="/admin/item/list">itemList</a></li>
 							<li><a href="/shop/orderList">Order</a></li>
 							<li><a href="/shop/cartList">Cart</a></li>
 							<li><a href="/admin/shop/orderList">orderList</a></li>

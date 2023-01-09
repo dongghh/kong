@@ -1,0 +1,36 @@
+#container {
+	width: 80%;
+	margin: auto;
+}
+
+#title {
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	color: black;
+}
+
+#itemTable {
+	margin: auto;
+	width: 100%;
+	border-top: solid 1px lightgray;
+	border-bottom: solid 1px lightgray;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+tr td img {
+	width: 200px;
+	height: 200px;
+}
+
+tr {
+	border-bottom: solid 1px lightgray;
+}
+
+.delete_btn{
+background-color: #efcdcd;
+}
+.delete_btn:hover{
+background-color : #e4a7a7;
+}

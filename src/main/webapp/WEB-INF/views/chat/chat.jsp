@@ -23,7 +23,7 @@
         $('#message').val('')
     });
  
-    let sock = new SockJS("http://localhost:8080");
+    let sock = new SockJS("http://localhost:8080/chat");
     sock.onmessage = onMessage;
     sock.onclose = onClose;
     // 메시지 전송

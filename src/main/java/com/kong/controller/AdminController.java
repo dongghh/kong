@@ -165,7 +165,7 @@ public class AdminController {
 
 		service.itemModify(vo);
 
-		return "redirect:/";
+		return "redirect:/admin/item/list";
 	}
 
 	// 상품 삭제
@@ -175,7 +175,7 @@ public class AdminController {
 
 		service.itemDelete(itemNum);
 
-		return "redirect:/";
+		return "redirect:/admin/item/list";
 	}
 
 	// ck 에디터에서 파일 업로드

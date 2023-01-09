@@ -2,30 +2,29 @@
 <style>
 #container {
 	width: 70%;
-	margin-top: 20px;
 	margin: auto;
 }
 
-section#container ul {
+ul {
 	text-align: center;
 }
 
-section#container ul li {
+ul li {
 	display: inline-block;
 	margin: 10px;
 }
 
-section#container div.itemThumb img {
+div.itemThumb img {
 	width: 200px;
 	height: 200px;
 }
 
-section#container div.itemName {
+div.itemName {
 	padding: 20px 0 10px 0;
 	text-align: left;
 }
 
-section#container div.itemName a {
+div.itemName a {
 	color: #000;
 	font-size: larger;
 }

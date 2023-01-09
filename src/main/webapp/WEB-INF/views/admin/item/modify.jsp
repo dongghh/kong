@@ -4,10 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <style>
+#container{
+	width : 70%;
+	margin : auto;
+}
 .select_img img {
 	margin: 20px 0;
+	width: 300px;
+	height : 300px;
 }
 
 .inputArea {
@@ -19,7 +24,6 @@
 <body>
 	<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	<section id="container">
-		<div id="section">
 			<form role="form" method="post" autocomplete=off
 				enctype="multipart/form-data">
 
@@ -62,12 +66,11 @@
 				</div>
 
 				<div class="inputArea">
-					<label for="itemImg">이미지</label> <input type="file" id="itemImg"
-						name="file" />
+					<label for="itemImg">이미지</label> <input type="file" id="itemImg" name="file" />
 					<div class="select_img">
-						<img src="${item.itemImg}" /> <input type="hidden" name="itemImg"
-							value="${item.itemImg}" /> <input type="hidden"
-							name="itemThumbImg" value="${item.itemThumbImg}" />
+						<img src="${item.itemImg}" /> 
+						<input type="hidden" name="itemImg" value="${item.itemImg}" /> 
+						<input type="hidden" name="itemThumbImg" value="${item.itemThumbImg}" />
 					</div>
 
 					<script>
@@ -84,7 +87,6 @@
 									}
 								});
 					</script>
-					<%=request.getRealPath("/")%>
 				</div>
 
 				<div class="inputArea">
@@ -145,30 +147,21 @@
 
 										cate2Select.children().remove();
 
-										$("option:selected", this)
-												.each(
-														function() {
+										$("option:selected", this).each(function() {
+										var selectVal = $(this).val();
+										
+										cate2Select.append("<option value='" + selectVal + "'>전체</option>");
 
-															var selectVal = $(
-																	this).val();
-															cate2Select
-																	.append("<option value='" + selectVal + "'>전체</option>");
-
-															for (var i = 0; i < cate2Arr.length; i++) {
-																if (selectVal == cate2Arr[i].cateCodeRef) {
-																	cate2Select
-																			.append("<option value='" + cate2Arr[i].cateCode + "'>"
-																					+ cate2Arr[i].cateName
-																					+ "</option>");
-																}
-															}
-
-														});
-
-									});
+										for (var i = 0; i < cate2Arr.length; i++) {
+											if (selectVal == cate2Arr[i].cateCodeRef) 
+											{cate2Select.append("<option value='" + cate2Arr[i].cateCode 
+																				  + "'>"
+																				  + cate2Arr[i].cateName
+																				  + "</option>");}}
+											});
+											});
 				</script>
 			</form>
-		</div>
 		<script>
 			var regExp = /[^0-9]/gi;
 
