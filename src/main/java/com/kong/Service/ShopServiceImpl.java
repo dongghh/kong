@@ -134,6 +134,13 @@ public class ShopServiceImpl implements ShopService {
 	public List<itemViewVO> allList() throws Exception {
 		return dao.allList();
 	}
+	
+	//평점순 상품 정보
+	@Override
+	public List<itemViewVO> likeSelect() throws Exception {		
+		return dao.likeSelect();
+		
+	}
 
 	public void setRating(int itemNum) throws Exception {
 		Double ratingAvg = dao.getRatingAverage(itemNum);

@@ -18,6 +18,8 @@ public class itemViewVO {
 
 	private String itemThumbImg;
 
+	private double ratingAvg;
+
 	public String getItemThumbImg() {
 		return itemThumbImg;
 	}
@@ -104,6 +106,14 @@ public class itemViewVO {
 
 	public void setCateName(String cateName) {
 		this.cateName = cateName;
+	}
+
+	public double getRatingAvg() {
+		return ratingAvg;
+	}
+
+	public void setRatingAvg(double ratingAvg) {
+		this.ratingAvg = ratingAvg;
 	}
 
 }

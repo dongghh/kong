@@ -60,6 +60,9 @@ public interface ShopService {
 
 	// 전체 상품 리스트
 	public List<itemViewVO> allList() throws Exception;
+
+	// 평점순 상품 정보
+	public List<itemViewVO> likeSelect() throws Exception;
 	
 
 }

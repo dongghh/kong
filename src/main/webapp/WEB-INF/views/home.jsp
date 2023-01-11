@@ -32,8 +32,30 @@
 		</div>
 	</div>
 
-	<h2 id="title">전체 상품</h2>
-	<ul id="itemUl">
+	<h2 class="title">인기 상품</h2>
+		<ul class="itemUl">
+		<c:forEach items="${ls}" var="ls">
+			<li class="itemLi">
+				<div class="itemThumb">
+					<img src="${ls.itemImg}">
+				</div>
+				<div id="span-box">
+					<span id="Kong">kong</span>
+				</div>
+				<div class="itemName">
+					<a href="/shop/view?n=${ls.itemNum}">${ls.itemName}</a>
+				</div>
+				<div id="price-box">
+					<span id="price"><fmt:formatNumber value="${ls.itemPrice}"
+							pattern="###,###,###" />원</span>
+				</div>
+			</li>
+		</c:forEach>
+		</ul>
+
+
+	<h2 class="title">전체 상품</h2>
+	<ul class="itemUl">
 		<c:forEach items="${list}" var="list">
 			<li id="itemLi">
 				<div class="itemThumb">

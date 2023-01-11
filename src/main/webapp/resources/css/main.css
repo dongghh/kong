@@ -13,7 +13,7 @@ section {
 	word-break: break-all;
 }
 
-#title {
+.title {
 	padding-top: 30px;
 	margin: 40px 0;
 	text-align: center;
@@ -87,13 +87,13 @@ hr {
 	cursor: pointer;
 }
 
-#itemUl {
+.itemUl {
 	margin: auto;
 	width: 100%;
 	text-align :justify;
 }
 
-#itemUl li {
+.itemUl li {
 	list-style: none;
 	display: inline-block;
 	margin: 15px;

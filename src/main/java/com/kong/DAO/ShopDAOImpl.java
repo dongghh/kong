@@ -146,5 +146,11 @@ public class ShopDAOImpl implements ShopDAO {
 	public int updateRating(itemReplyVO vo) throws Exception {
 		return session.update(namespace + ".updateRating" , vo);
 	}
+	
+	@Override
+	//평점순 상품 정보
+	public List<itemViewVO> likeSelect() throws Exception{
+		return session.selectList(namespace + ".likeSelect");
+	}
 
 }

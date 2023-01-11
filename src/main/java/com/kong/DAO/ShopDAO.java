@@ -69,5 +69,8 @@ public interface ShopDAO {
 
 	// 평점 평균 반영하기
 	public int updateRating(itemReplyVO vo) throws Exception;
+	
+	//평점순 상품 정보
+	public List<itemViewVO> likeSelect() throws Exception;
 
 }

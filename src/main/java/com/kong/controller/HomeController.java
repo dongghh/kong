@@ -41,6 +41,8 @@ public class HomeController {
 
 		model.addAttribute("serverTime", formattedDate);
 		model.addAttribute("list", list);
+		
+		model.addAttribute("ls",service.likeSelect());
 
 		return "home";
 	}
