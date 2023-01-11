@@ -15,51 +15,34 @@
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName"
-			value="com.mysql.jdbc.Driver"></property>
-		<property name="url"
-			value="jdbc:mysql://localhost:3306/MySQL?serverTimezone=UTC&amp;useSSL=false"></property>
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/MySQL?serverTimezone=UTC&amp;useSSL=false"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="3868"></property>
 	</bean>
 
-	<bean id="sqlSessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation"
-			value="classpath:/mybatis-config.xml"></property>
-		<property name="mapperLocations"
-			value="classpath*:mappers/**/*Mapper.xml"></property>
+		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+		<property name="mapperLocations" value="classpath*:mappers/**/*Mapper.xml"></property>
 	</bean>
 
-	<bean id="sqlSession"
-		class="org.mybatis.spring.SqlSessionTemplate"
-		destroy-method="clearCache">
-		<constructor-arg name="sqlSessionFactory"
-			ref="sqlSessionFactory"></constructor-arg>
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 
-	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
-	<tx:annotation-driven
-		transaction-manager="transactionManager" />
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	<context:component-scan
-		base-package="com.Kong.controller" />
-	<context:component-scan
-		base-package="com.kong.Service" />
-	<context:component-scan
-		base-package="com.kong.DAO" />
-	<context:component-scan
-		base-package="com.kong.domain" />
-	<context:component-scan
-		base-package="com.kong.utils" />
-	<context:component-scan
-		base-package="com.kong.handler" />
+	<context:component-scan base-package="com.Kong.controller" />
+	<context:component-scan base-package="com.kong.Service" />
+	<context:component-scan base-package="com.kong.DAO" />
+	<context:component-scan base-package="com.kong.domain" />
+	<context:component-scan base-package="com.kong.utils" />
+	<context:component-scan base-package="com.kong.handler" />
 
 </beans>

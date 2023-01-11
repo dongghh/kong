@@ -46,8 +46,6 @@ html, body {
 					<a href="/">공지사항</a>
 				</h2>
 			</div>
-			<hr />
-
 			<div>
 				<%@include file="nav.jsp"%>
 			</div>
