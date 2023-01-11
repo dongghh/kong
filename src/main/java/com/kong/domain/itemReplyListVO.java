@@ -10,6 +10,7 @@ public class itemReplyListVO {
 	private String repCon;
 	private Date regDate;
 	private String userName;
+	private double rating;
 
 	public int getItemNum() {
 		return itemNum;
@@ -57,6 +58,20 @@ public class itemReplyListVO {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public double getRating() {
+		return rating;
+	}
+
+	public void setRating(double rating) {
+		this.rating = rating;
+	}
+
+	@Override
+	public String toString() {
+		return "itemReplyListVO [itemNum=" + itemNum + ", userId=" + userId + ", repNum=" + repNum + ", repCon="
+				+ repCon + ", regDate=" + regDate + ", userName=" + userName + ", rating=" + rating + "]";
 	}
 
 }

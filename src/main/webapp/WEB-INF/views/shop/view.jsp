@@ -122,6 +122,19 @@
 							</div>
 
 							<div class="input_area">
+								<p id="avg">평점</p>
+								<select id="rating">
+									<option value="0.5">0.5</option>
+									<option value="1.0">1.0</option>
+									<option value="1.5">1.5</option>
+									<option value="2.0">2.0</option>
+									<option value="2.5">2.5</option>
+									<option value="3.0">3.0</option>
+									<option value="3.5">3.5</option>
+									<option value="4.0">4.0</option>
+									<option value="4.5">4.5</option>
+									<option value="5.0">5.0</option>
+								</select>	
 								<button type="button" id="reply_btn">소감 남기기</button>
 								<script>
 								   $("#reply_btn").click(function(){
@@ -129,10 +142,12 @@
 								    var formObj = $(".replyForm form[role='form']");
 								    var itemNum = $("#itemNum").val();
 								    var repCon = $("#repCon").val();
+								    var rating = $("#rating").val();
 								    
 								    var data = {
 								    	itemNum : itemNum,
-								        repCon : repCon
+								        repCon : repCon,
+								        rating : rating
 								      };
 								    
 								    $.ajax({
@@ -172,6 +187,8 @@
 				str += "<li data-repNum='" + this.repNum + "'>"
 				+ "<div class='userInfo'>"
 				+ "<span class='userName'>" + this.userName + "</span>"
+				+ "<span class='rating'>" + "평점 : "+ this.rating + "</span>"
+				+ "<br>"
 				+ "<span class='date'>" + regDate + "</span>"
 				+ "</div>"
 				+ "<div class='replyContent'>" + this.repCon + "</div>"

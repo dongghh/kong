@@ -52,6 +52,8 @@ public class ShopServiceImpl implements ShopService {
 	@Override
 	public void registerReply(itemReplyVO reply) throws Exception {
 		dao.registerReply(reply);
+		setRating(reply.getItemNum());
+
 	}
 
 	// 상품 소감(댓글) 리스트
@@ -64,6 +66,7 @@ public class ShopServiceImpl implements ShopService {
 	@Override
 	public void deleteReply(itemReplyVO reply) throws Exception {
 		dao.deleteReply(reply);
+		setRating(reply.getItemNum());
 	}
 
 	// 아이디 체크
@@ -75,6 +78,7 @@ public class ShopServiceImpl implements ShopService {
 	// 상품 소감(댓글) 수정
 	public void modifyReply(itemReplyVO reply) throws Exception {
 		dao.modifyReply(reply);
+		setRating(reply.getItemNum());
 	}
 
 	// 카드 담기
@@ -124,10 +128,24 @@ public class ShopServiceImpl implements ShopService {
 	public List<OrderListVO> orderView(OrderVO order) throws Exception {
 		return dao.orderView(order);
 	}
-	
+
 	// 전체 상품 리스트
 	@Override
 	public List<itemViewVO> allList() throws Exception {
 		return dao.allList();
+	}
+
+	public void setRating(int itemNum) throws Exception {
+		Double ratingAvg = dao.getRatingAverage(itemNum);
+
+		if (ratingAvg == null) {
+			ratingAvg = 0.0;
+		}
+
+		itemReplyVO vo = new itemReplyVO();
+		vo.setItemNum(itemNum);
+		vo.setRatingAvg(ratingAvg);
+
+		dao.updateRating(vo);
 	}
 }

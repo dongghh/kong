@@ -15,12 +15,12 @@ table td {
 #items .itemImg {
 	float: left;
 	height: 100%;
- 	width : 50%;
+	width: 50%;
 }
 
 #items .itemImg img {
 	height: 100%;
-	width : 100%;
+	width: 100%;
 }
 
 #items .itemInfo {
@@ -75,14 +75,22 @@ table td {
 	resize: none;
 }
 
+#avg {
+	display: contents;
+}
+
 .replyForm button {
 	font-size: 20px;
-	padding: 5px 10px;
-	margin: 10px 0;
+	padding: 0px 5px;
 	background: #fff;
 	border-radius: 5px 5px 5px 5px;
 	border-color: lightgray;
 	float: right;
+}
+
+.rating {
+	margin: 10px;
+	font-size: 15px;
 }
 
 .replyList {
@@ -103,7 +111,6 @@ table td {
 .replyList div.userInfo .date {
 	color: #999;
 	display: inline-block;
-	margin-left: 10px;
 }
 
 .replyContent {

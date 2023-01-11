@@ -57,10 +57,17 @@ public interface ShopDAO {
 
 	// 주문 목록
 	public List<OrderVO> orderList(OrderVO order) throws Exception;
-	
-	// 특정 주문 목록 
+
+	// 특정 주문 목록
 	public List<OrderListVO> orderView(OrderVO order) throws Exception;
-	
-	//전체 상품 리스트
+
+	// 전체 상품 리스트
 	public List<itemViewVO> allList() throws Exception;
+
+	// 평점 평균 구하기
+	public Double getRatingAverage(int itemNum) throws Exception;
+
+	// 평점 평균 반영하기
+	public int updateRating(itemReplyVO vo) throws Exception;
+
 }

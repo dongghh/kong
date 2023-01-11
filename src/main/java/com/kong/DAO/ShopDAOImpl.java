@@ -128,11 +128,23 @@ public class ShopDAOImpl implements ShopDAO {
 	public List<OrderListVO> orderView(OrderVO order) throws Exception {
 		return session.selectList(namespace + ".orderView", order);
 	}
-	
+
 	// 전체 상품 리스트
-		@Override
-		public List<itemViewVO> allList() throws Exception {
-			return session.selectList(namespace + ".allList");
-		}
+	@Override
+	public List<itemViewVO> allList() throws Exception {
+		return session.selectList(namespace + ".allList");
+	}
+
+	// 평점 평균 구하기
+	@Override
+	public Double getRatingAverage(int itemNum) throws Exception {
+		return session.selectOne(namespace + ".getRatingAverage", itemNum);
+	}
+
+	@Override
+	// 평점 평균 반영하기
+	public int updateRating(itemReplyVO vo) throws Exception {
+		return session.update(namespace + ".updateRating" , vo);
+	}
 
 }

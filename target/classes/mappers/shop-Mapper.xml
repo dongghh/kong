@@ -7,7 +7,9 @@
 
 	<!-- 카테고리별 상품 리스트 : 1차 분류 -->
 	<select id="list_1" resultType="com.kong.domain.itemViewVO">
-		SELECT g.itemNum, g.itemName, g.cateCode, c.cateCodeRef, c.cateName, itemPrice, itemStock, itemDes, regDate, g.itemImg, g.itemThumbImg FROM
+		SELECT g.itemNum, g.itemName,
+		g.cateCode, c.cateCodeRef, c.cateName, itemPrice, itemStock, itemDes,
+		regDate, g.itemImg, g.itemThumbImg FROM
 		kong_item g
 		inner join category
 		c
@@ -48,19 +50,33 @@
 
 	<!-- 상품 소감(댓글) 작성 -->
 	<insert id="registerReply">
-		insert into kong_itemreply (itemNum, userId, repCon)
-		values (#{itemNum}, #{userId}, #{repCon})
+		insert into kong_itemreply (itemNum, userId, repCon,
+		rating)
+		values (#{itemNum}, #{userId}, #{repCon} ,#{rating})
 	</insert>
+	<!-- 해당 상품 평점 평균 -->
+	<select id="getRatingAverage" resultType="double">
+		select avg(rating)
+		from kong_itemreply
+		where itemNum = #{itemNum}
+	</select>
+	<!-- 평점 평균 값 -->
+	<update id="updateRating">
+		update kong_item
+		set ratingAvg = #{ratingAvg}
+		where itemNum = #{itemNum}
+	</update>
 
 	<!-- 상품 소감(댓글) 리스트 -->
 	<select id="replyList"
 		resultType="com.kong.domain.itemReplyListVO">
 		select
 		r.itemNum, r.userId, r.repNum, r.repCon, r.regDate,
-		m.userName
+		r.rating, m.userName
 		from kong_itemreply r
 		inner join kong_member m
-		on r.userId =
+		on
+		r.userId =
 		m.userId
 		where itemNum = #{itemNum}
 	</select>
@@ -100,7 +116,8 @@
 	<!-- 카트 리스트 -->
 	<select id="cartList" resultType="com.kong.domain.CartListVO">
 		select
-		row_number() over(order by c.cartNum desc) as num,
+		row_number() over(order
+		by c.cartNum desc) as num,
 		c.cartNum, c.userId, c.itemNum, c.cartStock,
 		c.addDate,
 		g.itemName, g.itemPrice, g.itemThumbImg
@@ -156,24 +173,29 @@
 	<!-- 특정 주문 목록 -->
 	<select id="orderView" resultType="com.kong.domain.OrderListVO">
 		select
-		o.orderId, o.userId, o.orderRec, o.userAddr1, o.userAddr2, o.userAddr3,
-		o.orderPhon, o.amount, o.orderDate, o.delivery,
-		d.orderDetailsNum, d.itemNum, d.cartStock,
+		o.orderId, o.userId,
+		o.orderRec, o.userAddr1, o.userAddr2, o.userAddr3,
+		o.orderPhon,
+		o.amount, o.orderDate, o.delivery,
+		d.orderDetailsNum, d.itemNum,
+		d.cartStock,
 		g.itemName, g.itemThumbImg, g.itemPrice
 		from kong_order o
 		inner join kong_order_details d
 		on o.orderId = d.orderId
-		inner join kong_item g
+		inner join
+		kong_item g
 		on d.itemNum = g.itemNum
 		where o.userId = #{userId}
-		and o.orderId = #{orderId}
+		and
+		o.orderId = #{orderId}
 	</select>
-	
+
 	<!-- 전체상품 조회 -->
 	<select id="allList" resultType="com.kong.domain.itemViewVO">
-	SELECT * 
-	FROM kong_item 
-	ORDER BY itemNum
+		SELECT *
+		FROM kong_item
+		ORDER BY itemNum
 	</select>
 
 </mapper>

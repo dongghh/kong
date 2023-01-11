@@ -9,6 +9,8 @@ public class itemReplyVO {
 	private int repNum;
 	private String repCon;
 	private Date regDate;
+	private double rating;
+	private double ratingAvg;
 
 	public int getItemNum() {
 		return itemNum;
@@ -50,10 +52,26 @@ public class itemReplyVO {
 		this.regDate = regDate;
 	}
 
+	public double getRating() {
+		return rating;
+	}
+
+	public void setRating(double rating) {
+		this.rating = rating;
+	}
+
+	public double getRatingAvg() {
+		return ratingAvg;
+	}
+
+	public void setRatingAvg(double ratingAvg) {
+		this.ratingAvg = ratingAvg;
+	}
+
 	@Override
 	public String toString() {
 		return "itemReplyVO [itemNum=" + itemNum + ", userId=" + userId + ", repNum=" + repNum + ", repCon=" + repCon
-				+ ", regDate=" + regDate + "]";
+				+ ", regDate=" + regDate + ", rating=" + rating + ", ratingAvg=" + ratingAvg + "]";
 	}
 
 }
