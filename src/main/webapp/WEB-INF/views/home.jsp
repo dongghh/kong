@@ -71,7 +71,7 @@
 	<ul class="itemUl">
 		<c:forEach items="${list}" var="list" varStatus="List">
 			<li id="itemLi">
-				<a href="/shop/view?n=${ls.itemNum}">
+				<a href="/shop/view?n=${list.itemNum}">
 					<div class="itemThumb">
 						<img src="${list.itemThumbImg}">
 					</div>

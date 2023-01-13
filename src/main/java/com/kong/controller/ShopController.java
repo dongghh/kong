@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kong.Service.ShopService;
 import com.kong.domain.CartListVO;
 import com.kong.domain.CartVO;
+import com.kong.domain.Criteria;
 import com.kong.domain.MemberVO;
 import com.kong.domain.OrderDetailVO;
 import com.kong.domain.OrderListVO;
@@ -266,10 +267,13 @@ public class ShopController {
 		logger.info("searching ...");
 		
 		List<itemViewVO> list = service.search(scri);
+		int count = service.itemGetTotal(scri);
 		
+		model.addAttribute("scri",scri);
 		model.addAttribute("list",list);
+		model.addAttribute("count",count);
 		
-		return "shop/search";
+		return "/shop/search";
 	}
 
 }

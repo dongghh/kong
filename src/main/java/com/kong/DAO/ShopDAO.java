@@ -79,4 +79,7 @@ public interface ShopDAO {
 	// 전체 상품 검색
 	public List<itemViewVO> search(SearchCriteria scri) throws Exception;
 
+	// 상품 총 갯수
+	public int itemGetTotal(Criteria cri) throws Exception;
+
 }
