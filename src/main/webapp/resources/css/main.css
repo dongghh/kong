@@ -55,6 +55,7 @@ hr {
 	font-size: small;
 	margin-top: 5px;
 }
+
 .banner {
 	width: 60%;
 	text-align: center;
@@ -87,17 +88,22 @@ hr {
 	cursor: pointer;
 }
 
+.itemBox {
+	width: 100%;
+	margin: auto;
+}
+
 .itemUl {
 	margin: auto;
 	width: 100%;
-	text-align :justify;
+	text-align: center;
 }
 
 .itemUl li {
 	list-style: none;
 	display: inline-block;
-	margin: 15px;
-	width : 17%;
+	margin: 40px;
+	width: 190px;
 }
 
 #Kong {
@@ -108,13 +114,25 @@ hr {
 #span-box {
 	margin-bottom: 10px;
 }
-div.itemThumb img {
+
+.itemThumb {
 	width: 180px;
 	height: 200px;
 }
 
+#price-box {
+	width: 200px;
+	text-align: left;
+}
+
+div.itemThumb img {
+	width: 180px;
+	height: 200px;
+	border-radius: 15px 15px;
+}
+
 div.itemName {
-	padding: 20px 0 10px 0;
+	padding: 15px 0 10px 0;
 	text-align: left;
 }
 

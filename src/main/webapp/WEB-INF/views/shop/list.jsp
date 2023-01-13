@@ -1,3 +1,5 @@
+<%@ page language="java" pageEncoding="UTF-8"
+	contentType="text/html; charset=UTF-8"%>
 <%@include file="../layout/header.jsp"%>
 <style>
 #container {
@@ -5,11 +7,11 @@
 	margin: auto;
 }
 
-ul {
+#itemList {
 	text-align: center;
 }
 
-ul li {
+#itemList li {
 	display: inline-block;
 	margin: 10px;
 }
@@ -43,8 +45,8 @@ div.itemName a {
 }
 </style>
 <section id="container">
-	<ul>
-		<c:forEach items="${list}" var="list">
+	<ul id="itemList">
+		<c:forEach items="${list}" var="list" varStatus="list">
 			<li>
 				<div class="itemThumb">
 					<img src="${list.itemThumbImg}">
@@ -60,6 +62,9 @@ div.itemName a {
 							pattern="###,###,###" />원</span>
 				</div>
 			</li>
+			<c:if test="${list.count mod 4==0}">
+				<br>
+			</c:if>
 		</c:forEach>
 	</ul>
 </section>

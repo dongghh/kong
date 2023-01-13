@@ -198,7 +198,7 @@
 		SELECT *
 		FROM kong_item
 		ORDER BY
-		itemNum
+		itemNum limit 12
 	</select>
 	<!-- 평점 상품 조회 -->
 	<select id="likeSelect" resultType="com.kong.domain.itemViewVO">

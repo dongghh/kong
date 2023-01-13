@@ -33,8 +33,9 @@
 	</div>
 
 	<h2 class="title">인기 상품</h2>
+	<div class="itemBox">
 		<ul class="itemUl">
-		<c:forEach items="${ls}" var="ls">
+		<c:forEach items="${ls}" var="ls" varStatus="list">
 			<li class="itemLi">
 				<div class="itemThumb">
 					<img src="${ls.itemImg}">
@@ -46,17 +47,20 @@
 					<a href="/shop/view?n=${ls.itemNum}">${ls.itemName}</a>
 				</div>
 				<div id="price-box">
-					<span id="price"><fmt:formatNumber value="${ls.itemPrice}"
-							pattern="###,###,###" />원</span>
+					<span id="price"><fmt:formatNumber value="${ls.itemPrice}" pattern="###,###,###" />원</span>
 				</div>
 			</li>
+			<c:if test="${list.count mod 4==0}">
+				<br>
+			</c:if>
 		</c:forEach>
 		</ul>
+		</div>
 
 
 	<h2 class="title">전체 상품</h2>
 	<ul class="itemUl">
-		<c:forEach items="${list}" var="list">
+		<c:forEach items="${list}" var="list" varStatus="List">
 			<li id="itemLi">
 				<div class="itemThumb">
 					<img src="${list.itemThumbImg}">
@@ -68,10 +72,12 @@
 					<a href="/shop/view?n=${list.itemNum}">${list.itemName}</a>
 				</div>
 				<div id="price-box">
-					<span id="price"><fmt:formatNumber value="${list.itemPrice}"
-							pattern="###,###,###" />원</span>
+					<span id="price"><fmt:formatNumber value="${list.itemPrice}" pattern="###,###,###" />원</span>
 				</div>
 			</li>
+			<c:if test="${List.count mod 4==0}">
+				<br>
+			</c:if>
 		</c:forEach>
 	</ul>
 </section>

@@ -25,15 +25,12 @@ public class HomeController {
 	@Inject
 	ShopService service;
 
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) throws Exception {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
 		List<itemViewVO> list = service.allList();
-
+		List<itemViewVO> avgList = service.likeSelect();
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
@@ -41,8 +38,8 @@ public class HomeController {
 
 		model.addAttribute("serverTime", formattedDate);
 		model.addAttribute("list", list);
-		
-		model.addAttribute("ls",service.likeSelect());
+
+		model.addAttribute("ls", avgList);
 
 		return "home";
 	}
