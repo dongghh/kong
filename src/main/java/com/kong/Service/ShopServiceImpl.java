@@ -9,11 +9,14 @@ import org.springframework.stereotype.Service;
 import com.kong.DAO.ShopDAO;
 import com.kong.domain.CartListVO;
 import com.kong.domain.CartVO;
+import com.kong.domain.Criteria;
 import com.kong.domain.OrderDetailVO;
 import com.kong.domain.OrderListVO;
 import com.kong.domain.OrderVO;
+import com.kong.domain.SearchCriteria;
 import com.kong.domain.itemReplyListVO;
 import com.kong.domain.itemReplyVO;
+import com.kong.domain.itemVO;
 import com.kong.domain.itemViewVO;
 
 @Service
@@ -134,14 +137,21 @@ public class ShopServiceImpl implements ShopService {
 	public List<itemViewVO> allList() throws Exception {
 		return dao.allList();
 	}
-	
-	//평점순 상품 정보
+
+	// 평점순 상품 정보
 	@Override
-	public List<itemViewVO> likeSelect() throws Exception {		
+	public List<itemViewVO> likeSelect() throws Exception {
 		return dao.likeSelect();
-		
+
 	}
 
+	@Override
+	// 전체 상품 검색
+	public List<itemViewVO> search(SearchCriteria scri) throws Exception {
+		return dao.search(scri);
+	}
+
+	// 평점 메서드
 	public void setRating(int itemNum) throws Exception {
 		Double ratingAvg = dao.getRatingAverage(itemNum);
 

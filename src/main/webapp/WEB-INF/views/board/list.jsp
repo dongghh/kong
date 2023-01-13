@@ -98,31 +98,23 @@ html, body {
 
 						<div class="col-xs-10 col-sm-10">
 							<div class="input-group">
-								<input type="text" name="keyword" id="keywordInput"
-									value="${scri.keyword}" class="form-control" /> <span
-									class="input-group-btn">
-
-									<button id="searchBtn" type="submit" class="btn btn-default">검색</button>
-								</span>
+								<input type="text" name="keyword" id="keywordInput" value="${scri.keyword}" class="form-control" /> 
+									<span class="input-group-btn">
+										<button id="searchBtn" type="submit" class="btn btn-default">검색</button>
+									</span>
 							</div>
 						</div>
 
 						<script>
 							$(function() {
-								$('#searchBtn')
-										.click(
-												function() {
-													self.location = "list"
-															+ '${pageMaker.makeQuery(1)}'
-															+ "&searchType="
-															+ $(
-																	"select option:selected")
-																	.val()
-															+ "&keyword="
-															+ encodeURIComponent($(
-																	'#keywordInput')
-																	.val());
-												});
+								$('#searchBtn').click(function() {
+									self.location = "list"
+									+ '${pageMaker.makeQuery(1)}'
+									+ "&searchType="
+									+ $("select option:selected").val()
+									+ "&keyword="+ encodeURIComponent(
+									$('#keywordInput').val());
+									});
 							});
 						</script>
 					</div>

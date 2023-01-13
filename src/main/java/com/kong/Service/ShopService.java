@@ -4,11 +4,14 @@ import java.util.List;
 
 import com.kong.domain.CartListVO;
 import com.kong.domain.CartVO;
+import com.kong.domain.Criteria;
 import com.kong.domain.OrderDetailVO;
 import com.kong.domain.OrderListVO;
 import com.kong.domain.OrderVO;
+import com.kong.domain.SearchCriteria;
 import com.kong.domain.itemReplyListVO;
 import com.kong.domain.itemReplyVO;
+import com.kong.domain.itemVO;
 import com.kong.domain.itemViewVO;
 
 public interface ShopService {
@@ -63,6 +66,9 @@ public interface ShopService {
 
 	// 평점순 상품 정보
 	public List<itemViewVO> likeSelect() throws Exception;
+	
+	// 전체 상품 검색
+	public List<itemViewVO> search(SearchCriteria scri) throws Exception;
 	
 
 }

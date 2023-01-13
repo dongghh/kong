@@ -46,7 +46,7 @@ div.itemName a {
 </style>
 <section id="container">
 	<ul id="itemList">
-		<c:forEach items="${list}" var="list" varStatus="list">
+		<c:forEach items="${list}" var="list" varStatus="ls">
 			<li>
 				<div class="itemThumb">
 					<img src="${list.itemThumbImg}">
@@ -62,7 +62,7 @@ div.itemName a {
 							pattern="###,###,###" />원</span>
 				</div>
 			</li>
-			<c:if test="${list.count mod 4==0}">
+			<c:if test="${ls.count mod 4==0}">
 				<br>
 			</c:if>
 		</c:forEach>

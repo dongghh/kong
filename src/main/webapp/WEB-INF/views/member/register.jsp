@@ -126,7 +126,7 @@
 					<li>아이디<span class="star">*</span></li>
 					<li><input class="form-control" type="text" id="userId"
 						placeholder="아이디를 입력하세요" name="userId" /></li>
-					<button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
+					<button class="registerBtn" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
 				</ul>
 				<ul class="join">
 					<li>패스워드<span class="star">*</span></li>
@@ -156,8 +156,8 @@
 
 			</form>
 			<div>
-				<button type="button" id="submit">회원가입</button>
-				<button type="button">취소</button>
+				<button type="button" id="submit" class="registerBtn">회원가입</button>
+				<button type="button" class="registerBtn">취소</button>
 			</div>
 	</section>
 	<%@include file="../layout/footer.jsp"%>

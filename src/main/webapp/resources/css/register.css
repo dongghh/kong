@@ -1,6 +1,6 @@
 #container {
 	height: 80%;
-	width: 80%;
+	width: 70%;
 	position: relative;
 	margin: auto;
 	color: #767676;
@@ -36,6 +36,6 @@
 	color: red;
 }
 
-button {
+.registerBtn {
 	padding: 5px;
 }

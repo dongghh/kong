@@ -31,24 +31,33 @@
 			<div class="swiper-pagination"></div>
 		</div>
 	</div>
+	
+	<form id="searchForm" action="shop/search" method="get" class="search-bar">
+		<input type="search" name="keyword" pattern=".*\S.*" placeholder="상품명을 검색해주세요." value="${scri.keyword}" required>
+		<button class="search-btn" id="SearchBtn" type="submit">
+			<span>Search</span>
+		</button>
+	</form>
 
 	<h2 class="title">인기 상품</h2>
 	<div class="itemBox">
 		<ul class="itemUl">
 		<c:forEach items="${ls}" var="ls" varStatus="list">
 			<li class="itemLi">
-				<div class="itemThumb">
-					<img src="${ls.itemImg}">
-				</div>
-				<div id="span-box">
-					<span id="Kong">kong</span>
-				</div>
-				<div class="itemName">
-					<a href="/shop/view?n=${ls.itemNum}">${ls.itemName}</a>
-				</div>
-				<div id="price-box">
-					<span id="price"><fmt:formatNumber value="${ls.itemPrice}" pattern="###,###,###" />원</span>
-				</div>
+				<a href="/shop/view?n=${ls.itemNum}">
+					<div class="itemThumb">
+						<img src="${ls.itemImg}">
+					</div>
+					<div id="span-box">
+						<span id="Kong">kong</span>
+					</div>
+					<div class="itemName">
+						<a href="/shop/view?n=${ls.itemNum}">${ls.itemName}</a>
+					</div>
+					<div id="price-box">
+						<span id="price"><fmt:formatNumber value="${ls.itemPrice}" pattern="###,###,###" />원</span>
+					</div>
+				</a>
 			</li>
 			<c:if test="${list.count mod 4==0}">
 				<br>
@@ -62,18 +71,20 @@
 	<ul class="itemUl">
 		<c:forEach items="${list}" var="list" varStatus="List">
 			<li id="itemLi">
-				<div class="itemThumb">
-					<img src="${list.itemThumbImg}">
-				</div>
-				<div id="span-box">
-					<span id="Kong">kong</span>
-				</div>
-				<div class="itemName">
-					<a href="/shop/view?n=${list.itemNum}">${list.itemName}</a>
-				</div>
-				<div id="price-box">
-					<span id="price"><fmt:formatNumber value="${list.itemPrice}" pattern="###,###,###" />원</span>
-				</div>
+				<a href="/shop/view?n=${ls.itemNum}">
+					<div class="itemThumb">
+						<img src="${list.itemThumbImg}">
+					</div>
+					<div id="span-box">
+						<span id="Kong">kong</span>
+					</div>
+					<div class="itemName">
+						<a href="/shop/view?n=${list.itemNum}">${list.itemName}</a>
+					</div>
+					<div id="price-box">
+						<span id="price"><fmt:formatNumber value="${list.itemPrice}" pattern="###,###,###" />원</span>
+					</div>
+				</a>
 			</li>
 			<c:if test="${List.count mod 4==0}">
 				<br>

@@ -39,8 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE BNO = #{bno}
 	</delete>
 
-	<select id="listPage" resultType="com.kong.domain.BoardVO"
-		parameterType="com.kong.domain.Criteria">
+	<select id="listPage" resultType="com.kong.domain.BoardVO" parameterType="com.kong.domain.Criteria">
 		SELECT BNO,TITLE,CONTENT,WRITER,REGDATE,CNT
 		FROM (SELECT BNO,TITLE,CONTENT,WRITER,REGDATE,CNT,
 		ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM

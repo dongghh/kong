@@ -10,11 +10,14 @@ import org.springframework.stereotype.Repository;
 
 import com.kong.domain.CartListVO;
 import com.kong.domain.CartVO;
+import com.kong.domain.Criteria;
 import com.kong.domain.OrderDetailVO;
 import com.kong.domain.OrderListVO;
 import com.kong.domain.OrderVO;
+import com.kong.domain.SearchCriteria;
 import com.kong.domain.itemReplyListVO;
 import com.kong.domain.itemReplyVO;
+import com.kong.domain.itemVO;
 import com.kong.domain.itemViewVO;
 
 @Repository
@@ -144,13 +147,19 @@ public class ShopDAOImpl implements ShopDAO {
 	@Override
 	// 평점 평균 반영하기
 	public int updateRating(itemReplyVO vo) throws Exception {
-		return session.update(namespace + ".updateRating" , vo);
+		return session.update(namespace + ".updateRating", vo);
 	}
-	
+
 	@Override
-	//평점순 상품 정보
-	public List<itemViewVO> likeSelect() throws Exception{
+	// 평점순 상품 정보
+	public List<itemViewVO> likeSelect() throws Exception {
 		return session.selectList(namespace + ".likeSelect");
+	}
+
+	@Override
+	// 전체 상품 검색
+	public List<itemViewVO> search(SearchCriteria scri) throws Exception {
+		return session.selectList(namespace + ".search", scri);
 	}
 
 }

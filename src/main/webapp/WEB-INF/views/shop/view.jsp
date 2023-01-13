@@ -44,7 +44,7 @@
 						<th class="cartStock">구입 수량</th>
 						<td>
 							<input type="number" class="numBox" min="1"
-								max="${view.itemStock}" value="0"  />
+								max="${view.itemStock}" value="0" />
 							
 						</td>
 						</tr>

@@ -23,6 +23,7 @@ import com.kong.domain.MemberVO;
 import com.kong.domain.OrderDetailVO;
 import com.kong.domain.OrderListVO;
 import com.kong.domain.OrderVO;
+import com.kong.domain.SearchCriteria;
 import com.kong.domain.itemReplyListVO;
 import com.kong.domain.itemReplyVO;
 import com.kong.domain.itemViewVO;
@@ -247,16 +248,28 @@ public class ShopController {
 	}
 
 	// 전체 상품 리스트
-	@RequestMapping(value = "/allList" , method = RequestMethod.GET)
+	@RequestMapping(value = "/allList", method = RequestMethod.GET)
 	public String allList(Model model) throws Exception {
 		logger.info("get allList");
 
 		List<itemViewVO> list = service.allList();
 
 		model.addAttribute("list", list);
-		
+
 		return "shop/allList";
 
+	}
+	
+	// 전체 상품 검색
+	@RequestMapping(value="/search")
+	public String search (Model model, SearchCriteria scri) throws Exception {
+		logger.info("searching ...");
+		
+		List<itemViewVO> list = service.search(scri);
+		
+		model.addAttribute("list",list);
+		
+		return "shop/search";
 	}
 
 }
