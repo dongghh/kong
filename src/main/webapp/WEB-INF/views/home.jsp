@@ -38,6 +38,31 @@
 			<span>Search</span>
 		</button>
 	</form>
+	
+	<h2 class="title">신규 상품</h2>
+	<ul class="itemUl">
+		<c:forEach items="${newList}" var="newList" varStatus="List">
+			<li id="itemLi">
+				<a href="/shop/view?n=${newList.itemNum}">
+					<div class="itemThumb">
+						<img src="${newList.itemThumbImg}">
+					</div>
+					<div id="span-box">
+						<span id="Kong">kong</span>
+					</div>
+					<div class="itemName">
+						<a href="/shop/view?n=${newList.itemNum}">${newList.itemName}</a>
+					</div>
+					<div id="price-box">
+						<span id="price"><fmt:formatNumber value="${newList.itemPrice}" pattern="###,###,###" />원</span>
+					</div>
+				</a>
+			</li>
+			<c:if test="${List.count mod 4==0}">
+				<br>
+			</c:if>
+		</c:forEach>
+	</ul>
 
 	<h2 class="title">인기 상품</h2>
 	<div class="itemBox">

@@ -29,7 +29,7 @@
 }
 
 .Rli input {
-	width: 45%;
+	width: 40%;
 	padding: 5px;
 }
 
@@ -41,6 +41,18 @@
 
 .star {
 	color: red;
+}
+
+#user_email, #email_address {
+	width: 130px;
+}
+
+#postBtn{
+	width : 90px;
+}
+
+#regBtn {
+	margin: 35px;
 }
 
 .registerBtn {

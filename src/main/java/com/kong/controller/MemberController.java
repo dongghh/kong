@@ -141,4 +141,10 @@ public class MemberController {
 		return result;
 	}
 
+	// 아이디 비밀번호 찾기
+	@RequestMapping(value = "/findIdPw", method = RequestMethod.GET)
+	public String findIdPw() throws Exception {
+		return "member/findIdPw";
+	}
+
 }

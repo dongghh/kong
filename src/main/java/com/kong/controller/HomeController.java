@@ -32,15 +32,17 @@ public class HomeController {
 
 		List<itemViewVO> list = service.allList();
 		List<itemViewVO> avgList = service.likeSelect();
+		List<itemViewVO> newList = service.newSelect();
+		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
 		String formattedDate = dateFormat.format(date);
 
 		model.addAttribute("serverTime", formattedDate);
+		model.addAttribute("newList" , newList);
+		model.addAttribute("ls" , avgList);
 		model.addAttribute("list", list);
-
-		model.addAttribute("ls", avgList);
 
 		return "home";
 	}

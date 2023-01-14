@@ -167,5 +167,11 @@ public class ShopDAOImpl implements ShopDAO {
 	public int itemGetTotal(Criteria cri) throws Exception {
 		return session.selectOne(namespace + ".itemGetTotal", cri);
 	}
+	
+	@Override
+	// 신규 상품 정보
+	public List<itemViewVO> newSelect() throws Exception {
+		return session.selectList(namespace + ".newSelect");
+	}
 
 }

@@ -82,4 +82,7 @@ public interface ShopDAO {
 	// 상품 총 갯수
 	public int itemGetTotal(Criteria cri) throws Exception;
 
+	// 신규 상품 정보
+	public List<itemViewVO> newSelect() throws Exception;
+
 }

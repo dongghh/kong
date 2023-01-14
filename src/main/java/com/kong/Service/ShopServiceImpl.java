@@ -157,6 +157,12 @@ public class ShopServiceImpl implements ShopService {
 		return dao.itemGetTotal(cri);
 	}
 
+	@Override
+	// 신규 상품 정보
+	public List<itemViewVO> newSelect() throws Exception {
+		return dao.newSelect();
+	}
+
 	// 평점 메서드
 	public void setRating(int itemNum) throws Exception {
 		Double ratingAvg = dao.getRatingAverage(itemNum);

@@ -200,8 +200,14 @@
 	<select id="likeSelect" resultType="com.kong.domain.itemViewVO">
 		select *
 		from kong_item
-		order
-		by ratingAvg desc limit 8
+		order by ratingAvg desc limit 8
+	</select>
+	
+	<!-- 신규 상품 조회 -->
+	<select id="newSelect" resultType="com.kong.domain.itemViewVO">
+		select *
+		from kong_item
+		order by regdate desc limit 8
 	</select>
 
 	<!-- 전체 상품 검색 -->

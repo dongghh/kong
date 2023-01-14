@@ -187,7 +187,7 @@
 			<li class="Rli">
 				<p>
 					<input type="text" id="sample6_postcode" placeholder="우편번호">
-					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+					<input type="button" id="postBtn" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 				</p>
 				<p>
 					<input type="text" name="userAddr1" id="sample6_address" placeholder="주소"> 
@@ -229,7 +229,7 @@
 			</ul>
 
 		</form>
-		<div>
+		<div id="regBtn">
 			<button type="button" id="submit" class="registerBtn">회원가입</button>
 			<button type="button" class="registerBtn">취소</button>
 		</div>

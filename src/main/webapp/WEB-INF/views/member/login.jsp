@@ -38,7 +38,7 @@
 
          <div id="sub_btn">
             <div>
-               <a href="/member/">아이디/비밀번호 찾기</a>
+               <a href="/member/findIdPw">아이디/비밀번호 찾기</a>
             </div>
             <div>
                <a href="/member/register">회원가입</a>
