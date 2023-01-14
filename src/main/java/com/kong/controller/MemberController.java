@@ -75,6 +75,7 @@ public class MemberController {
 		} else {
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
+			return "redirect:/member/login";
 		}
 
 		return "redirect:/";

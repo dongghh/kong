@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="/resources/css/login.css">
 
 <%@ include file="../layout/header.jsp"%>
-
 <!--section-->
 <section class="section">
    <div id="container">
@@ -16,6 +15,24 @@
                   <input type="password" placeholder="비밀번호" id="userPass" name="userPass"
                   style="border-radius: 0px 0px 5px 5px;">
                <button type="submit" id="login-btn">로그인</button>
+               
+               <c:if test="${msg == false}">
+  					<p style="color:#f00;">로그인에 실패했습니다.</p>
+ 				</c:if>
+               <script>
+				$("#login-btn").on("click", function() {
+					if ($("#userId").val() == "") {
+						alert("아이디를 입력해주세요.");
+						$("#userId").focus();
+						return false;
+					}
+					if ($("#userPass").val() == "") {
+						alert("비밀번호를 입력해주세요.");
+						$("#userPass").focus();
+						return false;
+					}
+				});
+				</script>
             </form>
          </div>
 
