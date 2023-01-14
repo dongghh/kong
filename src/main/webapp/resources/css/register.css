@@ -11,17 +11,25 @@
 	border-bottom: 1px solid #eaeaea;
 	list-style: none;
 	overflow: hidden;
-	margin: 15px 0px 15px 0px;
 }
 
-.join li {
+.Lli {
 	float: left;
-	width: 125px;
+	vertical-align: middle;
+	display: inline-block;
+	width: 150px;
+	text-align: center;
+	font-size: 15px;
+	line-height: 35px;
 }
 
-.join li input {
-	width: 148%;
-	vertical-align: middle;
+.Rli {
+	width: 400px;
+	display: inline-block;
+}
+
+.Rli input {
+	width: 45%;
 	padding: 5px;
 }
 

@@ -129,32 +129,35 @@
 		<p id="title">회원가입</p>
 		<form action="/member/register" method="post" id="regForm">
 			<ul class="join">
-				<li>아이디<span class="star">*</span></li>
-				<li><input class="form-control" type="text" id="userId" placeholder="아이디를 입력하세요" name="userId" /></li>
-				<button class="registerBtn" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
+				<li class="Lli">아이디<span class="star">*</span></li>
+				<li class="Rli">
+					<input class="form-control" type="text" id="userId" placeholder="아이디를 입력하세요" name="userId" />
+					<button class="registerBtn" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
+				</li>
 			</ul>
 			<ul class="join">
-				<li>패스워드<span class="star">*</span></li>
-				<li><input class="form-control" type="password" id="userPass"
+				<li class="Lli">패스워드<span class="star">*</span></li>
+				<li class="Rli"><input class="form-control" type="password" id="userPass"
 					placeholder="비밀번호를 입력하세요" name="userPass" /></li>
 			</ul>
 			<ul class="join">
-				<li>이름<span class="star">*</span></li>
-				<li><input class="form-control" type="text" id="userName"
+				<li class="Lli">이름<span class="star">*</span></li>
+				<li class="Rli"><input class="form-control" type="text" id="userName"
 					placeholder="이름을 입력하세요" name="userName" /></li>
 			</ul>
 
 			<ul class="join">
-				<li>이메일<span class="star">*</span></li>
-				<li><input type="text" id="user_email" placeholder="이메일을 입력하세요" required> 
-				<span id="middle">@</span> 
-				<input type="text" id="email_address" list="user_email_address"> 
-					<datalist id="user_email_address">
-						<option value="naver.com"></option>
-						<option value="daum.com"></option>
-						<option value="google.com"></option>
-						<option value="직접입력"></option>
-					</datalist> 
+				<li class="Lli">이메일<span class="star">*</span></li>
+				<li class="Rli">
+					<input type="text" id="user_email" placeholder="이메일을 입력하세요" required> 
+					<span id="middle">@</span> 
+					<input type="text" id="email_address" list="user_email_address"> 
+						<datalist id="user_email_address">
+							<option value="naver.com"></option>
+							<option value="daum.com"></option>
+							<option value="google.com"></option>
+							<option value="직접입력"></option>
+						</datalist> 
 					<input type="hidden" id="userEmail" name="userEmail" value="" />
 				</li>
 			</ul>
@@ -180,19 +183,19 @@
 			</script>
 
 			<ul class="join">
-			<li>주소<span class="star">*</span></li>
-				<li>
-					<p>
-						<input type="text" id="sample6_postcode" placeholder="우편번호">
-						<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-					</p>
-					<p>
-						<input type="text" name="userAddr1" id="sample6_address" placeholder="주소"> 
-						<input type="text" name="userAddr2" id="sample6_detailAddress" placeholder="상세주소"> 
-						<input type="text" name="userAddr3" id="sample6_extraAddress" placeholder="참고항목" style="display: none;">
-					</p>
-					    <input type="hidden" id="userAddress" name="userAddress" value="" />
-				</li>
+			<li class="Lli">주소<span class="star">*</span></li>
+			<li class="Rli">
+				<p>
+					<input type="text" id="sample6_postcode" placeholder="우편번호">
+					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+				</p>
+				<p>
+					<input type="text" name="userAddr1" id="sample6_address" placeholder="주소"> 
+					<input type="text" name="userAddr2" id="sample6_detailAddress" placeholder="상세주소"> 
+					<input type="text" name="userAddr3" id="sample6_extraAddress" placeholder="참고항목" style="display: none;">
+				</p>
+				    <input type="hidden" id="userAddress" name="userAddress" value="" />
+			</li>
 			</ul>
 			
 			<script>
@@ -220,8 +223,8 @@
 			</script>
 			
 			<ul class="join">
-				<li>핸드폰번호<span class="star">*</span></li>
-				<li><input class="form-control" type="text" id="userPnumber"
+				<li class="Lli">핸드폰번호<span class="star">*</span></li>
+				<li class="Rli"><input class="form-control" type="text" id="userPnumber"
 					placeholder="핸드폰 번호를 입력하세요" name="userPnumber" /></li>
 			</ul>
 
