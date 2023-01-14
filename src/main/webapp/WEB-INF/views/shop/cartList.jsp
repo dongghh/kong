@@ -142,15 +142,12 @@
 					<div class="inputArea">
 						<p>
 							<input type="text" id="sample6_postcode" placeholder="우편번호">
-							<input type="button" onclick="sample6_execDaumPostcode()"
-								value="우편번호 찾기"><br>
+							<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 						</p>
 						<p>
-							<input type="text" name="userAddr1" id="sample6_address"
-								placeholder="주소"> <input type="text" name="userAddr2"
-								id="sample6_detailAddress" placeholder="상세주소"> <input
-								type="text" name="userAddr3" id="sample6_extraAddress"
-								placeholder="참고항목">
+							<input type="text" name="userAddr1" id="sample6_address" placeholder="주소"> 
+							<input type="text" name="userAddr2" id="sample6_detailAddress" placeholder="상세주소"> 
+							<input type="text" name="userAddr3" id="sample6_extraAddress" placeholder="참고항목">
 						</p>
 						<div id="layer"
 							style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
