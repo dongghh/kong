@@ -21,5 +21,14 @@ public interface MemberDAO {
 
 	// 아이디 중복체크
 	public int idChk(MemberVO vo) throws Exception;
+	
+	// 아이디 찾기
+	public MemberVO findId(MemberVO vo) throws Exception;
+
+	// 비밀번호 찾기
+	public MemberVO findPw(MemberVO vo) throws Exception;
+
+	// 비밀번호 변경
+	public void updatePw(MemberVO vo) throws Exception;
 
 }

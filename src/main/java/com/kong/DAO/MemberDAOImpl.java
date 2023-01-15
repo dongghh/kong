@@ -55,4 +55,22 @@ public class MemberDAOImpl implements MemberDAO {
 		return result;
 	}
 
+	// 아이디 찾기
+	@Override
+		public MemberVO findId(MemberVO vo) throws Exception{
+			return session.selectOne(namespace + ".findId" ,vo);
+		}
+
+	// 비밀번호 찾기
+	@Override
+	public MemberVO findPw(MemberVO vo) throws Exception {
+		return session.selectOne(namespace + ".findPw");
+	}
+
+	// 비밀번호 변경
+	@Override
+	public void updatePw(MemberVO vo) throws Exception {
+		session.update(namespace + ".updatePw",vo);
+	}
+
 }

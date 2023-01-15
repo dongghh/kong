@@ -12,12 +12,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO kong_member(
 		USERID,USERPASS,USERNAME,USEREMAIL,USERADDRESS,USERPNUMBER,VERIFY)
 		VALUES(
-		#{userId}, #{userPass}, #{userName}, #{userEmail}, #{userAddress}, #{userPnumber}, 0)
+		#{userId}, #{userPass}, #{userName}, #{userEmail},
+		#{userAddress}, #{userPnumber}, 0)
 	</insert>
 
 	<!-- 로그인 -->
 	<select id="login" resultType="com.kong.domain.MemberVO">
-		SELECT USERID, USERPASS, USERNAME , USEREMAIL , USERADDRESS, USERPNUMBER , VERIFY
+		SELECT USERID, USERPASS, USERNAME , USEREMAIL , USERADDRESS,
+		USERPNUMBER , VERIFY
 		FROM kong_member
 		WHERE USERID = #{userId}
 		<!--AND USERPASS = #{userPass} -->
@@ -54,5 +56,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*) FROM KONG_MEMBER
 		WHERE USERID = #{userId}
 	</select>
+
+	<select id="findId" resultType="com.kong.domain.MemberVO">
+		SELECT USERID
+		FROM KONG_MEMBER 
+		WHERE
+		username=#{userName} AND useremail=#{userEmail}
+	</select>
+
+	<select id="findPw" resultType="com.kong.domain.MemberVO">
+		SELECT * 
+		FROM KONG_MEMBER 
+		WHERE
+		USERID=#{userId} AND USERNAME=#{userName} AND USEREMAIL=#{userEmail}
+	</select>
+
+	<update id="updatePw">
+		UPDATE KONG_MEMBER SET USERPASS=#{userPass} WHERE USERID=#{userId}
+	</update>
 
 </mapper>

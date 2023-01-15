@@ -50,5 +50,23 @@ public class MemberServiceImpls implements MemberService {
 		int result = dao.idChk(vo);
 		return result;
 	}
+	
+	// 아이디 찾기
+	@Override
+	public MemberVO findId(MemberVO vo) throws Exception{
+		return dao.findId(vo);
+	}
+
+	// 비밀번호 찾기
+	@Override
+	public MemberVO findPw(MemberVO vo) throws Exception{
+		return dao.findPw(vo);
+	}
+
+	// 비밀번호 변경
+	@Override
+	public void updatePw(MemberVO vo) throws Exception{
+		dao.updatePw(vo);
+	}
 
 }

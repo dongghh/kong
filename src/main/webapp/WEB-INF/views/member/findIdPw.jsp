@@ -60,21 +60,42 @@ h3 {
 
 			<div id="id">
 				<h3>아이디 찾기</h3>
-				<form name="findIdPwForm" onsubmit="submitfindIdForm(this); return false;" action="/findId"
-					method="POST">
+				<form name="findId" action="/member/findIdPw" method="POST" name="findId">
 					<hr class="id_pw_hr">
 					<div class="article">
 						<small>회원가입 시, 입력하신 이름 + 이메일로 아이디를 확인하실 수 있습니다.</small> <br>
 						<br>
 						<div id="findID">
-							이름 <input type="text" id="Nname" required /> &nbsp;&nbsp; 이메일 <input
-								type="email" id="Nemail" required />
+							이름 <input type="text" id="userName" name="userName" required /> 
+							&nbsp;&nbsp; 
+							이메일 <input type="email" id="userEmail" name="userEmail" required />
 						</div>
 					</div>
 					<hr class="id_pw_hr">
 					<input type="submit" class="find" value="아이디 찾기" />
 				</form>
 			</div>
+
+			<!-- 이름과 전화번호가 일치하지 않을 때-->
+			<c:if test="${check == 1}">
+				<script>
+					opener.document.findId.userName.value = "";
+					opener.document.findId.userEmail.value = "";
+				</script>
+				<label>일치하는 정보가 존재하지 않습니다.</label>
+			</c:if>
+
+			<!-- 이름과 비밀번호가 일치 -->
+			<c:if test="${check == 0 }">
+				<label>찾으시는 아이디는 '${id}' 입니다.</label>
+				<div class="form-label-group">
+					<input type="button" value="OK" onclick="closethewindow()">
+				</div>
+			</c:if>
+			<script>
+				function closethewindow() {
+					self.close();}
+			</script>
 
 			<div id="pw">
 				<h3>비밀번호 찾기</h3>
