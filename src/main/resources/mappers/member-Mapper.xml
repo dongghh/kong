@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 회원정보 수정 -->
 	<update id="memberUpdate">
-		UPDATE KONG_MEMBER SET
+		UPDATE kong_member SET
 		USERNAME = #{userName},
 		USEREMAIL = #{userEmail},
 		USERADDRESS = #{userAddress},
@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 회원탈퇴 -->
 	<delete id="memberDelete">
-		DELETE FROM KONG_MEMBER
+		DELETE FROM kong_member
 		WHERE USERID = #{userId}
 		AND
 		<!--USERPASS = #{userPass} -->
@@ -46,33 +46,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 패스워드 체크 -->
 	<select id="passChk" resultType="int">
-		SELECT COUNT(*) FROM KONG_MEMBER
+		SELECT COUNT(*) FROM kong_member
 		WHERE USERID = #{userId}
 		AND USERPASS = #{userPass}
 	</select>
 
 	<!-- 아이디 중복 체크 -->
 	<select id="idChk" resultType="int">
-		SELECT COUNT(*) FROM KONG_MEMBER
+		SELECT COUNT(*) FROM kong_member
 		WHERE USERID = #{userId}
 	</select>
 
 	<select id="findId" resultType="com.kong.domain.MemberVO">
 		SELECT USERID
-		FROM KONG_MEMBER 
+		FROM kong_member 
 		WHERE
 		username=#{userName} AND useremail=#{userEmail}
 	</select>
 
 	<select id="findPw" resultType="com.kong.domain.MemberVO">
 		SELECT * 
-		FROM KONG_MEMBER 
+		FROM kong_member 
 		WHERE
 		USERID=#{userId} AND USERNAME=#{userName} AND USEREMAIL=#{userEmail}
 	</select>
 
 	<update id="updatePw">
-		UPDATE KONG_MEMBER SET USERPASS=#{userPass} WHERE USERID=#{userId}
+		UPDATE kong_member SET USERPASS=#{userPass} WHERE USERID=#{userId}
 	</update>
 
 </mapper>
