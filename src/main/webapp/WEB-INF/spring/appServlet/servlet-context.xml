@@ -34,7 +34,7 @@
 	<!-- 업로드 패스 설정 -->
 	<beans:bean class="java.lang.String" id="uploadPath">
 		<beans:constructor-arg
-			value="/Users/donghyeok/Documents/workspace-sts-3.9.18.RELEASE/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/kong/resources" />
+			value="/usr/local/tomcat8.5/webapps" />
 	</beans:bean>
 
 	<!-- 일반 파일 업로드 경로 -->
