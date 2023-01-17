@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -142,14 +143,20 @@ public class MemberController {
 		return result;
 	}
 
-	// 아이디 비밀번호 찾기
-	@RequestMapping(value = "/findIdPw", method = RequestMethod.GET)
-	public String findIdPw() throws Exception {
-		return "member/findIdPw";
+	// 아이디 찾기 실행
+	@RequestMapping(value = "/findId", method = RequestMethod.GET)
+	public String findIdAction() throws Exception {
+		return "/member/findId";
+	}
+
+	// 비밀번호 찾기 실행
+	@RequestMapping(value = "/findPw", method = RequestMethod.GET)
+	public String findPasswordAction() throws Exception {
+		return "/member/findPw";
 	}
 
 	// 아이디 찾기 실행
-	@RequestMapping(value = "/findIdPw", method = RequestMethod.POST)
+	@RequestMapping(value = "/findId", method = RequestMethod.POST)
 	public String findIdAction(MemberVO vo, Model model) throws Exception {
 		MemberVO user = service.findId(vo);
 
@@ -160,7 +167,32 @@ public class MemberController {
 			model.addAttribute("id", user.getUserId());
 		}
 
-		return "/member/findIdPw";
+		return "/member/findId";
+	}
+
+	// 비밀번호 찾기 실행
+	@RequestMapping(value = "/findPw", method = RequestMethod.POST)
+	public String findPasswordAction(MemberVO vo, Model model) throws Exception {
+		MemberVO user = service.findPw(vo);
+
+		if (user == null) {
+			model.addAttribute("check", 1);
+		} else {
+			model.addAttribute("check", 0);
+			model.addAttribute("updateid", user.getUserId());
+		}
+
+		return "/member/findPw";
+	}
+
+	// 비밀번호 바꾸기 실행
+	@RequestMapping(value = "updatePw", method = RequestMethod.POST)
+	public String updatePwAction(@RequestParam(value = "updateid", defaultValue = "", required = false) String id,
+			MemberVO vo) throws Exception {
+		vo.setUserId(id);
+		System.out.println(vo);
+		service.updatePw(vo);
+		return "member/findPasswordConfirm";
 	}
 
 }
