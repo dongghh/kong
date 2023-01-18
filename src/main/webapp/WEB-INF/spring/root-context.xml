@@ -16,11 +16,13 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://kong.cob6xttotqb1.ap-northeast-2.rds.amazonaws.com:3306/kong?serverTimezone=UTC&amp;useSSL=false"></property>
-		<property name="username" value="kong"></property>
-		<property name="password" value="ak10448801"></property>
+		<property name="driverClassName" value="${spring.datasource.driverClassname}" />		
+		<property name="url" value="${spring.datasource.url}" />		
+		<property name="username" value="${spring.datasource.username}" />
+		<property name="password" value="${spring.datasource.password}" />	
 	</bean>
+	
+	
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -44,5 +46,9 @@
 	<context:component-scan base-package="com.kong.domain" />
 	<context:component-scan base-package="com.kong.utils" />
 	<context:component-scan base-package="com.kong.handler" />
+	
+	   <!-- config파일 자동 로드 location="classpath:database.properties"  /!-->
+    <context:property-placeholder location="/config/*.properties" /> 
+	
 
 </beans>
