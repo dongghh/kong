@@ -171,6 +171,7 @@
 				selector.val(tempVal.replace(regExp, ""));
 			}
 		</script>
+		<%=request.getRealPath("/") %>
 	</section>
 	<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 </body>

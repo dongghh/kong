@@ -24,6 +24,7 @@
 .itemDes Img {
 	max-width: 600px;
 	height: auto;
+	border-radius: 15px 15px;
 }
 
 #itemBox2 {

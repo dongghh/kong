@@ -83,9 +83,9 @@ public class AdminController {
 
 			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
 
-			// gdsImg에 원본 파일 경로 + 파일명 저장
+			// itemImg에 원본 파일 경로 + 파일명 저장
 			vo.setItemImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-			// gdsThumbImg에 썸네일 파일 경로 + 썸네일 파일명 저장
+			// itemThumbImg에 썸네일 파일 경로 + 썸네일 파일명 저장
 			vo.setItemThumbImg(
 					File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 
