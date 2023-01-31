@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 회원 목록 -->
 	<select id="memberList" resultType="com.kong.domain.MemberVO">
 		SELECT *
-		FROM KONG_MEMBER
+		FROM kong_member
 		ORDER BY userName
 	</select>
 

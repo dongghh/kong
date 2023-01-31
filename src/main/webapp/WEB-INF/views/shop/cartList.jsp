@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../layout/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/cartList.css">
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="/resources/js/DaumPost.js"></script>
 <body>
 	<section id="container">
@@ -125,7 +127,7 @@
 				</div>
 			</div>
 			<div class="orderInfo">
-				<form role="form" method="post" autocomplete="off">
+				<!--<form role="form" method="post" autocomplete="off">-->
 
 					<input type="hidden" name="amount" value="${sum}" />
 
@@ -156,13 +158,38 @@
 								style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
 								onclick="closeDaumPostcode()" alt="닫기 버튼">
 						</div>
-						<script
-							src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 					</div>
 
 
 					<div class="inputArea">
-						<button type="submit" class="order_btn">주문</button>
+						<input type="submit" class="order_btn" onclick="requestPay()" value="주문">
+						<script>
+						function requestPay() {
+						  IMP.init('imp40616528'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
+						  IMP.request_pay({
+						    pg: "kakaopay",
+						    pay_method: "card",
+						    merchant_uid : 'merchant_'+new Date().getTime(),
+						    name : '결제테스트',
+						    amount : 14000,
+						    buyer_email : 'iamport@siot.do',
+						    buyer_name : '구매자',
+						    buyer_tel : '010-1234-5678',
+						    buyer_addr : '서울특별시 강남구 삼성동',
+						    buyer_postcode : '123-456'
+						  }, function (rsp) { // callback
+						      if (rsp.success) {
+						    	  var msg = '결제가 완료되었습니다.';
+						          alert(msg);
+						          location.href = "/shop/orderList"
+						      } else {
+						    	  var msg = '결제에 실패하였습니다.';
+						          msg += '에러내용 : ' + rsp.error_msg;
+						          alert(msg);
+						      }
+						  });
+						}
+						</script>
 						<button type="button" class="cancel_btn">취소</button>
 						<script>
 						$(".cancel_btn").click(function() {
@@ -170,7 +197,7 @@
 						$(".orderOpne_bnt").slideDown();});
 						</script>
 					</div>
-				</form>
+				<!--</form>-->
 			</div>
 			</c:otherwise>
 			</c:choose>

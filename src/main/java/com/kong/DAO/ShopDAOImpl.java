@@ -17,7 +17,6 @@ import com.kong.domain.OrderVO;
 import com.kong.domain.SearchCriteria;
 import com.kong.domain.itemReplyListVO;
 import com.kong.domain.itemReplyVO;
-import com.kong.domain.itemVO;
 import com.kong.domain.itemViewVO;
 
 @Repository
@@ -86,8 +85,8 @@ public class ShopDAOImpl implements ShopDAO {
 
 	// 카드 담기
 	@Override
-	public void addCart(CartListVO cart) throws Exception {
-		session.insert(namespace + ".addCart", cart);
+	public int addCart(CartListVO cart) throws Exception {
+		return session.insert(namespace + ".addCart", cart);
 	}
 
 	// 카트 리스트
@@ -98,8 +97,8 @@ public class ShopDAOImpl implements ShopDAO {
 
 	// 카트 삭제
 	@Override
-	public void deleteCart(CartVO cart) throws Exception {
-		session.delete(namespace + ".deleteCart", cart);
+	public int deleteCart(CartVO cart) throws Exception {
+		return session.delete(namespace + ".deleteCart", cart);
 	}
 
 	// 주문 정보
@@ -118,6 +117,12 @@ public class ShopDAOImpl implements ShopDAO {
 	@Override
 	public void cartAllDelete(String userId) throws Exception {
 		session.delete(namespace + ".cartAllDelete", userId);
+	}
+
+	// 카트 중복 확인
+	@Override
+	public CartListVO cartCheck(CartListVO vo) throws Exception {
+		return session.selectOne(namespace + ".checkCart", vo);
 	}
 
 	// 주문 목록
@@ -167,7 +172,7 @@ public class ShopDAOImpl implements ShopDAO {
 	public int itemGetTotal(Criteria cri) throws Exception {
 		return session.selectOne(namespace + ".itemGetTotal", cri);
 	}
-	
+
 	@Override
 	// 신규 상품 정보
 	public List<itemViewVO> newSelect() throws Exception {

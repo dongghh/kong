@@ -16,7 +16,6 @@ import com.kong.domain.OrderVO;
 import com.kong.domain.SearchCriteria;
 import com.kong.domain.itemReplyListVO;
 import com.kong.domain.itemReplyVO;
-import com.kong.domain.itemVO;
 import com.kong.domain.itemViewVO;
 
 @Service
@@ -86,8 +85,22 @@ public class ShopServiceImpl implements ShopService {
 
 	// 카드 담기
 	@Override
-	public void addCart(CartListVO cart) throws Exception {
-		dao.addCart(cart);
+	public int addCart(CartListVO cart) throws Exception {
+
+		// 장바구니 데이터 체크
+		CartListVO checkCart = dao.cartCheck(cart);
+
+		if (checkCart != null) {
+			return 2;
+		}
+
+		// 장바구니 등록 & 에러 시 0반환
+		try {
+			return dao.addCart(cart);
+		} catch (Exception e) {
+			return 0;
+		}
+
 	}
 
 	// 카트 리스트
@@ -98,8 +111,14 @@ public class ShopServiceImpl implements ShopService {
 
 	// 카트 삭제
 	@Override
-	public void deleteCart(CartVO cart) throws Exception {
-		dao.deleteCart(cart);
+	public int deleteCart(CartVO cart) throws Exception {
+		return dao.deleteCart(cart);
+	}
+
+	// 카트 중복 확인
+	@Override
+	public CartListVO cartCheck(CartListVO vo) throws Exception {
+		return dao.cartCheck(vo);
 	}
 
 	// 주문 정보

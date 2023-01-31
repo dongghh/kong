@@ -39,7 +39,7 @@
 				<c:if test="${member != null }">
 					<c:if test="${member.verify == 0 }">
 						<ul>
-							<li><p>${member.userId}님환영합니다.</p></li>
+							<li><p>${member.userName}님 환영합니다.</p></li>
 							<li><a href="/member/logout">Logout</a></li>
 							<li><a href="/member/memberUpdateView">MyInfo</a></li>
 							<li><a href="/board/list">Notice</a></li>
@@ -49,7 +49,7 @@
 					</c:if>
 					<c:if test="${member.verify == 9}">
 						<ul>
-							<li><p>${member.userId}님환영합니다.</p></li>
+							<li><p>${member.userName}님 환영합니다.</p></li>
 							<li><a href="/member/logout">Logout</a></li>
 							<li><a href="/admin/memberList">userList</a></li>
 							<li><a href="/admin/item/register">itemRegister</a></li>

@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../layout/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/itemView.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<section id="container">
 			<form role="form" method="post">
 				<input type="hidden" name="itemNum" value="${view.itemNum}" />
@@ -63,37 +62,36 @@
 						<tr>
 						<th class="addToCart" colspan="2">
 							<button type="button" class="addCart_btn">장바구니</button>
-
 							<script>
-							    $(".addCart_btn").click(function(){
-							    var itemNum = $("#itemNum").val();
-							    var cartStock = $(".numBox").val();
-							        
-							    var data = {
-							    itemNum : itemNum,
-								cartStock : cartStock};
-							     
-							     $.ajax({
-							      url : "/shop/view/addCart",
-							      type : "post",
-							      data : data,
-							      success : function(result){
-							    	  if(result == 1) {
-							    		     alert("카트 담기 성공");
-							    		     $(".numBox").val("1");
-							    		     confirm("구매 페이지로 이동하시겠습니까?")
-							    		     if(true){
-							    		    	  location.href = "/shop/cartList";}
-							    		    } 
-							    	  else {
-							    		     alert("로그인 후 이용해주세요.")
-							    		     $(".numBox").val("1");}
-							    		   },
-							    		   error : function(){
-							    		    alert("카트 담기 실패");
-							    		   }
-							    		  });
-							    		 });
+								$(".addCart_btn").on("click", function(e){
+									var itemNum = $("#itemNum").val();
+								    var cartStock = $(".numBox").val();
+								    
+								    var data = {
+										itemNum : itemNum,
+										cartStock : cartStock};
+								    
+									$.ajax({
+										url : "/shop/view/addCart",
+										type: "post",
+										data: data,
+										success: function(result){
+											cartAlert(result);
+										}
+									})
+								});
+								
+								function cartAlert(result){
+									if(result == '0'){
+										alert("장바구니에 추가를 하지 못하였습니다.");
+									} else if(result == '1'){
+										alert("장바구니에 추가되었습니다.");
+									} else if(result == '2'){
+										alert("장바구니에 이미 추가되어져 있습니다.");
+									} else if(result == '5'){
+										alert("로그인이 필요합니다.");	
+									}
+								}
 							   </script>
 						</th>
 						</tr>

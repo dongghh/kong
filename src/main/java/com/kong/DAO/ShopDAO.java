@@ -41,13 +41,16 @@ public interface ShopDAO {
 	public void modifyReply(itemReplyVO reply) throws Exception;
 
 	// 카드 담기
-	public void addCart(CartListVO cart) throws Exception;
+	public int addCart(CartListVO cart) throws Exception;
 
 	// 카트 리스트
 	public List<CartListVO> cartList(String userId) throws Exception;
 
 	// 카트 삭제
-	public void deleteCart(CartVO cart) throws Exception;
+	public int deleteCart(CartVO cart) throws Exception;
+
+	// 카트 중복 확인
+	public CartListVO cartCheck(CartListVO vo) throws Exception;
 
 	// 주문 정보
 	public void orderInfo(OrderVO order) throws Exception;

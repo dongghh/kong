@@ -161,6 +161,12 @@
 		where userId = #{userId}
 	</delete>
 
+	<!-- 카트 확인 -->
+	<select id="checkCart" resultType="com.kong.domain.CartListVO">
+		select * from kong_cart
+		where userId = #{userId} and itemNum = #{itemNum}
+	</select>
+
 	<!-- 특정 유저의 주문 목록 -->
 	<select id="orderList" resultType="com.kong.domain.OrderVO">
 		select
@@ -200,27 +206,31 @@
 	<select id="likeSelect" resultType="com.kong.domain.itemViewVO">
 		select *
 		from kong_item
-		order by ratingAvg desc limit 8
+		order
+		by ratingAvg desc limit 8
 	</select>
-	
+
 	<!-- 신규 상품 조회 -->
 	<select id="newSelect" resultType="com.kong.domain.itemViewVO">
 		select *
 		from kong_item
-		order by regdate desc limit 8
+		order by
+		regdate desc limit 8
 	</select>
 
 	<!-- 전체 상품 검색 -->
 	<select id="search" resultType="com.kong.domain.itemViewVO">
 		SELECT *
 		FROM kong_item
-		where itemName LIKE CONCAT('%',#{keyword},'%')
+		where
+		itemName LIKE CONCAT('%',#{keyword},'%')
 		ORDER BY itemNum
 	</select>
 
 	<!-- 상품 총 개수 -->
 	<select id="itemGetTotal" resultType="int">
-		select count(*) from kong_item
+		select count(*) from
+		kong_item
 		where itemName LIKE CONCAT('%',#{keyword},'%')
 	</select>
 

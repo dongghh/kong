@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kong.Service.ShopService;
 import com.kong.domain.CartListVO;
 import com.kong.domain.CartVO;
-import com.kong.domain.Criteria;
 import com.kong.domain.MemberVO;
 import com.kong.domain.OrderDetailVO;
 import com.kong.domain.OrderListVO;
@@ -128,19 +127,16 @@ public class ShopController {
 	// 카트 담기
 	@ResponseBody
 	@RequestMapping(value = "/view/addCart", method = RequestMethod.POST)
-	public int addCart(CartListVO cart, HttpSession session) throws Exception {
-
-		int result = 0;
+	public String addCart(CartListVO cart, HttpSession session) throws Exception {
 
 		MemberVO member = (MemberVO) session.getAttribute("member");
-
-		if (member != null) {
-			cart.setUserId(member.getUserId());
-			service.addCart(cart);
-			result = 1;
+		if (member == null) {
+			return "5";
 		}
+		cart.setUserId(member.getUserId());
+		int result = service.addCart(cart);
 
-		return result;
+		return result + "";
 	}
 
 	// 카트 목록
@@ -260,19 +256,19 @@ public class ShopController {
 		return "shop/allList";
 
 	}
-	
+
 	// 전체 상품 검색
-	@RequestMapping(value="/search")
-	public String search (Model model, SearchCriteria scri) throws Exception {
+	@RequestMapping(value = "/search")
+	public String search(Model model, SearchCriteria scri) throws Exception {
 		logger.info("searching ...");
-		
+
 		List<itemViewVO> list = service.search(scri);
 		int count = service.itemGetTotal(scri);
-		
-		model.addAttribute("scri",scri);
-		model.addAttribute("list",list);
-		model.addAttribute("count",count);
-		
+
+		model.addAttribute("scri", scri);
+		model.addAttribute("list", list);
+		model.addAttribute("count", count);
+
 		return "/shop/search";
 	}
 
