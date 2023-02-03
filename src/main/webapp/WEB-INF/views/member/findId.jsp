@@ -81,7 +81,7 @@ h3 {
 
 					<!-- 이름과 비밀번호가 일치 -->
 					<c:if test="${check == 0 }">
-						<label>찾으시는 아이디는 '${id}' 입니다.</label>
+						<script>alert("찾으시는 아이디는 '${id}' 입니다.")</script>
 					</c:if>
 				</form>
 			</div>
