@@ -56,23 +56,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*) FROM kong_member
 		WHERE USERID = #{userId}
 	</select>
-
+	
+	<!-- 해당 아이디 조회 -->
+	<select id="readMember" resultType="com.kong.domain.MemberVO">
+		select *
+		from kong_member
+		where userId=#{userId}
+	</select>
+	
+	<!-- 아이디 찾기 -->
 	<select id="findId" resultType="com.kong.domain.MemberVO">
 		SELECT USERID
-		FROM kong_member 
+		FROM kong_member
 		WHERE
 		username=#{userName} AND useremail=#{userEmail}
 	</select>
-
+	
+	<!-- 패스워드 찾기 -->
 	<select id="findPw" resultType="com.kong.domain.MemberVO">
-		SELECT * 
-		FROM kong_member 
+		SELECT *
+		FROM kong_member
 		WHERE
 		USERID=#{userId} AND USERNAME=#{userName} AND USEREMAIL=#{userEmail}
 	</select>
-
+	
+	<!-- 패스워드 재설정 -->
 	<update id="updatePw">
-		UPDATE kong_member SET USERPASS=#{userPass} WHERE USERID=#{userId}
+		UPDATE kong_member SET USERPASS=#{userPass} WHERE
+		USERID=#{userId}
 	</update>
 
 </mapper>

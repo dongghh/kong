@@ -27,17 +27,12 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public void memberUpdate(MemberVO vo) throws Exception {
-		// vo에 담긴 파라미터들은 memberMapper.xml에 memberMapper라는 namespace에
-		// 아이디가 memberUpdate인 쿼리에 파라미터들을 넣어줍니다.
 		session.update(namespace + ".memberUpdate", vo);
 	}
 
-	// 업데이트와 마찬가지로 흐름은 같습니다.
+	//
 	@Override
 	public void memberDelete(MemberVO vo) throws Exception {
-		// MemberVO에 담긴 값들을 보내줍니다.
-		// 그럼 xml에서 memberMapper.memberDelete에 보시면
-		// #{userId}, #{userPass}에 파라미터값이 매칭이 되겠지요.
 		session.delete(namespace + ".memberDelete", vo);
 
 	}
@@ -57,20 +52,27 @@ public class MemberDAOImpl implements MemberDAO {
 
 	// 아이디 찾기
 	@Override
-		public MemberVO findId(MemberVO vo) throws Exception{
-			return session.selectOne(namespace + ".findId" ,vo);
-		}
+	public MemberVO findId(MemberVO vo) throws Exception {
+		return session.selectOne(namespace + ".findId", vo);
+	}
 
 	// 비밀번호 찾기
 	@Override
 	public MemberVO findPw(MemberVO vo) throws Exception {
-		return session.selectOne(namespace + ".findPw");
+		return session.selectOne(namespace + ".findPw" ,vo);
 	}
 
 	// 비밀번호 변경
 	@Override
-	public void updatePw(MemberVO vo) throws Exception {
-		session.update(namespace + ".updatePw",vo);
+	public int updatePw(MemberVO vo) throws Exception {
+		return session.update(namespace + ".updatePw", vo);
+	}
+
+	// 해당 아이디 조회
+	@Override
+	public MemberVO readMember(String userid) throws Exception {
+		return session.selectOne(namespace + ".readMember", userid);
+
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.kong.Service;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.kong.domain.MemberVO;
 
 public interface MemberService {
@@ -24,10 +26,14 @@ public interface MemberService {
 	// 아이디 찾기
 	public MemberVO findId(MemberVO vo) throws Exception;
 
-	// 비밀번호 찾기
-	public MemberVO findPw(MemberVO vo) throws Exception;
-
+	//비밀번호찾기
+	public void findPw(HttpServletResponse resp, MemberVO vo) throws Exception;
+	
+	// 해당 아이디 조회
+	public MemberVO readMember(String userid) throws Exception;
+	
 	// 비밀번호 변경
-	public void updatePw(MemberVO vo) throws Exception;
+	public int updatePw(MemberVO vo) throws Exception;
+
 
 }

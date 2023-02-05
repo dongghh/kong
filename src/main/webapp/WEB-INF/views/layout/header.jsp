@@ -14,8 +14,7 @@
 	type="image/x-icon">
 <link rel="shortcut icon" href="/resources/favicon/favicon.ico"
 	type="image/x-icon" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/custom.js"></script>
 <script type="text/javascript" src="/resources/js/swiper.min.js"></script>
 <script src="/resources/ckeditor/ckeditor.js"></script>

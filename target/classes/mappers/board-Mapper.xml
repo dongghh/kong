@@ -71,7 +71,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 게시판 조회수 -->
 	<update id="boardCnt" parameterType="int">
-		UPDATE KONG_BOARD 
+		UPDATE kong_board 
 		SET CNT = CNT+1
 		WHERE BNO = #{bno}
 	</update>

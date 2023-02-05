@@ -1,6 +1,7 @@
 package com.kong.Service;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Service;
 
@@ -12,26 +13,28 @@ public class MemberServiceImpls implements MemberService {
 
 	@Inject
 	MemberDAO dao;
-
+	
+    //회원가입
 	@Override
 	public void register(MemberVO vo) throws Exception {
 		dao.register(vo);
 
 	}
-
+	
+    // 로그인
 	@Override
 	public MemberVO login(MemberVO vo) throws Exception {
 		return dao.login(vo);
 	}
-
-	// Controller에서 보내는 파라미터들을 memberUpdate(MemberVO vo)로 받고
+	
+	// 회원수정
 	@Override
 	public void memberUpdate(MemberVO vo) throws Exception {
-
 		dao.memberUpdate(vo);
 
 	}
-
+	
+	//회원탈퇴 
 	@Override
 	public void memberDelete(MemberVO vo) throws Exception {
 		dao.memberDelete(vo);
@@ -50,23 +53,27 @@ public class MemberServiceImpls implements MemberService {
 		int result = dao.idChk(vo);
 		return result;
 	}
-	
+
 	// 아이디 찾기
 	@Override
-	public MemberVO findId(MemberVO vo) throws Exception{
+	public MemberVO findId(MemberVO vo) throws Exception {
 		return dao.findId(vo);
 	}
 
-	// 비밀번호 찾기
+	// 비밀번호찾기
 	@Override
-	public MemberVO findPw(MemberVO vo) throws Exception{
-		return dao.findPw(vo);
+	public void findPw(HttpServletResponse response, MemberVO vo) throws Exception {
+		dao.findPw(vo);
 	}
 
+	// 해당 아이디 조회
+	public MemberVO readMember(String userid) throws Exception {
+		return dao.readMember(userid);
+	}
+	
 	// 비밀번호 변경
-	@Override
-	public void updatePw(MemberVO vo) throws Exception{
-		dao.updatePw(vo);
+	public int updatePw(MemberVO vo) throws Exception{
+		return dao.updatePw(vo);
 	}
 
 }

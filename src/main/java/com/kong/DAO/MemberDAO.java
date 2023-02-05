@@ -29,6 +29,9 @@ public interface MemberDAO {
 	public MemberVO findPw(MemberVO vo) throws Exception;
 
 	// 비밀번호 변경
-	public void updatePw(MemberVO vo) throws Exception;
+	public int updatePw(MemberVO vo) throws Exception;
+	
+	// 해당 아이디 조회
+	public MemberVO readMember(String userid) throws Exception;
 
 }
