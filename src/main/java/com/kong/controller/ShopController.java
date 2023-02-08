@@ -180,6 +180,7 @@ public class ShopController {
 	}
 
 	// 주문
+	@ResponseBody
 	@RequestMapping(value = "/cartList", method = RequestMethod.POST)
 	public String order(HttpSession session, OrderVO order, OrderDetailVO orderDetail) throws Exception {
 		logger.info("order");

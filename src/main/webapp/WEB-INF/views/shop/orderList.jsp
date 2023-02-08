@@ -17,10 +17,8 @@
 				<tr id="order-bottom">
 					<td><a href="/shop/orderView?n=${orderList.orderId}">${orderList.orderId}</a></td>
 					<td>${orderList.orderRec}</td>
-					<td>(${orderList.userAddr1})
-						${orderList.userAddr2}${orderList.userAddr3}</td>
-					<td><fmt:formatNumber pattern="###,###,###"
-							value="${orderList.amount}" /> 원</td>
+					<td>(${orderList.userAddr1})${orderList.userAddr2}${orderList.userAddr3}</td>
+					<td><fmt:formatNumber pattern="###,###,###" value="${orderList.amount}" /> 원</td>
 					<td>${orderList.delivery}</td>
 				</tr>
 			</c:forEach>

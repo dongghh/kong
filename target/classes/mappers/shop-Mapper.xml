@@ -169,10 +169,7 @@
 
 	<!-- 특정 유저의 주문 목록 -->
 	<select id="orderList" resultType="com.kong.domain.OrderVO">
-		select
-		orderId, userId,
-		orderRec, userAddr1, userAddr2, userAddr3, orderPhon, amount,
-		orderDate , delivery
+		select orderId, userId, orderRec, userAddr1, userAddr2, userAddr3, orderPhon, amount, orderDate , delivery
 		from kong_order
 		where userId = #{userId}
 	</select>

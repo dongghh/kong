@@ -3,6 +3,7 @@
 <%@include file="../layout/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/cartList.css">
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="/resources/js/DaumPost.js"></script>
 <body>
@@ -70,14 +71,14 @@
 						<div class="checkBox">
 							<input type="checkbox" name="chBox" class="chBox"
 								data-cartNum="${cartList.cartNum}" />
-<script>
+						<script>
 						$(".chBox").click(function() {
 						$("#allCheck").prop("checked", false);});
 						</script>
 						</div>
 						</td>
 						<td><img src="${cartList.itemThumbImg}" /></td>
-						<td>${cartList.itemName}</td>
+						<td class="itemName">${cartList.itemName}</td>
 						<td><fmt:formatNumber pattern="###,###,###" value="${cartList.itemPrice}" /></td>
 						<td>${cartList.cartStock}<br /> </td>
 						<td><fmt:formatNumber pattern="###,###,###" value="${cartList.itemPrice * cartList.cartStock}" /></td>
@@ -127,9 +128,8 @@
 				</div>
 			</div>
 			<div class="orderInfo">
-				<!--<form role="form" method="post" autocomplete="off">-->
 
-					<input type="hidden" name="amount" value="${sum}" />
+					<input type="hidden" name="amount" id="amount" value="${sum}" />
 
 					<div class="inputArea">
 						<label for="">수령인</label> <input type="text" name="orderRec"
@@ -147,9 +147,9 @@
 							<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 						</p>
 						<p>
-							<input type="text" name="userAddr1" id="sample6_address" placeholder="주소"> 
-							<input type="text" name="userAddr2" id="sample6_detailAddress" placeholder="상세주소"> 
-							<input type="text" name="userAddr3" id="sample6_extraAddress" placeholder="참고항목">
+							<input type="text" class="userAddr1" name="userAddr1" id="sample6_address" placeholder="주소"> 
+							<input type="text" class="userAddr2"  name="userAddr2" id="sample6_detailAddress" placeholder="상세주소"> 
+							<input type="text" class="userAddr3"  name="userAddr3" id="sample6_extraAddress" placeholder="참고항목">
 						</p>
 						<div id="layer"
 							style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
@@ -162,26 +162,43 @@
 
 
 					<div class="inputArea">
-						<input type="submit" class="order_btn" onclick="requestPay()" value="주문">
+						<button type="button" class="order_btn" onclick="requestPay()">주문</button>
 						<script>
 						function requestPay() {
+						  let total = $('.sum').text();
 						  IMP.init('imp40616528'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
 						  IMP.request_pay({
 						    pg: "kakaopay",
-						    pay_method: "card",
 						    merchant_uid : 'merchant_'+new Date().getTime(),
-						    name : '결제테스트',
-						    amount : 14000,
-						    buyer_email : 'iamport@siot.do',
-						    buyer_name : '구매자',
-						    buyer_tel : '010-1234-5678',
-						    buyer_addr : '서울특별시 강남구 삼성동',
-						    buyer_postcode : '123-456'
+						    name : 'Kong 결제',
+						    amount : total,
+						    buyer_email : '',
+						    buyer_name : '',
+						    buyer_tel : '', 
+						    buyer_addr : '',
+						    buyer_postcode : ''
 						  }, function (rsp) { // callback
 						      if (rsp.success) {
 						    	  var msg = '결제가 완료되었습니다.';
 						          alert(msg);
-						          location.href = "/shop/orderList"
+						          $.ajax({
+						        	  url : "/shop/cartList",
+						        	  type : "POST",
+						        	  data : {
+						        		  amount : $("#amount").val(),
+						        		  orderRec : $("#orderRec").val(),
+						        		  orderPhon : $("#orderPhon").val(),
+						        		  userAddr1 : $(".userAddr1").val(),
+						        		  userAddr2 : $(".userAddr2").val(),
+						        		  userAddr3 : $(".userAddr3").val()
+						        	  },success : function(result){
+						        		  console.log(result);
+						        		  location.href = "/shop/orderList";
+						        	  },
+						        	  error : function(error){
+						        		  console.log(error)
+						        	  }
+						          })
 						      } else {
 						    	  var msg = '결제에 실패하였습니다.';
 						          msg += '에러내용 : ' + rsp.error_msg;
@@ -197,7 +214,6 @@
 						$(".orderOpne_bnt").slideDown();});
 						</script>
 					</div>
-				<!--</form>-->
 			</div>
 			</c:otherwise>
 			</c:choose>

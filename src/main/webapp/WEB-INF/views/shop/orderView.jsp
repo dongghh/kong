@@ -12,13 +12,10 @@
 					<span>수령인</span> ${orderView.orderRec}
 				</p>
 				<p>
-					<span>주소</span> (${orderView.userAddr1}) ${orderView.userAddr2}
-					${orderView.userAddr3}
+					<span>주소</span> (${orderView.userAddr1}) ${orderView.userAddr2} ${orderView.userAddr3}
 				</p>
 				<p>
-					<span>가격</span>
-					<fmt:formatNumber pattern="###,###,###" value="${orderView.amount}" />
-					원
+					<span>가격</span> <fmt:formatNumber pattern="###,###,###" value="${orderView.amount}" />원
 				</p>
 				<p>
 					<span>상태</span>${orderView.delivery}</p>
@@ -35,14 +32,10 @@
 				</div>
 				<div class="itemInfo">
 					<p>
-						<span>상품명</span> ${orderView.itemName}<br /> <span>개당 가격</span>
-						<fmt:formatNumber pattern="###,###,###"
-							value="${orderView.itemPrice}" />
-						원<br /> <span>구입 수량</span> ${orderView.cartStock} 개<br /> <span>최종
-							가격</span>
-						<fmt:formatNumber pattern="###,###,###"
-							value="${orderView.itemPrice * orderView.cartStock}" />
-						원
+						<span>상품명</span>${orderView.itemName}<br /> 
+						<span>개당 가격</span> <fmt:formatNumber pattern="###,###,###" value="${orderView.itemPrice}" />원<br /> 
+						<span>구입 수량</span> ${orderView.cartStock} 개<br /> 
+						<span>최종가격</span> <fmt:formatNumber pattern="###,###,###" value="${orderView.itemPrice * orderView.cartStock}" />원
 					</p>
 				</div>
 			</li>
