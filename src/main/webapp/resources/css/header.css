@@ -17,7 +17,7 @@ header {
 	width: 80%;
 	height: 10%;
 	margin: auto;
-	margin-bottom: 70px;
+	margin-bottom: 80px;
 }
 
 a:link, a:visited {
@@ -101,9 +101,7 @@ a:link, a:visited {
 	display: block;
 }
 
-#header-bottom li:hover>ul.low li a {
-	border: 1px solid #eee;
-}
+
 
 #header-bottom li:hover>ul.low li a:hover {
 	background: #fff;

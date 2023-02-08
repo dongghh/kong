@@ -19,6 +19,9 @@
                <c:if test="${msg == false}">
   					<p style="color:#f00;">로그인에 실패했습니다.</p>
  				</c:if>
+ 				<c:if test="${id == false}">
+  					<p style="color:#f00;">아이디가 존재하지 않습니다.</p>
+ 				</c:if>
                <script>
 				$("#login-btn").on("click", function() {
 					if ($("#userId").val() == "") {

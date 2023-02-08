@@ -73,12 +73,21 @@ public class MemberController {
 		logger.info("post login");
 
 		session.getAttribute("member");
+		
+		// 아이디가 없을 경우
+		int result = service.idChk(vo) ;
+		if(result == 0) {
+			session.setAttribute("member", null);
+			rttr.addFlashAttribute("id", false);
+			return "redirect:/member/login";
+		}
+		
 		MemberVO login = service.login(vo);
 		boolean pwdMatch = pwdEncoder.matches(vo.getUserPass(), login.getUserPass());
 
 		if (login != null && pwdMatch == true) {
 			session.setAttribute("member", login);
-		} else {
+		}else {
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
 			return "redirect:/member/login";

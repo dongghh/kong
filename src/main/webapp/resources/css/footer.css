@@ -1,9 +1,10 @@
 #footer {
 	width: 80%;
-	height : 10%;
+	height: 10%;
 	text-align: left;
 	margin: auto;
-	bottom:0;
+	bottom: 0;
+	margin-top: 50px;
 }
 
 .footer h2 { /*고객센터*/
@@ -38,7 +39,7 @@
 	color: gray;
 }
 
-hr{
-	width : 100%;
+hr {
+	width: 100%;
 	margin-bottom: 20px;
 }
