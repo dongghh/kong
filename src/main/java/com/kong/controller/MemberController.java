@@ -174,11 +174,11 @@ public class MemberController {
 		return "/member/findId";
 	}
 
-	@RequestMapping(value = "/findpw", method = RequestMethod.POST)
+	@RequestMapping(value = "/findPw", method = RequestMethod.POST)
 	public void findPwPOST(@ModelAttribute MemberVO vo, HttpServletResponse response) throws Exception {
 		service.findPw(response, vo);
 
-		response.setContentType("text/html;charset=utf-8");
+//		response.setContentType("text/html;charset=utf-8");
 		MemberVO ck = service.readMember(vo.getUserId());
 		PrintWriter out = response.getWriter();
 		// 가입된 아이디가 없으면

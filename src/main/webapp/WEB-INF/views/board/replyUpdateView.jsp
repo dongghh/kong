@@ -5,23 +5,17 @@
 <title>게시판</title>
 </head>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						var formObj = $("form[name='updateForm']");
+	$(document).ready(function() {
+	var formObj = $("form[name='updateForm']");
 
-						$(".cancel_btn")
-								.on(
-										"click",
-										function() {
-											location.href = "/board/readView?bno=${replyUpdate.bno}"
-													+ "&page=${scri.page}"
-													+ "&perPageNum=${scri.perPageNum}"
-													+ "&searchType=${scri.searchType}"
-													+ "&keyword=${scri.keyword}";
-										})
-
-					})
+	$(".cancel_btn").on("click",function() {
+	location.href = "/board/readView?bno=${replyUpdate.bno}"
+	+ "&page=${scri.page}"
+	+ "&perPageNum=${scri.perPageNum}"
+	+ "&searchType=${scri.searchType}"
+	+ "&keyword=${scri.keyword}";
+		})
+	})
 </script>
 <body>
 

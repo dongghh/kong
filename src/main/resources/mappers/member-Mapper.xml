@@ -77,7 +77,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT *
 		FROM kong_member
 		WHERE
-		USERID=#{userId} AND USERNAME=#{userName} AND USEREMAIL=#{userEmail}
+		USERID=#{userId} AND USEREMAIL=#{userEmail}
 	</select>
 	
 	<!-- 패스워드 재설정 -->
