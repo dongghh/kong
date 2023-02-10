@@ -1,2 +1,1 @@
 # kong SHOP
-hr
