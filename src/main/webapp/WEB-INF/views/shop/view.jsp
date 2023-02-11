@@ -89,7 +89,8 @@
 									} else if(result == '2'){
 										alert("장바구니에 이미 추가되어져 있습니다.");
 									} else if(result == '5'){
-										alert("로그인이 필요합니다.");	
+										alert("로그인이 필요합니다.");
+										location.href = "/member/login";
 									}
 								}
 							   </script>

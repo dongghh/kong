@@ -20,6 +20,7 @@ section#container ul li {
 section#container div.itemThumb img {
 	width: 200px;
 	height: 200px;
+	border-radius : 15px 15px;
 }
 
 section#container div.itemName {

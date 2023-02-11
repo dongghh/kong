@@ -133,6 +133,9 @@ public class ShopController {
 		if (member == null) {
 			return "5";
 		}
+		if(cart.getCartStock() == 0) {
+			return "0";
+		}
 		cart.setUserId(member.getUserId());
 		int result = service.addCart(cart);
 

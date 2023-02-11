@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>회원가입</title>
+<title>Kong</title>
 <link rel="stylesheet" href="/resources/css/memberUpdateView.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

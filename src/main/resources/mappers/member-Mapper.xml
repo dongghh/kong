@@ -29,10 +29,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="memberUpdate">
 		UPDATE kong_member SET
 		USERNAME = #{userName},
+		USERPASS = #{userPass},
 		USEREMAIL = #{userEmail},
 		USERADDRESS = #{userAddress},
-		USERPNUMBER =
-		#{userPnumber}
+		USERPNUMBER = #{userPnumber}
 		WHERE USERID = #{userId}
 	</update>
 

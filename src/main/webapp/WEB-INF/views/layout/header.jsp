@@ -53,7 +53,6 @@
 							<li><a href="/admin/memberList">userList</a></li>
 							<li><a href="/admin/item/register">itemRegister</a></li>
 							<li><a href="/admin/item/list">itemList</a></li>
-							<li><a href="/shop/orderList">Order</a></li>
 							<li><a href="/shop/cartList">Cart</a></li>
 							<li><a href="/admin/shop/orderList">orderList</a></li>
 							<li><a href="/board/list">Notice</a></li>
