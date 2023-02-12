@@ -61,7 +61,7 @@
 								</tr>
 							</c:if>
 							<c:if test="${member.userId == null}">
-								<p>로그인 후에 작성하실 수 있습니다.</p>
+								<p style="text-align : center;">로그인 후에 작성하실 수 있습니다.</p>
 							</c:if>
 
 						</tbody>
