@@ -36,33 +36,33 @@
 					<th>가격</th>
 					<th>수량</th>
 					<th>합계</th>
-					<th>선택
-						<button type="button" class="selectDelete_btn">삭제</button>
-				<script>
-				$(".selectDelete_btn").click(
-				function() {
-				var confirm_val = confirm("정말 삭제하시겠습니까?");
-				
-				if (confirm_val) {
-				var checkArr = new Array();
-				
-				$("input[class='chBox']:checked").each(
-				function() {checkArr.push($(this).attr("data-cartNum"));});
-				
-				$.ajax({
-				url : "/shop/deleteCart",
-				type : "post",
-				data : {
-				chbox : checkArr},
-				success : function(result) {
-				if (result == 1) {
-				location.href = "/shop/cartList";
-				} else {
-				alert("삭제 실패");
-				}}});
-				}});
-				</script>
-				</th>
+					<th>
+						<button type="button" class="selectDelete_btn">전체 삭제</button>
+						<script>
+						$(".selectDelete_btn").click(
+						function() {
+						var confirm_val = confirm("정말 삭제하시겠습니까?");
+						
+						if (confirm_val) {
+						var checkArr = new Array();
+						
+						$("input[class='chBox']:checked").each(
+						function() {checkArr.push($(this).attr("data-cartNum"));});
+						
+						$.ajax({
+						url : "/shop/deleteCart",
+						type : "post",
+						data : {
+						chbox : checkArr},
+						success : function(result) {
+						if (result == 1) {
+						location.href = "/shop/cartList";
+						} else {
+						alert("삭제 실패");
+						}}});
+						}});
+						</script>
+					</th>
 				</tr>
 				<c:set var="sum" value="0" />
 				<c:forEach items="${cartList}" var="cartList">
@@ -82,7 +82,7 @@
 						<td><fmt:formatNumber pattern="###,###,###" value="${cartList.itemPrice}" /></td>
 						<td>${cartList.cartStock}<br /> </td>
 						<td><fmt:formatNumber pattern="###,###,###" value="${cartList.itemPrice * cartList.cartStock}" /></td>
-						<td><button type="button" class="delete_${cartList.cartNum}_btn" data-cartNum="${cartList.cartNum}">삭제</button></td>
+						<td><button type="button" id="del" class="delete_${cartList.cartNum}_btn" data-cartNum="${cartList.cartNum}">삭제</button></td>
 						<script>
 						$(".delete_${cartList.cartNum}_btn").click(
 						function() {

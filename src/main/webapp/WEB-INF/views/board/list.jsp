@@ -4,28 +4,41 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<title>게시판</title>
+<title>Kong</title>
 <style type="text/css">
-li {
-	list-style: none;
-	float: left;
-	padding: 6px;
+.pageMaker {
+	display: inline-block;
+	padding-left: 0;
+	margin: 20px 0;
+	border-radius: 4px;
 }
 
-html, body {
-	width: 100%;
-	height: 100%;
+.pageMaker li {
+	float: left;
+	border-radius: 5px;
+}
+
+.pageMaker>li:first-child>a {
+	margin-left: 0;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+.pageMaker>li>a {
+	position: relative;
+	float: left;
+	padding: 6px 12px;
+	margin-left: -1px;
+	line-height: 1.42857143;
+	color: #337ab7;
+	text-decoration: none;
+	background-color: #fff;
+	border: 1px solid #ddd;
 }
 
 .container {
-	width: 80%;
-	height: 100%;
+	width: 70%;
+	margin: auto;
 }
 
 #title {
@@ -34,116 +47,256 @@ html, body {
 	padding-bottom: 30px;
 	color: gray;
 }
+
+.tableList {
+	width: 100%;
+	margin: auto;
+	border-collapse: collapse;
+	text-align: center;
+	height: 500px;
+}
+
+.tableList tr {
+	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
+}
+
+#selectSearch {
+	width: 100%;
+	margin-right: -15px;
+	margin-left: -15px;
+}
+
+#select {
+	display: inline-block;
+	float: left;
+	width: 16.66666667%;
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.form {
+	display: block;
+	width: 100%;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgb(0 0 0/ 8%);
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	font-family: inherit;
+	text-transform: none;
+	margin: 0;
+	font: inherit;
+}
+
+.search {
+	display: inline-block;
+	float: left;
+	width: 83.33333333%;
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.input {
+	position: relative;
+	display: table;
+	border-collapse: separate;
+}
+
+#keywordInput {
+	margin: 0;
+	display: table-cell;
+	position: relative;
+	z-index: 2;
+	float: left;
+	width: 100%;
+	margin-bottom: 0;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgb(0 0 0/ 8%);
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	font-family: inherit;
+}
+
+.inputSpan {
+	position: relative;
+	font-size: 0;
+	white-space: nowrap;
+	width: 1%;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.inputSpan:last-child>.btn {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	margin-left: -1px;
+}
+
+.inputSpan>.btn {
+	position: relative;
+}
+
+.btn-default {
+	color: #333;
+	background-color: #fff;
+	box-shadow: inset 0 1px 0 rgb(255 255 255/ 15%), 0 1px 1px
+		rgb(0 0 0/ 8%);
+	text-shadow: 0 1px 0 #fff;
+	background-image: linear-gradient(to bottom, #fff 0, #e0e0e0 100%);
+	background-repeat: repeat-x;
+	border-color: #ccc;
+}
+
+.btn {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	touch-action: manipulation;
+	cursor: pointer;
+	user-select: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+#searchBtn {
+	font-family: inherit;
+	-webkit-appearance: button;
+	text-transform: none;
+	overflow: visible;
+	margin: 0;
+}
 </style>
 
 </head>
 <body>
 	<%@include file="../layout/header.jsp"%>
-	<section id="container">
-		<div class="container">
-			<div>
-				<h2 id="title">
-					<a href="/">공지사항</a>
-				</h2>
-			</div>
-			<div>
-				<%@include file="nav.jsp"%>
-			</div>
-			<hr />
-
-			<section id="container">
-				<form role="form" method="get">
-					<table class="table table-hover">
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>등록일</th>
-							<th>조회수</th>
-						</tr>
-
-						<c:forEach items="${list}" var="list">
-							<tr>
-								<td><c:out value="${list.bno}" /></td>
-								<td><a href="/board/readView?bno=${list.bno}
-															&page=${scri.page}
-															&perPageNum=${scri.perPageNum}
-															&searchType=${scri.searchType}
-															&keyword=${scri.keyword}">
-										<c:out value="${list.title}" />
-								</a></td>
-								<td><c:out value="${list.writer}" /></td>
-								<td><fmt:formatDate value="${list.regdate}"
-										pattern="yyyy-MM-dd" /></td>
-								<td><c:out value="${list.cnt}" /></td>
-							</tr>
-						</c:forEach>
-					</table>
-
-					<div class="search row">
-						<div class="col-xs-2 col-sm-2">
-							<select name="searchType" class="form-control">
-								<option value="n"
-									<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
-								<option value="t"
-									<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
-								<option value="c"
-									<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
-								<option value="w"
-									<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
-								<option value="tc"
-									<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
-							</select>
-						</div>
-
-						<div class="col-xs-10 col-sm-10">
-							<div class="input-group">
-								<input type="text" name="keyword" id="keywordInput" value="${scri.keyword}" class="form-control" /> 
-									<span class="input-group-btn">
-										<button id="searchBtn" type="submit" class="btn btn-default">검색</button>
-									</span>
-							</div>
-						</div>
-
-						<script>
-							$(function() {
-								$('#searchBtn').click(function() {
-									self.location = "list"
-									+ '${pageMaker.makeQuery(1)}'
-									+ "&searchType="
-									+ $("select option:selected").val()
-									+ "&keyword="+ encodeURIComponent(
-									$('#keywordInput').val());
-									});
-							});
-						</script>
-					</div>
-					<div class="col-md-offset-3">
-						<ul class="pagination">
-							<c:if test="${pageMaker.prev}">
-								<li><a
-									href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
-							</c:if>
-
-							<c:forEach begin="${pageMaker.startPage}"
-								end="${pageMaker.endPage}" var="idx">
-								<li
-									<c:out value="${pageMaker.cri.page == idx ? 'class=info' : ''}" />>
-									<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
-								</li>
-							</c:forEach>
-
-							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-								<li><a
-									href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
-							</c:if>
-						</ul>
-					</div>
-				</form>
-			</section>
-			<hr />
+	<div class="container">
+		<div>
+			<h2 id="title">
+				<a href="/">공지사항</a>
+			</h2>
 		</div>
-	</section>
+		<div>
+			<%@include file="nav.jsp"%>
+		</div>
+		<hr />
+		<form role="form" method="get">
+			<table class="tableList">
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>등록일</th>
+					<th>조회수</th>
+				</tr>
+
+				<c:forEach items="${list}" var="list">
+					<tr>
+						<td><c:out value="${list.bno}" /></td>
+						<td><a
+							href="/board/readView?bno=${list.bno}
+								&page=${scri.page}
+								&perPageNum=${scri.perPageNum}
+								&searchType=${scri.searchType}
+								&keyword=${scri.keyword}">
+								<c:out value="${list.title}" />
+						</a></td>
+						<td><c:out value="${list.writer}" /></td>
+						<td><fmt:formatDate value="${list.regdate}"
+								pattern="yyyy-MM-dd" /></td>
+						<td><c:out value="${list.cnt}" /></td>
+					</tr>
+				</c:forEach>
+			</table>
+
+			<div id="selectSearch">
+				<div id="select">
+					<select name="searchType" class="form">
+						<option value="n"
+							<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
+						<option value="t"
+							<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+						<option value="c"
+							<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
+						<option value="w"
+							<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
+						<option value="tc"
+							<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+					</select>
+				</div>
+
+				<div class="search">
+					<div class="input">
+						<input type="text" name="keyword" id="keywordInput"
+							value="${scri.keyword}" /> <span class="inputSpan">
+							<button id="searchBtn" type="submit" class="btn btn-default">검색</button>
+						</span>
+					</div>
+				</div>
+
+				<script>
+					$(function() {
+						$('#searchBtn').click(
+								function() {
+									self.location = "list"
+											+ '${pageMaker.makeQuery(1)}'
+											+ "&searchType="
+											+ $("select option:selected").val()
+											+ "&keyword="
+											+ encodeURIComponent($(
+													'#keywordInput').val());
+								});
+					});
+				</script>
+			</div>
+			<div>
+				<ul class="pageMaker">
+					<c:if test="${pageMaker.prev}">
+						<li><a
+							href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+					</c:if>
+
+					<c:forEach begin="${pageMaker.startPage}"
+						end="${pageMaker.endPage}" var="idx">
+						<li
+							<c:out value="${pageMaker.cri.page == idx ? 'class=info' : ''}" />>
+							<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+						</li>
+					</c:forEach>
+
+					<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+						<li><a
+							href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+					</c:if>
+				</ul>
+			</div>
+		</form>
+		<hr />
+	</div>
 	<%@include file="../layout/footer.jsp"%>
 </body>
 </html>

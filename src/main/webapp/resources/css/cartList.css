@@ -7,7 +7,7 @@
 	text-align: center;
 	padding-top: 30px;
 	padding-bottom: 30px;
-	color: gray;
+	color: black;
 }
 
 #cartTable {
@@ -28,19 +28,33 @@
 
 #cartTable-bottom {
 	border-bottom: solid 1px lightgray;
-	margin-bottom: 5px;
 }
 
 td img {
 	height: 140px;
 	width: 140px;
 	cursor: pointer;
+	border-radius: 15px;
 }
 
 .delBtn {
 	float: right;
 	width: 300px;
 	text-align: right;
+}
+
+#del {
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid gray;
+	background: #fff;
+}
+
+.selectDelete_btn {
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid gray;
+	background: #fff;
 }
 
 .delBtn button {
@@ -72,6 +86,7 @@ td img {
 	padding: 5px 10px;
 	border: 1px solid #999;
 	background: #fff;
+	border-radius: 5px;
 }
 
 .listResult::after {
@@ -115,6 +130,7 @@ td img {
 	padding: 5px 10px;
 	background: #fff;
 	margin-right: 20px;
+	border-radius: 5px;
 }
 
 .orderInfo .inputArea #sample6_address {
@@ -122,7 +138,7 @@ td img {
 }
 
 .orderInfo .inputArea #sample6_detailAddress {
-	width: 280px;
+	width: 200px;
 }
 
 .orderInfo .inputArea #sample6_extraAddress {

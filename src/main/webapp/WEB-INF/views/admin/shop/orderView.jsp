@@ -11,7 +11,7 @@
 }
 
 .orderInfo {
-	border: 5px solid #eee;
+	border: 3px solid #eee;
 	padding: 10px 20px;
 	margin: 20px 0;
 }
@@ -44,6 +44,7 @@
 .thumb img {
 	width: 200px;
 	height: 200px;
+	border-radius : 15px;
 }
 
 .itemInfo {
