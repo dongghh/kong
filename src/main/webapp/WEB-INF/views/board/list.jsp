@@ -50,15 +50,26 @@
 
 .tableList {
 	width: 100%;
-	margin: auto;
+	max-width: 100%;
+	margin-bottom: 20px;
+	background-color: transparent;
+	border-spacing: 0;
 	border-collapse: collapse;
-	text-align: center;
-	height: 500px;
 }
 
-.tableList tr {
-	border-bottom: 1px solid #eee;
-	border-top: 1px solid #eee;
+.tableList>tbody>tr>th {
+	padding: 8px;
+	line-height: 1.42857143;
+	vertical-align: top;
+	border-top: 1px solid #ddd;
+	text-align: left;
+}
+
+.tableList>tbody>tr>td {
+	padding: 8px;
+	line-height: 1.42857143;
+	vertical-align: top;
+	border-top: 1px solid #ddd;
 }
 
 #selectSearch {
@@ -113,14 +124,21 @@
 	border-collapse: separate;
 }
 
-#keywordInput {
-	margin: 0;
+.input .keywordInput:first-child {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.input .keywordInput {
 	display: table-cell;
 	position: relative;
 	z-index: 2;
 	float: left;
 	width: 100%;
 	margin-bottom: 0;
+}
+
+.keywordInput {
 	height: 34px;
 	padding: 6px 12px;
 	font-size: 14px;
@@ -132,7 +150,12 @@
 	border-radius: 4px;
 	box-shadow: inset 0 1px 1px rgb(0 0 0/ 8%);
 	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+input {
 	font-family: inherit;
+	margin: 0;
+	font: inherit;
 }
 
 .inputSpan {
@@ -251,7 +274,7 @@
 
 				<div class="search">
 					<div class="input">
-						<input type="text" name="keyword" id="keywordInput"
+						<input type="text" name="keyword" class="keywordInput"
 							value="${scri.keyword}" /> <span class="inputSpan">
 							<button id="searchBtn" type="submit" class="btn btn-default">검색</button>
 						</span>
