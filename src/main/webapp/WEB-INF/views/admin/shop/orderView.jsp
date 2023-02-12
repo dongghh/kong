@@ -27,6 +27,7 @@
 	margin-bottom: 20px;
 	padding-bottom: 20px;
 	border-bottom: 1px solid #999;
+	list-style : none;
 }
 
 .orderView li::after {
@@ -68,6 +69,8 @@
 	background: #fff;
 	border: 1px solid #999;
 	margin-left: 10px;
+	padding : 5px;
+	border-radius : 5px;
 }
 </style>
 </head>
@@ -101,10 +104,12 @@
 
 								<input type="hidden" name="orderId" value="${orderView.orderId}" />
 								<input type="hidden" name="delivery" class="delivery" value="" />
-
+							<c:if test="${orderView.delivery == '배송준비'}">
 								<button type="button" class="delivery1_btn">배송 중</button>
+							</c:if>
+							<c:if test="${orderView.delivery == '배송 중'}">
 								<button type="button" class="delivery2_btn">배송 완료</button>
-
+							</c:if>
 								<script>
 									$(".delivery1_btn").click(function() {
 										$(".delivery").val("배송 중");
@@ -146,5 +151,4 @@
 			</ul>
 		</section>
 	</section>
-</body>
-</html>
+<%@include file="/WEB-INF/views/layout/footer.jsp"%>

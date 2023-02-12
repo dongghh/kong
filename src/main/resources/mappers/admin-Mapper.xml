@@ -123,12 +123,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update kong_item
 		set
 		itemName = #{itemName},
-		cateCode =
-		#{cateCode},
+		cateCode = #{cateCode},
 		itemPrice = #{itemPrice},
 		itemStock = #{itemStock},
-		itemDes
-		= #{itemDes},
+		itemDes = #{itemDes},
 		itemImg = #{itemImg},
 		itemThumbImg = #{itemThumbImg}
 		where
