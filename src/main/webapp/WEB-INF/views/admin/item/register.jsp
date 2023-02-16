@@ -5,7 +5,7 @@
 <head>
 <link rel="stylesheet" href="/resources/css/itemRegister.css">
 <meta charset="UTF-8">
-<title>상품 등록</title>
+<title>Kong</title>
 <script src="/resources/ckeditor/ckeditor.js"></script>
 </head>
 <body>
