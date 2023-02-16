@@ -86,6 +86,10 @@
 										alert("장바구니에 추가를 하지 못하였습니다.");
 									} else if(result == '1'){
 										alert("장바구니에 추가되었습니다.");
+										var add = confirm("구매 페이지로 이동하시겠습니까?");
+										if(add==true){
+											location.href="/shop/cartList"
+										}
 									} else if(result == '2'){
 										alert("장바구니에 이미 추가되어져 있습니다.");
 									} else if(result == '5'){

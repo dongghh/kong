@@ -87,7 +87,7 @@
 									pattern="###,###,###" />원</span>
 						</div>
 				</a></li>
-				<c:if test="${list.count mod 4==0}">
+				<c:if test="${List.count mod 4==0}">
 					<br>
 				</c:if>
 			</c:forEach>
@@ -114,7 +114,7 @@
 									value="${list.itemPrice}" pattern="###,###,###" />원</span>
 						</div>
 				</a></li>
-				<c:if test="${List.count mod 4==0}">
+				<c:if test="${list.count mod 4==0}">
 					<br>
 				</c:if>
 			</c:forEach>
