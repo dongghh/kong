@@ -26,5 +26,13 @@ Database - MySql
 
 Server - Apache Tomcat8.5
 
+## 기능 구현
+
+### 메인 페이지
+
+<img width="700" src="https://user-images.githubusercontent.com/103232761/219433330-aa162914-cc65-4d91-b064-a4161df8b774.gif"/>
+
+### 상품 검색
+<img width="700" src="https://user-images.githubusercontent.com/103232761/219443030-ebd73594-66a9-432b-82c1-7dc2e6e5c09d.gif"/>
 
 
