@@ -26,7 +26,7 @@ Database - MySql
 
 Server - Apache Tomcat8.5
 
-## 기능 구현
+## Views
 
 ### 메인 페이지
 
@@ -43,6 +43,9 @@ Server - Apache Tomcat8.5
 
 <img width="500" src="https://user-images.githubusercontent.com/103232761/219449296-7437749e-fac1-467a-b004-39fbdabf0313.gif"/>
 
-<img width="500" height="800" src="https://user-images.githubusercontent.com/103232761/219449702-c1cb9e47-d4e5-42e8-a861-6615c80483a9.jpeg"/>
+<img width="500" height="800" src="https://user-images.githubusercontent.com/103232761/219449702-c1cb9e47-d4e5-42e8-a861-6615c80483a9.jpeg">
+모바일로 QR코드 스캔 후 결제할 수 있게 구현하였다.
+
+
 
 
