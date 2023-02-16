@@ -12,3 +12,9 @@ Project Hosting : http://3.36.249.224:8080/
 아이디 : kong
 
 비밀번호 : kong
+
+일반 계정
+
+아이디 : test 
+
+비밀번호 : test
