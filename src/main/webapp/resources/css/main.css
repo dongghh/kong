@@ -148,11 +148,11 @@ hr {
 	padding-right: 15px;
 	padding-left: 15px;
 	list-style: none;
+	margin-bottom: 30px;
 }
 
 @media ( min-width : 576px) {
 	.itemUl li {
-		ms-flex: 0 0 50%;
 		flex: 0 0 50%;
 		max-width: 50%;
 	}
@@ -160,7 +160,6 @@ hr {
 
 @media ( min-width : 768px) {
 	.itemUl li {
-		ms-flex: 0 0 33.333333%;
 		flex: 0 0 33.333333%;
 		max-width: 33.333333%;
 	}
@@ -168,11 +167,6 @@ hr {
 
 @media ( min-width : 992px) {
 	.itemUl li {
-		/* list-style: none;
-		display: inline-block;
-		margin: 50px;
-		width: 180px; */
-		ms-flex: 0 0 25%;
 		flex: 0 0 25%;
 		max-width: 25%;
 	}
