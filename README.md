@@ -81,7 +81,7 @@ Project Hosting : http://3.36.249.224:8080/
 
 <img width="700" height="500" src="https://user-images.githubusercontent.com/103232761/219449296-7437749e-fac1-467a-b004-39fbdabf0313.gif"/>
 
-<img width="450" height="700" src="https://user-images.githubusercontent.com/103232761/219449702-c1cb9e47-d4e5-42e8-a861-6615c80483a9.jpeg"><img width="450" height="700" src="https://user-images.githubusercontent.com/103232761/219501319-8c3cc0d7-a5ad-45b6-8ae9-e4b063d15c73.jpeg">
+<img width="400" height="700" src="https://user-images.githubusercontent.com/103232761/219449702-c1cb9e47-d4e5-42e8-a861-6615c80483a9.jpeg"><img width="400" height="700" src="https://user-images.githubusercontent.com/103232761/219501319-8c3cc0d7-a5ad-45b6-8ae9-e4b063d15c73.jpeg">
 
 
 + 모바일로 QR코드 스캔 후 결제할 수 있게 구현하였다.
