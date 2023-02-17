@@ -71,7 +71,7 @@ Project Hosting : http://3.36.249.224:8080/
 
 + ajax를 이용해 상품을 장바구니로 담을 수 있고 구매수량에 따른 합계 계산을 해주며 상품 수량에 따른 구매수량을 제한했습니다.
 
-<img width="343" alt="장바구니1" src="https://user-images.githubusercontent.com/103232761/219496366-81213087-d118-4a18-b1ab-2b0ebe2841c4.png"><img width="591" alt="장바구니2" src="https://user-images.githubusercontent.com/103232761/219496381-8e5e8b66-ed1b-482e-8a55-e529367f22be.png">
+<img width="400" alt="장바구니1" src="https://user-images.githubusercontent.com/103232761/219496366-81213087-d118-4a18-b1ab-2b0ebe2841c4.png"><img width="400" alt="장바구니2" src="https://user-images.githubusercontent.com/103232761/219496381-8e5e8b66-ed1b-482e-8a55-e529367f22be.png">
 
 + 상품을 장바구니에 담는 과정에서 result의 값에 따라 결과를 다르게 구현했습니다.
 
