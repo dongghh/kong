@@ -59,7 +59,7 @@ Project Hosting : http://3.36.249.224:8080/
 
 <img width="700" src="https://user-images.githubusercontent.com/103232761/219509837-dd65436b-b9e6-44d9-92a9-bd2073667085.gif"/>
 
-<img width="450" alt="findpw" src="https://user-images.githubusercontent.com/103232761/219510669-7b481d48-0dd4-4e64-81a1-dac52ffb3b22.png"><img width="450" alt="findpw" src="https://user-images.githubusercontent.com/103232761/219510680-d8ed28a0-7c0b-487a-9614-660b6e3981c3.png">
+<img width="400" alt="findpw" src="https://user-images.githubusercontent.com/103232761/219510669-7b481d48-0dd4-4e64-81a1-dac52ffb3b22.png"><img width="400" alt="findpw" src="https://user-images.githubusercontent.com/103232761/219510680-d8ed28a0-7c0b-487a-9614-660b6e3981c3.png">
 
 
 
