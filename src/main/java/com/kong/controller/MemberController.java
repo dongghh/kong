@@ -210,7 +210,7 @@ public class MemberController {
 			service.updatePw(vo);
 			
 			// 메일 전송
-			sendEmail(vo, "findpw");
+			sendEmail(vo, "findPw");
 			
 			// 비밀번호 암호화 후 저장
 			String pwd = pwdEncoder.encode(pw);
@@ -236,7 +236,7 @@ public class MemberController {
 		String subject = "";
 		String msg = "";
 
-		if (div.equals("findpw")) {
+		if (div.equals("findPw")) {
 				subject = "KONG 임시 비밀번호 입니다.";
 				msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
 				msg += "<h3 style='color: blue;'>";

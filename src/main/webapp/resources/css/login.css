@@ -2,7 +2,7 @@
 	width: 80%;
 	margin: auto;
 	padding-top: 20px;
-	margin-bottom : 20px;
+	margin-bottom: 20px;
 }
 
 #container {
@@ -15,6 +15,10 @@
 	text-align: left;
 	font-size: large;
 	margin-top: 80px;
+}
+
+.id_pw_hr {
+	border: 1px solid lightgray;
 }
 
 #wrap-content>button>span {
@@ -55,6 +59,15 @@ input::placeholder {
 	justify-content: space-between;
 }
 
-button {
+.find {
+	display: inline-block;
+	margin: 30px auto;
+	padding: 10px 20px;
+	background-color: black;
+	color: white;
 	cursor: pointer;
+}
+
+.buttonBox {
+	text-align: center;
 }

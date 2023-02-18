@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/resources/css/login.css">
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
 section {
 	width: 70%;
@@ -20,14 +20,6 @@ section {
 form>div>input {
 	margin-right: 100px;
 	margin-left: 10px;
-}
-
-button {
-	display: block;
-	margin: 30px auto;
-	padding: 10px 20px;
-	background-color: black;
-	color: white;
 }
 
 #id {
@@ -56,7 +48,7 @@ h3 {
 	$(function(){
 		$("#findBtn").click(function(){
 			$.ajax({
-				url : "/member/findpw",
+				url : "/member/findPw",
 				type : "POST",
 				data : {
 					userId : $("#userId").val(),
@@ -81,13 +73,15 @@ h3 {
 				<hr class="id_pw_hr">
 					<div class="article">
 						<small>가입하신 정보로 비밀번호를 변경하시기 바랍니다.</small> <br> <br>
-						<div id="findPW">
+						<div id="findPw">
 							아이디 <input type="text" id="userId" name="userId" required> &nbsp;&nbsp;  
 							이메일 <input type="email" id="userEmail" name="userEmail" required />
 						</div>
 					</div>
 					<hr class="id_pw_hr">
-					<button type="button" class="find" id="findBtn">비밀번호 찾기</button>
+					<div class="buttonBox">
+						<button type="button" class="find" id="findBtn">비밀번호 찾기</button>
+					</div>
 			</div>
 		</div>
 	</section>

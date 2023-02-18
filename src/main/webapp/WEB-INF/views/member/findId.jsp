@@ -21,14 +21,6 @@ form>div>input {
 	margin-left: 10px;
 }
 
-button {
-	display: block;
-	margin: 30px auto;
-	padding: 10px 20px;
-	background-color: black;
-	color: white;
-}
-
 #id {
 	margin-bottom: 70px;
 }
@@ -43,12 +35,12 @@ h3 {
 	text-align: start;
 }
 
-.id_pw_hr {
-	border: 1px solid lightgray;
-}
-
 .article {
 	padding: 30px 0px;
+}
+
+.buttonBox{
+	text-align : center;
 }
 </style>
 </head>
@@ -72,8 +64,10 @@ h3 {
 						</div>
 					</div>
 					<hr class="id_pw_hr">
-					<input type="submit" class="find" value="아이디 찾기" />
-					
+					<div class="buttonBox">
+						<button type="submit" class="find">아이디 찾기</button>
+						<button type="button" class="find" onClick="location.href='/member/findPw'">비밀번호 찾기</button>
+					</div>
 					<!-- 이름과 전화번호가 일치하지 않을 때-->
 					<c:if test="${check == 1}">
 					<script>alert("일치하는 정보가 존재하지 않습니다.")</script>

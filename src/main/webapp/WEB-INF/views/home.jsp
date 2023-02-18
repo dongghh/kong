@@ -35,8 +35,7 @@
 
 	<form id="searchForm" action="shop/search" method="get"
 		class="search-bar">
-		<input type="search" name="keyword" pattern=".*\S.*"
-			placeholder="상품명을 검색해주세요." value="${scri.keyword}" required>
+		<input type="search" name="keyword" pattern=".*\S.*" placeholder="상품명을 검색해주세요." value="${scri.keyword}" required>
 		<button class="search-btn" id="SearchBtn" type="submit">
 			<span>Search</span>
 		</button>
