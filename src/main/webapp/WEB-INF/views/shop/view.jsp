@@ -175,141 +175,142 @@
 
 					</ol>
 					<script> 
-			function replyList(){
-			   var itemNum = ${view.itemNum};
-			   
-			   $.getJSON("/shop/view/replyList" + "?n=" + itemNum, function(data){
-			    var str = "";				    
-				$(data).each(function(){
-					   
-			     console.log(data);
-					     
-			     var regDate = new Date(this.regDate);				     
-			     regDate = regDate.toLocaleDateString("ko-US")
-					     
-				str += "<li data-repNum='" + this.repNum + "'>"
-				+ "<div class='userInfo'>"
-				+ "<span class='userName'>" + this.userName + "</span>"
-				+ "<span class='rating'>" + "평점 : "+ this.rating + "</span>"
-				+ "<br>"
-				+ "<span class='date'>" + regDate + "</span>"
-				+ "</div>"
-				+ "<div class='replyContent'>" + this.repCon + "</div>"
-					    
-			    + "<c:if test='${member != null}'>"
-					    
-			    + "<div class='replyFooter'>"
-			    + "<button type='button' class='modify' data-repNum='" + this.repNum + "'>수정</button>"
-			    + "<button type='button' class='delete' data-repNum='" + this.repNum + "'>삭제</button>"
-			    + "</div>"
-					    
-			    + "</c:if>"
-					    
-			    + "</li>";
-			     });
-					    
-				$("div.replyList ol").html(str);
-					   });
+					function replyList() {
+					    var itemNum = $ {
+					        view.itemNum
+					    };
+
+					    $.getJSON("/shop/view/replyList" + "?n=" + itemNum, function(data) {
+					        var str = "";
+					        $(data).each(function() {
+
+					            console.log(data);
+
+					            var regDate = new Date(this.regDate);
+					            regDate = regDate.toLocaleDateString("ko-US")
+
+					            str += "<li data-repNum='" + this.repNum + "'>" +
+					                "<div class='userInfo'>" +
+					                "<span class='userName'>" + this.userName + "</span>" +
+					                "<span class='rating'>" + "평점 : " + this.rating + "</span>" +
+					                "<br>" +
+					                "<span class='date'>" + regDate + "</span>" +
+					                "</div>" +
+					                "<div class='replyContent'>" + this.repCon + "</div>"
+
+					                +
+					                "<c:if test='${member != null}'>"
+
+					                +
+					                "<div class='replyFooter'>" +
+					                "<button type='button' class='modify' data-repNum='" + this.repNum + "'>수정</button>" +
+					                "<button type='button' class='delete' data-repNum='" + this.repNum + "'>삭제</button>" +
+					                "</div>"
+
+					                +
+					                "</c:if>"
+
+					                +
+					                "</li>";
+					        });
+
+					        $("div.replyList ol").html(str);
+					    });
 					}
-</script>
+					</script>
 					<script>
 					replyList();
 				</script>
 				</div>
 			</div>
 			<div class="replyModal">
-
 				<div class="modalContent">
-
 					<div>
 						<textarea class="modal_repCon" name="modal_repCon"></textarea>
 					</div>
-
 					<div>
 						<button type="button" class="modal_modify_btn">수정</button>
 						<button type="button" class="modal_cancel">취소</button>
 					</div>
-
 				</div>
-
 				<div class="modalBackground"></div>
-
 			</div>
-
 			<script>
-$(".modal_cancel").click(function(){
-  $(".replyModal").fadeOut(200);
-});
+			$(".modal_cancel").click(function() {
+			    $(".replyModal").fadeOut(200);
+			});
 
 
-$(document).on("click", ".modify", function(){
-	   $(".replyModal").fadeIn(200);
-	   
-	   var repNum = $(this).attr("data-repNum");
-	   var repCon = $(this).parent().parent().children(".replyContent").text();
-	   
-	   $(".modal_repCon").val(repCon);
-	   $(".modal_modify_btn").attr("data-repNum", repNum);
-	   
-	});
-	
-	
-$(document).on("click", ".delete", function(){
- 
-var deleteConfirm = confirm("삭제하시겠습니까?");
-	   
-if(deleteConfirm){
- var data = {repNum : $(this).attr("data-repNum")};
-  
- $.ajax({
- 	   url : "/shop/view/deleteReply",
- 	   type : "post",
- 	   data : data,
- 	   success : function(result){
- 	    
- 	    if(result == 1) {
- 	     replyList();
- 	    } else {
- 	    	console.log(result)
- 	     alert("작성자 본인만 할 수 있습니다.");
- 	    }
- 	   },
- 	   error : function(){
- 	    alert("로그인 후 이용해주세.")
- 	    console.log(result)
- 	   }
- 	});
- }
-});
-$(".modal_modify_btn").click(function(){
-	   var modifyConfirm = confirm("수정하시겠습니까?");
-	   
-	   if(modifyConfirm) {
-	    var data = {
-	       repNum : $(this).attr("data-repNum"),
-	       repCon : $(".modal_repCon").val()
-	      };  // ReplyVO 형태로 데이터 생성
-	    
-	    $.ajax({
-	     url : "/shop/view/modifyReply",
-	     type : "post",
-	     data : data,
-	     success : function(result){
-	      
-	      if(result == 1) {
-	       replyList();
-	       $(".replyModal").fadeOut(200);
-	       console.log(result)
-	      } else {
-	       alert("작성자 본인만 할 수 있습니다.");         
-	      }
-	     },
-	     error : function(){
-	      alert("로그인하셔야합니다.")
-	     }
-	    });
-	   }
-	});
-</script>
+			$(document).on("click", ".modify", function() {
+			    $(".replyModal").fadeIn(200);
+
+			    var repNum = $(this).attr("data-repNum");
+			    var repCon = $(this).parent().parent().children(".replyContent").text();
+
+			    $(".modal_repCon").val(repCon);
+			    $(".modal_modify_btn").attr("data-repNum", repNum);
+
+			});
+
+
+			$(document).on("click", ".delete", function() {
+
+			    var deleteConfirm = confirm("삭제하시겠습니까?");
+
+			    if (deleteConfirm) {
+			        var data = {
+			            repNum: $(this).attr("data-repNum")
+			        };
+
+			        $.ajax({
+			            url: "/shop/view/deleteReply",
+			            type: "post",
+			            data: data,
+			            success: function(result) {
+
+			                if (result == 1) {
+			                    replyList();
+			                } else {
+			                    console.log(result)
+			                    alert("작성자 본인만 할 수 있습니다.");
+			                }
+			            },
+			            error: function() {
+			                alert("로그인 후 이용해주세.")
+			                console.log(result)
+			            }
+			        });
+			    }
+			});
+			$(".modal_modify_btn").click(function() {
+			    var modifyConfirm = confirm("수정하시겠습니까?");
+
+			    if (modifyConfirm) {
+			        var data = {
+			            repNum: $(this).attr("data-repNum"),
+			            repCon: $(".modal_repCon").val()
+			        }; // ReplyVO 형태로 데이터 생성
+
+			        $.ajax({
+			            url: "/shop/view/modifyReply",
+			            type: "post",
+			            data: data,
+			            success: function(result) {
+
+			                if (result == 1) {
+			                    replyList();
+			                    $(".replyModal").fadeOut(200);
+			                    console.log(result)
+			                } else {
+			                    alert("작성자 본인만 할 수 있습니다.");
+			                }
+			            },
+			            error: function() {
+			                alert("로그인하셔야합니다.")
+			            }
+			        });
+			    }
+			});
+			</script>
 	</section>
 <%@include file="../layout/footer.jsp"%>

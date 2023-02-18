@@ -7,39 +7,39 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(
-			function() {
-				var formObj = $("form[name='updateForm']");
+$(document).ready(
+	    function() {
+	        var formObj = $("form[name='updateForm']");
 
-				$(".cancel_btn").on(
-						"click",
-						function() {
-							event.preventDefault();
-							location.href = "/board/readView?bno=${update.bno}"
-									+ "&page=${scri.page}"
-									+ "&perPageNum=${scri.perPageNum}"
-									+ "&searchType=${scri.searchType}"
-									+ "&keyword=${scri.keyword}";
-						})
+	        $(".cancel_btn").on(
+	            "click",
+	            function() {
+	                event.preventDefault();
+	                location.href = "/board/readView?bno=${update.bno}" +
+	                    "&page=${scri.page}" +
+	                    "&perPageNum=${scri.perPageNum}" +
+	                    "&searchType=${scri.searchType}" +
+	                    "&keyword=${scri.keyword}";
+	            })
 
-				$(".update_btn").on("click", function() {
-					if (fn_valiChk()) {
-						return false;
-					}
-					formObj.attr("action", "/board/update");
-					formObj.attr("method", "post");
-					formObj.submit();
-				})
-			})
+	        $(".update_btn").on("click", function() {
+	            if (fn_valiChk()) {
+	                return false;
+	            }
+	            formObj.attr("action", "/board/update");
+	            formObj.attr("method", "post");
+	            formObj.submit();
+	        })
+	    })
 
 	function fn_valiChk() {
-		var updateForm = $("form[name='updateForm'] .chk").length;
-		for (var i = 0; i < updateForm; i++) {
-			if ($(".chk").eq(i).val() == "" || $(".chk").eq(i).val() == null) {
-				alert($(".chk").eq(i).attr("title"));
-				return true;
-			}
-		}
+	    var updateForm = $("form[name='updateForm'] .chk").length;
+	    for (var i = 0; i < updateForm; i++) {
+	        if ($(".chk").eq(i).val() == "" || $(".chk").eq(i).val() == null) {
+	            alert($(".chk").eq(i).attr("title"));
+	            return true;
+	        }
+	    }
 	}
 </script>
 </head>

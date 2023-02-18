@@ -5,41 +5,41 @@
 <title>회원탈퇴</title>
 </head>
 <script type="text/javascript">
-	$(document).ready(function() {
-		// 취소
-		$(".cencle").on("click", function() {
+$(document).ready(function() {
+    // 취소
+    $(".cencle").on("click", function() {
 
-			location.href = "/";
+        location.href = "/";
 
-		})
+    })
 
-		$("#submit").on("click", function() {
-			if ($("#userPass").val() == "") {
-				alert("비밀번호를 입력해주세요.");
-				$("#userPass").focus();
-				return false;
-			}
-			$.ajax({
-				url : "/member/passChk",
-				type : "POST",
-				dateType : "json",
-				data : $("#delForm").serializeArray(),
-				success : function(data) {
+    $("#submit").on("click", function() {
+        if ($("#userPass").val() == "") {
+            alert("비밀번호를 입력해주세요.");
+            $("#userPass").focus();
+            return false;
+        }
+        $.ajax({
+            url: "/member/passChk",
+            type: "POST",
+            dateType: "json",
+            data: $("#delForm").serializeArray(),
+            success: function(data) {
 
-					if (data == true) {
-						if (confirm("회원탈퇴하시겠습니까?")) {
-							$("#delForm").submit();
-						}
-					} else {
-						alert("패스워드가 틀렸습니다.");
-						return;
-					}
-				}
-			})
+                if (data == true) {
+                    if (confirm("회원탈퇴하시겠습니까?")) {
+                        $("#delForm").submit();
+                    }
+                } else {
+                    alert("패스워드가 틀렸습니다.");
+                    return;
+                }
+            }
+        })
 
-		});
+    });
 
-	})
+})
 </script>
 <body>
 	<section id="container">
@@ -66,7 +66,7 @@
 		<div>
 			<c:if test="${msg == false}">
 					비밀번호가 맞지 않습니다.
-				</c:if>
+			</c:if>
 		</div>
 	</section>
 
