@@ -93,11 +93,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 해당 아이디 조회 -->
 	<select id="readMember" resultType="com.kong.domain.MemberVO">
-		select
+		SELECT
 			*
-		from 
+		FROM 
 			kong_member
-		where 
+		WHERE 
 			userId=#{userId}
 	</select>
 	

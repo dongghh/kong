@@ -9,13 +9,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.kong.mapper.BoardMapper">
 
 	<insert id="insert">
-		insert
+		INSERT
 			into
 			kong_board (
 			title,
 			content,
 			writer )
-		values(
+		VALUES(
 			#{title},
 			#{content},
 			#{writer} )

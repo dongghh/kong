@@ -21,19 +21,19 @@
 			g.itemThumbImg 
 		FROM
 			kong_item g
-		inner join category
-			c
-			on 
-				g.cateCode = c.cateCode
-		where 
+		INNER JOIN 
+			category c
+		ON 
+			g.cateCode = c.cateCode
+		WHERE 
 			g.cateCode = #{cateCode}
-		or
+		OR
 			c.cateCodeRef = #{cateCodeRef}
 	</select>
 
 	<!-- 카테고리별 상품 리스트 : 2차 분류 -->
 	<select id="list_2" resultType="com.kong.domain.itemViewVO">
-		select
+		SELECT
 			g.itemNum,
 			g.itemName,
 			g.cateCode,
@@ -45,18 +45,19 @@
 			regDate,
 			g.itemImg,
 			g.itemThumbImg
-		from
+		FROM
 			kong_item g
-		inner join category c
-		on
+		INNER JOIN 
+			category c
+		ON
 			g.cateCode = c.cateCode
-		where
+		WHERE
 			g.cateCode = #{cateCode}
 	</select>
 
 	<!-- 상품 조회 + 카테고리 조인 -->
 	<select id="itemView" resultType="com.kong.domain.itemViewVO">
-		select
+		SELECT
 			g.itemNum,
 			g.itemName,
 			g.cateCode,
@@ -69,25 +70,25 @@
 			regDate ,
 			g.itemImg,
 			g.itemThumbImg
-		from
+		FROM
 			kong_item g
-		inner join 
+		INNER JOIN 
 			category c
-		on
+		ON
 			g.cateCode = c.cateCode
-		where
+		WHERE
 			g.itemNum = #{itemNum}
 	</select>
 
 	<!-- 상품 소감(댓글) 작성 -->
 	<insert id="registerReply">
-		insert into 
+		INSERT INTO 
 			kong_itemreply
 				(itemNum, 
 				userId, 
 				repCon,
 				rating)
-		values 
+		VALUES 
 			(#{itemNum}, 
 			#{userId}, 
 			#{repCon},
@@ -95,27 +96,27 @@
 	</insert>
 	<!-- 해당 상품 평점 평균 -->
 	<select id="getRatingAverage" resultType="double">
-		select 
+		SELECT 
 			avg(rating)
-		from
+		FROM
 			kong_itemreply
-		where 
+		WHERE 
 			itemNum = #{itemNum}
 	</select>
 	<!-- 평점 평균 값 -->
 	<update id="updateRating">
-		update 
+		UPDATE 
 			kong_item
-		set 
+		SET 
 			ratingAvg = #{ratingAvg}
-		where
+		WHERE
 			itemNum = #{itemNum}
 	</update>
 
 	<!-- 상품 소감(댓글) 리스트 -->
 	<select id="replyList"
 		resultType="com.kong.domain.itemReplyListVO">
-		select
+		SELECT
 			r.itemNum, 
 			r.userId, 
 			r.repNum, 
@@ -123,53 +124,54 @@
 			r.regDate,
 			r.rating, 
 			m.userName
-		from 
+		FROM 
 			kong_itemreply r
-		inner join kong_member m
-		on
+		INNER JOIN 
+			kong_member m
+		ON
 			r.userId = m.userId
-		where
+		WHERE
 			itemNum = #{itemNum}
 	</select>
 
 	<!-- 상품 소감(댓글) 삭제 -->
 	<delete id="deleteReply">
-		delete 
-		from 
+		DELETE 
+		FROM 
 			kong_itemreply
-		where 
+		WHERE 
 			repNum = #{repNum} and userId = #{userId}
 	</delete>
 
 	<!-- 아이디 체크 -->
 	<select id="replyUserIdCheck" resultType="String">
-		select 
+		SELECT 
 			userId
-		from
+		FROM
 			kong_itemreply
-		where 
+		WHERE 
 			repNum = #{repNum}
 	</select>
 
 	<!-- 상품 소감(댓글) 수정 -->
 	<update id="modifyReply">
-		update 
+		UPDATE 
 			kong_itemreply
-		set
+		SET
 			repCon = #{repCon}
-		where
+		WHERE
 			repNum = #{repNum} and userId = #{userId}
 	</update>
 
 	<!-- 카트 담기 -->
 	<insert id="addCart">
-		insert
+		INSERT
 			into
 			kong_cart 
 			(userId,
 			itemNum,
 			cartStock)
-		values 
+		VALUES 
 			(#{userId}, 
 			#{itemNum}, 
 			#{cartStock})
@@ -177,7 +179,7 @@
 
 	<!-- 카트 리스트 -->
 	<select id="cartList" resultType="com.kong.domain.CartListVO">
-		select
+		SELECT
 			row_number() over(
 			order by c.cartNum desc) as num,
 			c.cartNum,
@@ -188,30 +190,30 @@
 			g.itemName,
 			g.itemPrice,
 			g.itemThumbImg
-		from
+		FROM
 			kong_cart c
-		inner join kong_item g
-		on
+		INNER JOIN 
+			kong_item g
+		ON
 			c.itemNum = g.itemNum
-		where
+		WHERE
 			c.userId = #{userId}
 	</select>
 
 	<!-- 카트 삭제 -->
 	<delete id="deleteCart">
-		delete 
-		from 
+		DELETE 
+		FROM 
 			kong_cart
-		where 
+		WHERE 
 			cartNum = #{cartNum}
-		and
+		AND
 			userId = #{userId}
 	</delete>
 
 	<!-- 주문 정보 -->
 	<insert id="orderInfo">
-		insert
-			into
+		INSERT INTO
 			kong_order(orderId,
 			userId,
 			orderRec,
@@ -220,7 +222,7 @@
 			userAddr3,
 			orderPhon,
 			amount)
-		values(
+		VALUES(
 			#{orderId},
 			#{userId}, 
 			#{orderRec}, 
@@ -234,44 +236,41 @@
 
 	<!-- 주문 상세 정보 -->
 	<insert id="orderInfo_Details">
-		insert
-			into
+		INSERT INTO
 			kong_order_details
-				(
-				orderId,
+				(orderId,
 				itemNum,
-				cartStock
-				)
-		select
+				cartStock)
+		SELECT
 			#{orderId}, 
 			itemNum, 
 			cartStock
-		from
+		FROM
 			kong_cart
 	</insert>
 
 	<!-- 카트 비우기 -->
 	<delete id="cartAllDelete">
-		delete 
-		from 
+		DELETE 
+		FROM 
 			kong_cart
-		where 
+		WHERE 
 			userId = #{userId}
 	</delete>
 
 	<!-- 카트 확인 -->
 	<select id="checkCart" resultType="com.kong.domain.CartListVO">
-		select 
+		SELECT 
 			* 
-		from 
+		FROM 
 			kong_cart
-		where 
+		WHERE 
 			userId = #{userId} and itemNum = #{itemNum}
 	</select>
 
 	<!-- 특정 유저의 주문 목록 -->
 	<select id="orderList" resultType="com.kong.domain.OrderVO">
-		select
+		SELECT
 			orderId,
 			userId,
 			orderRec,
@@ -282,15 +281,15 @@
 			amount,
 			orderDate ,
 			delivery
-		from
+		FROM
 			kong_order
-		where
+		WHERE
 			userId = #{userId}
 	</select>
 
 	<!-- 특정 주문 목록 -->
 	<select id="orderView" resultType="com.kong.domain.OrderListVO">
-		select
+		SELECT
 			o.orderId,
 			o.userId,
 			o.orderRec,
@@ -307,19 +306,18 @@
 			g.itemName,
 			g.itemThumbImg,
 			g.itemPrice
-		from
+		FROM
 			kong_order o
-		inner join kong_order_details d
-		on
+		INNER JOIN 
+			kong_order_details d
+		ON
 			o.orderId = d.orderId
-		inner join
-		kong_item g
-		on
+		INNER JOIN
+			kong_item g
+		ON
 			d.itemNum = g.itemNum
-		where
-			o.userId = #{userId}
-			and
-			o.orderId = #{orderId}
+		WHERE
+			o.userId = #{userId} AND o.orderId = #{orderId}
 	</select>
 
 	<!-- 전체상품 조회 -->
@@ -335,24 +333,24 @@
 
 	<!-- 평점 상품 조회 -->
 	<select id="likeSelect" resultType="com.kong.domain.itemViewVO">
-		select
+		SELECT
 			*
-		from
+		FROM
 			kong_item
-		order by
-			ratingAvg desc
-		limit 8
+		ORDER BY
+			ratingAvg DESC
+		LIMIT 8
 	</select>
 
 	<!-- 신규 상품 조회 -->
 	<select id="newSelect" resultType="com.kong.domain.itemViewVO">
-		select
+		SELECT
 			*
-		from
+		FROM
 			kong_item
-		order by
-			regdate desc
-		limit 8
+		ORDER BY
+			regdate DESC
+		LIMIT 8
 	</select>
 
 	<!-- 전체 상품 검색 -->
@@ -361,18 +359,18 @@
 			*
 		FROM 
 			kong_item
-		where
+		WHERE
 			itemName LIKE CONCAT('%',#{keyword},'%')
 		ORDER BY itemNum
 	</select>
 
 	<!-- 상품 총 개수 -->
 	<select id="itemGetTotal" resultType="int">
-		select 
+		SELECT
 			count(*) 
-		from
+		FROM
 			kong_item
-		where 
+		WHERE 
 			itemName LIKE CONCAT('%',#{keyword},'%')
 	</select>
 
