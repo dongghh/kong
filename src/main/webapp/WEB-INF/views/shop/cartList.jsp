@@ -3,7 +3,7 @@
 <%@include file="../layout/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/cartList.css">
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="/resources/js/DaumPost.js"></script>
 <body>
@@ -18,16 +18,17 @@
 			<table id="cartTable">
 				<tr id="cartTable-top">
 				<th>
-						<input type="checkbox" name="allCheck" id="allCheck" /><label
-							for="allCheck"></label>
+					<input type="checkbox" name="allCheck" id="allCheck" />
+					<label for="allCheck"></label>
 					<script>
 					$("#allCheck").click(function() {
 					var chk = $("#allCheck").prop("checked");
-					if (chk) {
-					$(".chBox").prop("checked", true);
-					} else {
-					$(".chBox").prop("checked", false);
-					}
+						if (chk) {
+							$(".chBox").prop("checked", true);
+						} 
+						else {
+						$(".chBox").prop("checked", false);
+						}
 					});
 					</script>
 				</th>
@@ -128,142 +129,163 @@
 				</div>
 			</div>
 			<div class="orderInfo">
+				<input type="hidden" name="amount" id="amount" value="${sum}" />
 
-					<input type="hidden" name="amount" id="amount" value="${sum}" />
+				<div class="inputArea">
+					<label for="">수령인</label> <input type="text" name="orderRec" id="orderRec"  />
+				</div>
 
-					<div class="inputArea">
-						<label for="">수령인</label> <input type="text" name="orderRec"
-							id="orderRec" required="required" />
+				<div class="inputArea">
+					<label for="orderPhon">수령인 연락처</label> <input type="text" name="orderPhon" id="orderPhon"  />
+				</div>
+
+				<div class="inputArea">
+					<p>
+						<input type="text" id="sample6_postcode" placeholder="우편번호" >
+						<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+					</p>
+					<p>
+						<input type="text" class="userAddr1" name="userAddr1" id="sample6_address" placeholder="주소"> 
+						<input type="text" class="userAddr2"  name="userAddr2" id="sample6_detailAddress" placeholder="상세주소"> 
+						<input type="text" class="userAddr3"  name="userAddr3" id="sample6_extraAddress" placeholder="참고항목">
+					</p>
+					<span style="color : red">* 결제시 QR코드 스캔 후 웹 화면에 결제 완료가 나타나면 모바일로 결제해주세요.</span>
+					<div id="layer" style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer"
+							style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
+							onclick="closeDaumPostcode()" alt="닫기 버튼">
 					</div>
+				</div>
 
-					<div class="inputArea">
-						<label for="orderPhon">수령인 연락처</label> <input type="text"
-							name="orderPhon" id="orderPhon" required="required" />
-					</div>
-
-					<div class="inputArea">
-						<p>
-							<input type="text" id="sample6_postcode" placeholder="우편번호">
-							<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-						</p>
-						<p>
-							<input type="text" class="userAddr1" name="userAddr1" id="sample6_address" placeholder="주소"> 
-							<input type="text" class="userAddr2"  name="userAddr2" id="sample6_detailAddress" placeholder="상세주소"> 
-							<input type="text" class="userAddr3"  name="userAddr3" id="sample6_extraAddress" placeholder="참고항목">
-						</p>
-						<span style="color : red">* 결제시 QR코드 스캔 후 웹 화면에  결제 완료가 나타나면 모바일로 결제해주세요.</span>
-						<div id="layer"
-							style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
-							<img src="//t1.daumcdn.net/postcode/resource/images/close.png"
-								id="btnCloseLayer"
-								style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
-								onclick="closeDaumPostcode()" alt="닫기 버튼">
-						</div>
-					</div>
-
-
-					<div class="inputArea">
-						<button type="button" class="order_btn" onclick="requestPay()">주문</button>
-						<script>
-						function requestPay() {
-						  let total = $('.sum').text();
-						  IMP.init('imp40616528'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
-						  IMP.request_pay({
-						    pg: "kakaopay",
-						    merchant_uid : 'merchant_'+new Date().getTime(),
-						    name : 'Kong 결제',
-						    amount : total,
-						    buyer_email : '',
-						    buyer_name : '',
-						    buyer_tel : '', 
-						    buyer_addr : '',
-						    buyer_postcode : ''
-						  }, function (rsp) { // callback
-						      if (rsp.success) {
-						    	  var msg = '결제가 완료되었습니다.';
-						          alert(msg);
-						          $.ajax({
-						        	  url : "/shop/cartList",
-						        	  type : "POST",
-						        	  data : {
-						        		  amount : $("#amount").val(),
-						        		  orderRec : $("#orderRec").val(),
-						        		  orderPhon : $("#orderPhon").val(),
-						        		  userAddr1 : $(".userAddr1").val(),
-						        		  userAddr2 : $(".userAddr2").val(),
-						        		  userAddr3 : $(".userAddr3").val()
-						        	  },success : function(result){
-						        		  console.log(result);
-						        		  location.href = "/shop/orderList";
-						        	  },
-						        	  error : function(error){
-						        		  console.log(error)
-						        	  }
-						          })
-						      } else {
-						    	  var msg = '결제에 실패하였습니다.';
-						          msg += '에러내용 : ' + rsp.error_msg;
-						          alert(msg);
-						      }
-						  });
+				<div class="inputArea">
+					<button type="button" class="order_btn" onclick="requestPay()">주문</button>
+					<script>
+					function requestPay() {
+					  	let total = $('.sum').text();
+					  
+						if ($("#orderRec").val() == "") {
+							alert("수령인을 작성해주세요.");
+							$("#orderRec").focus();
+							return false;
 						}
-						</script>
-						<script>
-							//전화번호 유효성 검사
-							$(function(){
-								$("#orderPhon").on('keydown', function(e){
-							       // 숫자만 입력받기
-							        var trans_num = $(this).val().replace(/-/gi,'');
-								var k = e.keyCode;
-											
-								if(trans_num.length >= 11 && ((k >= 48 && k <=126) || (k >= 12592 && k <= 12687 || k==32 || k==229 || (k>=45032 && k<=55203)) ))
-								{
-							  	    e.preventDefault();
-								}
-							    }).on('blur', function(){ // 포커스를 잃었을때 실행합니다.
-							        if($(this).val() == '') return;
-						
-							        // 기존 번호에서 - 를 삭제합니다.
-							        var trans_num = $(this).val().replace(/-/gi,'');
-							      
-							        // 입력값이 있을때만 실행합니다.
-							        if(trans_num != null && trans_num != '')
-							        {
-							            // 총 핸드폰 자리수는 11글자이거나, 10자여야 합니다.
-							            if(trans_num.length==11 || trans_num.length==10) 
-							            {   
-							                // 유효성 체크
-							                var regExp_ctn = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/;
-							                if(regExp_ctn.test(trans_num))
-							                {
-							                    // 유효성 체크에 성공하면 하이픈을 넣고 값을 바꿔줍니다.
-							                    trans_num = trans_num.replace(/^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?([0-9]{3,4})-?([0-9]{4})$/, "$1-$2-$3");                  
-							                    $(this).val(trans_num);
-							                }
-							                else
-							                {
-							                    alert("유효하지 않은 전화번호 입니다.");
-							                    $(this).val("");
-							                    $(this).focus();
-							                }
-							            }
-							            else 
-							            {
-							                alert("유효하지 않은 전화번호 입니다.");
-							                $(this).val("");
-							                $(this).focus();
-							            }
-							      }
-							  });  
-							});
-						</script>
-						<button type="button" class="cancel_btn">취소</button>
-						<script>
-						$(".cancel_btn").click(function() {
-						$(".orderInfo").slideUp();
-						$(".orderOpne_bnt").slideDown();});
-						</script>
-					</div>
+						if ($("#orderPhon").val() == "") {
+							alert("연락처를 작성해주세요.");
+							$("#orderPhon").focus();
+							return false;
+						}
+						if ($("#sample6_postcode").val() == "") {
+							alert("우편번호를 작성해주세요.");
+							$("#sample6_postcode").focus();
+							return false;
+						}
+						if ($("#sample6_address").val() == "") {
+							alert("주소를 작성해주세요.");
+							$("#sample6_address").focus();
+							return false;
+						}
+						if ($("#sample6_detailAddress").val() == "") {
+							alert("상세주소를 작성해주세요.");
+							$("#sample6_detailAddress").focus();
+							return false;
+						}
+								  
+					    IMP.init('imp40616528'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
+					    IMP.request_pay({
+					    pg: "kakaopay",
+					    merchant_uid : 'merchant_'+new Date().getTime(),
+					    name : 'Kong 결제',
+					    amount : total,
+					    buyer_email : '',
+					    buyer_name : '',
+					    buyer_tel : '', 
+					    buyer_addr : '',
+					    buyer_postcode : ''
+					    }, function (rsp) { // callback
+					        if (rsp.success) {
+					    	  var msg = '결제가 완료되었습니다.';
+					          alert(msg);
+					          $.ajax({
+					        	  url : "/shop/cartList",
+					        	  type : "POST",
+					        	  data : {
+					        		  amount : $("#amount").val(),
+					        		  orderRec : $("#orderRec").val(),
+					        		  orderPhon : $("#orderPhon").val(),
+					        		  userAddr1 : $(".userAddr1").val(),
+					        		  userAddr2 : $(".userAddr2").val(),
+					        		  userAddr3 : $(".userAddr3").val()
+					        	  },success : function(result){
+					        		  console.log(result);
+					        		  location.href = "/shop/orderList";
+					        	  },
+					        	  error : function(error){
+					        		  console.log(error)
+					        	  }
+					          })
+					      } else {
+					    	  var msg = '결제에 실패하였습니다.';
+					          msg += '에러내용 : ' + rsp.error_msg;
+					          alert(msg);
+					      }
+						});
+					}
+					</script>
+					<script>
+						//전화번호 유효성 검사
+						$(function(){
+							$("#orderPhon").on('keydown', function(e){
+						       // 숫자만 입력받기
+						        var trans_num = $(this).val().replace(/-/gi,'');
+							var k = e.keyCode;
+										
+							if(trans_num.length >= 11 && ((k >= 48 && k <=126) || (k >= 12592 && k <= 12687 || k==32 || k==229 || (k>=45032 && k<=55203)) ))
+							{
+						  	    e.preventDefault();
+							}
+						    }).on('blur', function(){ // 포커스를 잃었을때 실행합니다.
+						        if($(this).val() == '') return;
+					
+						        // 기존 번호에서 - 를 삭제합니다.
+						        var trans_num = $(this).val().replace(/-/gi,'');
+						      
+						        // 입력값이 있을때만 실행합니다.
+						        if(trans_num != null && trans_num != '')
+						        {
+						            // 총 핸드폰 자리수는 11글자이거나, 10자여야 합니다.
+						            if(trans_num.length==11 || trans_num.length==10) 
+						            {   
+						                // 유효성 체크
+						                var regExp_ctn = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/;
+						                if(regExp_ctn.test(trans_num))
+						                {
+						                    // 유효성 체크에 성공하면 하이픈을 넣고 값을 바꿔줍니다.
+						                    trans_num = trans_num.replace(/^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?([0-9]{3,4})-?([0-9]{4})$/, "$1-$2-$3");                  
+						                    $(this).val(trans_num);
+						                }
+						                else
+						                {
+						                    alert("유효하지 않은 전화번호 입니다.");
+						                    $(this).val("");
+						                    $(this).focus();
+						                }
+						            }
+						            else 
+						            {
+						                alert("유효하지 않은 전화번호 입니다.");
+						                $(this).val("");
+						                $(this).focus();
+						            }
+						      }
+						  });  
+						});
+					</script>
+					<button type="button" class="cancel_btn">취소</button>
+					<script>
+					$(".cancel_btn").click(function() {
+					$(".orderInfo").slideUp();
+					$(".orderOpne_bnt").slideDown();});
+					</script>
+				</div>
 			</div>
 			</c:otherwise>
 			</c:choose>
