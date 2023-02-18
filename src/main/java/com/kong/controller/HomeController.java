@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kong.Service.ShopService;
-import com.kong.domain.SearchCriteria;
 import com.kong.domain.itemViewVO;
 
 @Controller

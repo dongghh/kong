@@ -50,11 +50,15 @@ public class AdminController {
 	// 회원 목록
 	@RequestMapping(value = "/memberList")
 	public String memberList(Model model) throws Exception {
+		try {
 		List<MemberVO> list = service.memberList();
 
 		logger.info("회원 목록 로그입니다.");
 
 		model.addAttribute("list", list);
+		}catch(Exception e) {
+			throw new RuntimeException();
+		}
 
 		return "admin/memberList";
 
