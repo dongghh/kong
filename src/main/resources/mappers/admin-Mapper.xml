@@ -22,47 +22,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="category" resultType="com.kong.domain.CategoryVO">
 		WITH category AS(
 		SELECT
-			'서재' AS
-				CATENAME ,
+			'서재' AS CATENAME,
 			100 AS CATECODE,
 			NULL AS CATECODEREF
 		FROM
 			dual
 		UNION ALL
 		SELECT
-			'데스크' AS CATENAME ,
+			'데스크' AS CATENAME,
 			101 AS CATECODE,
 			100 AS CATECODEREF
 		FROM
-				dual
-		UNION ALL
-		SELECT
-			'책장' AS CATENAME ,
-			102 AS CATECODE,
-			100 AS
-				CATECODEREF
-		FROM
 			dual
 		UNION ALL
 		SELECT
-			'서랍장' AS CATENAME ,
-			103 AS
-				CATECODE,
+			'책장' AS CATENAME,
+			102 AS CATECODE,
 			100 AS CATECODEREF
 		FROM
 			dual
 		UNION ALL
 		SELECT
-			'침실' AS CATENAME
-				,
+			'서랍장' AS CATENAME,
+			103 AS CATECODE,
+			100 AS CATECODEREF
+		FROM
+			dual
+		UNION ALL
+		SELECT
+			'침실' AS CATENAME,
 			200 AS CATECODE,
 			NULL AS CATECODEREF
 		FROM
 			dual
 		UNION ALL
 		SELECT
-			'침대'
-				AS CATENAME ,
+			'침대' AS CATENAME,
 			201 AS CATECODE,
 			200 AS CATECODEREF
 		FROM
@@ -73,27 +68,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			202 AS CATECODE,
 			200 AS CATECODEREF
 		FROM
-				dual
+			dual
 		UNION ALL
 		SELECT
 			'거울' AS CATENAME ,
 			203 AS CATECODE,
-			200 AS
-				CATECODEREF
-		FROM
-			dual
-		UNION ALL
-		SELECT
-			'서랍장' AS CATENAME ,
-			204 AS
-				CATECODE,
 			200 AS CATECODEREF
 		FROM
 			dual
 		UNION ALL
 		SELECT
-			'거실' AS CATENAME
-				,
+			'서랍장' AS CATENAME ,
+			204 AS CATECODE,
+			200 AS CATECODEREF
+		FROM
+			dual
+		UNION ALL
+		SELECT
+			'거실' AS CATENAME,
 			300 AS CATECODE,
 			NULL AS CATECODEREF
 		FROM
@@ -101,70 +93,66 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UNION ALL
 		SELECT
 			'소파'
-				AS CATENAME ,
+				AS CATENAME,
 			301 AS CATECODE,
 			300 AS CATECODEREF
 		FROM
 			dual
 		UNION ALL
 		SELECT
-			'거실장' AS CATENAME ,
+			'거실장' AS CATENAME,
 			302 AS CATECODE,
 			300 AS CATECODEREF
 		FROM
 				dual
 		UNION ALL
 		SELECT
-			'테이블' AS CATENAME ,
+			'테이블' AS CATENAME,
 			303 AS CATECODE,
-			300 AS
-				CATECODEREF
+			300 AS CATECODEREF
 		FROM
 			dual
 		UNION ALL
 		SELECT
-			'주방' AS CATENAME ,
-			400 AS
-				CATECODE,
+			'주방' AS CATENAME,
+			400 AS CATECODE,
 			NULL AS CATECODEREF
 		FROM
 			dual
 		UNION ALL
 		SELECT
-			'테이블' AS
-				CATENAME ,
+			'테이블' AS CATENAME,
 			401 AS CATECODE,
 			400 AS CATECODEREF
 		FROM
 			dual
 		UNION ALL
 		SELECT
-			'수납장' AS CATENAME ,
+			'수납장' AS CATENAME,
 			402 AS CATECODE,
 			400 AS CATECODEREF
 		FROM
-				dual
+			dual
 		UNION ALL
 		SELECT
-			'의자' AS CATENAME ,
+			'의자' AS CATENAME,
 			403 AS CATECODE,
-			400 AS
-				CATECODEREF
+			400 AS CATECODEREF
 		FROM
 			dual)
-				SELECT
+			
+		SELECT
 			1 AS LEVEL,
 			CATENAME,
 			CATECODE,
-				CATECODEREF
+			CATECODEREF
 		FROM
 			category
 		WHERE
-				CATECODEREF is NULL
+			CATECODEREF is NULL
 		UNION ALL
-				SELECT
-			2 AS
-				LEVEL,
+		SELECT
+			2 AS LEVEL,
 			CATENAME,
 			CATECODE,
 			CATECODEREF
