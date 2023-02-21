@@ -26,7 +26,7 @@ Project Hosting : http://3.36.249.224:8080/
 + MySQL 5.1.46
 + Spring Security 5.0.8
 
-#### front-End
+#### Front-End
 + Html
 + CSS
 + JavaScript
