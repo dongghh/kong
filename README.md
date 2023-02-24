@@ -20,13 +20,13 @@ Project Hosting : http://3.36.249.224:8080/
 
  #### Back-End
 + Java 11
-+ Spring Framework 3.9.18
++ Spring Framework 4.3.8
 + Maven 2.5.1
 + MyBatis 3.4.1
 + MySQL 5.1.46
 + Spring Security 5.0.8
 
-#### front-End
+#### Front-End
 + Html
 + CSS
 + JavaScript
