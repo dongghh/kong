@@ -85,8 +85,9 @@
 			</ul>
 		</form>
 		<div id="button">
-			<button class="btn btn-success" type="button" id="submit">회원정보수정</button>
-			<button class="cencle btn btn-danger" type="button">취소</button>
+			<button class="editBtn" type="button" id="submit">회원정보수정</button>
+			<button class="Btn" type="button">취소</button>
+			<button class="dropBtn" type="button">회원탈퇴</button>
 		</div>
 	</section>
 	<%@include file="../layout/footer.jsp"%>
