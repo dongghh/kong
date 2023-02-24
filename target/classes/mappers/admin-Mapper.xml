@@ -10,207 +10,365 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 회원 목록 -->
 	<select id="memberList" resultType="com.kong.domain.MemberVO">
-		SELECT *
-		FROM kong_member
-		ORDER BY userName
+		SELECT
+			*
+		FROM
+			kong_member
+		ORDER BY
+			userName
 	</select>
 
 	<!-- 카테고리 호출 -->
 	<select id="category" resultType="com.kong.domain.CategoryVO">
 		WITH category AS(
-		SELECT '서재' AS
-		CATENAME , 100 AS CATECODE, NULL AS CATECODEREF FROM dual
+		SELECT
+			'서재' AS CATENAME,
+			100 AS CATECODE,
+			NULL AS CATECODEREF
+		FROM
+			dual
 		UNION ALL
-		SELECT '데스크' AS CATENAME , 101 AS CATECODE, 100 AS CATECODEREF FROM
-		dual
+		SELECT
+			'데스크' AS CATENAME,
+			101 AS CATECODE,
+			100 AS CATECODEREF
+		FROM
+			dual
 		UNION ALL
-		SELECT '책장' AS CATENAME , 102 AS CATECODE, 100 AS
-		CATECODEREF FROM dual
+		SELECT
+			'책장' AS CATENAME,
+			102 AS CATECODE,
+			100 AS CATECODEREF
+		FROM
+			dual
 		UNION ALL
-		SELECT '서랍장' AS CATENAME , 103 AS
-		CATECODE, 100 AS CATECODEREF FROM dual
+		SELECT
+			'서랍장' AS CATENAME,
+			103 AS CATECODE,
+			100 AS CATECODEREF
+		FROM
+			dual
 		UNION ALL
-
-		SELECT '침실' AS CATENAME
-		, 200 AS CATECODE, NULL AS CATECODEREF FROM dual
+		SELECT
+			'침실' AS CATENAME,
+			200 AS CATECODE,
+			NULL AS CATECODEREF
+		FROM
+			dual
 		UNION ALL
-		SELECT '침대'
-		AS CATENAME , 201 AS CATECODE, 200 AS CATECODEREF FROM dual
+		SELECT
+			'침대' AS CATENAME,
+			201 AS CATECODE,
+			200 AS CATECODEREF
+		FROM
+			dual
 		UNION ALL
-		SELECT '행거' AS CATENAME , 202 AS CATECODE, 200 AS CATECODEREF FROM
-		dual
+		SELECT
+			'행거' AS CATENAME,
+			202 AS CATECODE,
+			200 AS CATECODEREF
+		FROM
+			dual
 		UNION ALL
-		SELECT '거울' AS CATENAME , 203 AS CATECODE, 200 AS
-		CATECODEREF FROM dual
+		SELECT
+			'거울' AS CATENAME,
+			203 AS CATECODE,
+			200 AS CATECODEREF
+		FROM
+			dual
 		UNION ALL
-		SELECT '서랍장' AS CATENAME , 204 AS
-		CATECODE, 200 AS CATECODEREF FROM dual
+		SELECT
+			'서랍장' AS CATENAME,
+			204 AS CATECODE,
+			200 AS CATECODEREF
+		FROM
+			dual
 		UNION ALL
-
-		SELECT '거실' AS CATENAME
-		, 300 AS CATECODE, NULL AS CATECODEREF FROM dual
+		SELECT
+			'거실' AS CATENAME,
+			300 AS CATECODE,
+			NULL AS CATECODEREF
+		FROM
+			dual
 		UNION ALL
-		SELECT '소파'
-		AS CATENAME , 301 AS CATECODE, 300 AS CATECODEREF FROM dual
+		SELECT
+			'소파'
+				AS CATENAME,
+			301 AS CATECODE,
+			300 AS CATECODEREF
+		FROM
+			dual
 		UNION ALL
-		SELECT '거실장' AS CATENAME , 302 AS CATECODE, 300 AS CATECODEREF FROM
-		dual
+		SELECT
+			'거실장' AS CATENAME,
+			302 AS CATECODE,
+			300 AS CATECODEREF
+		FROM
+				dual
 		UNION ALL
-		SELECT '테이블' AS CATENAME , 303 AS CATECODE, 300 AS
-		CATECODEREF FROM dual
+		SELECT
+			'테이블' AS CATENAME,
+			303 AS CATECODE,
+			300 AS CATECODEREF
+		FROM
+			dual
 		UNION ALL
-
-		SELECT '주방' AS CATENAME , 400 AS
-		CATECODE, NULL AS CATECODEREF FROM dual
+		SELECT
+			'주방' AS CATENAME,
+			400 AS CATECODE,
+			NULL AS CATECODEREF
+		FROM
+			dual
 		UNION ALL
-		SELECT '테이블' AS
-		CATENAME , 401 AS CATECODE, 400 AS CATECODEREF FROM dual
+		SELECT
+			'테이블' AS CATENAME,
+			401 AS CATECODE,
+			400 AS CATECODEREF
+		FROM
+			dual
 		UNION ALL
-		SELECT '수납장' AS CATENAME , 402 AS CATECODE, 400 AS CATECODEREF FROM
-		dual
+		SELECT
+			'수납장' AS CATENAME,
+			402 AS CATECODE,
+			400 AS CATECODEREF
+		FROM
+			dual
 		UNION ALL
-		SELECT '의자' AS CATENAME , 403 AS CATECODE, 400 AS
-		CATECODEREF FROM dual)
-		SELECT 1 AS LEVEL, CATENAME, CATECODE,
-		CATECODEREF FROM category WHERE
-		CATECODEREF is NULL
+		SELECT
+			'의자' AS CATENAME,
+			403 AS CATECODE,
+			400 AS CATECODEREF
+		FROM
+			dual)
+			
+		SELECT
+			1 AS LEVEL,
+			CATENAME,
+			CATECODE,
+			CATECODEREF
+		FROM
+			category
+		WHERE
+			CATECODEREF is NULL
 		UNION ALL
-		SELECT 2 AS
-		LEVEL, CATENAME, CATECODE, CATECODEREF FROM category WHERE
-		CATECODEREF
-		IS NOT null
-		ORDER BY CATECODE
+		SELECT
+			2 AS LEVEL,
+			CATENAME,
+			CATECODE,
+			CATECODEREF
+		FROM
+			category
+		WHERE
+			CATECODEREF
+			IS NOT null
+		ORDER BY
+			CATECODE
 	</select>
 
 	<!-- 상품 등록 -->
 	<insert id="register">
-		insert into kong_item (itemName, cateCode, itemPrice,
-		itemStock, itemDes , itemImg , itemThumbImg)
-		values (#{itemName},
-		#{cateCode}, #{itemPrice},
-		#{itemStock},#{itemDes},#{itemImg},#{itemThumbImg})
+		INSERT
+			into
+			kong_item (
+			itemName,
+			cateCode,
+			itemPrice,
+			itemStock,
+			itemDes ,
+			itemImg ,
+			itemThumbImg)
+		VALUES (
+			#{itemName},
+			#{cateCode},
+			#{itemPrice},
+			#{itemStock},
+			#{itemDes},
+			#{itemImg},
+			#{itemThumbImg}
+			)
 	</insert>
 
 	<!-- 상품 목록 -->
 	<select id="itemlist" resultType="com.kong.domain.itemViewVO">
-		select
-		g.itemNum, g.itemName, g.cateCode, c.cateCodeRef, c.cateName, itemPrice, itemStock,itemDes,itemImg, regDate,g.itemImg, g.itemThumbImg
-		from 
-		kong_item g
-		inner join
-		category c
-		on
-		 g.cateCode = c.cateCode
+		SELECT
+			g.itemNum,
+			g.itemName,
+			g.cateCode,
+			c.cateCodeRef,
+			c.cateName,
+			itemPrice,
+			itemStock,
+			itemDes,
+			itemImg,
+			regDate,
+			g.itemImg,
+			g.itemThumbImg
+		FROM 
+			kong_item g
+		INNER JOIN
+			category c
+		ON
+			g.cateCode = c.cateCode
 	</select>
 
 	<!-- 상품 조회 + 카테고리 조인 -->
 	<select id="itemView" resultType="com.kong.domain.itemViewVO">
-		select
-		g.itemNum, g.itemName,
-		g.cateCode, c.cateCodeRef, c.cateName, itemPrice,
-		itemStock, itemDes,
-		itemImg, regDate , g.itemImg, g.itemThumbImg
-		from kong_item g inner
-		join category c
-		on
-		g.cateCode =
-		c.cateCode
-		where g.itemNum = #{itemNum}
+		SELECT
+			g.itemNum,
+			g.itemName,
+			g.cateCode,
+			c.cateCodeRef,
+			c.cateName,
+			itemPrice,
+			itemStock,
+			itemDes,
+			itemImg,
+			regDate ,
+			g.itemImg,
+			g.itemThumbImg
+		FROM
+			kong_item g
+		INNER JOIN
+			category c
+		ON
+			g.cateCode = c.cateCode
+		WHERE
+			g.itemNum = #{itemNum}
 	</select>
 
 	<!-- 상품 수정 -->
 	<update id="itemModify">
-		update kong_item
-		set
-		itemName = #{itemName},
-		cateCode = #{cateCode},
-		itemPrice = #{itemPrice},
-		itemStock = #{itemStock},
-		itemDes = #{itemDes},
-		itemImg = #{itemImg},
-		itemThumbImg = #{itemThumbImg}
-		where
-		itemNum = ${itemNum}
+		UPDATE
+			kong_item
+		SET
+			itemName = #{itemName},
+			cateCode = #{cateCode},
+			itemPrice = #{itemPrice},
+			itemStock = #{itemStock},
+			itemDes = #{itemDes},
+			itemImg = #{itemImg},
+			itemThumbImg = #{itemThumbImg}
+		WHERE
+			itemNum = ${itemNum}
 	</update>
 
 	<!-- 상품 삭제 -->
 	<delete id="itemDelete">
-		delete from
-		kong_item
-		where itemNum = #{itemNum}
+		UPDATE
+			kong_item
+		SET
+			itemStock = itemStock - #{itemStock}
+		WHERE
+			itemNum = #{itemNum}
 	</delete>
 
 	<!-- 모든 유저의 주문 목록 -->
 	<select id="orderList" resultType="com.kong.domain.OrderVO">
-		select
-		orderId, userId,
-		orderRec,
-		userAddr1, userAddr2, userAddr3,
-		orderPhon, amount, orderDate,
-		delivery
-		from kong_order
+		SELECT
+			orderId,
+			userId,
+			orderRec,
+			userAddr1,
+			userAddr2,
+			userAddr3,
+			orderPhon,
+			amount,
+			orderDate,
+			delivery
+		FROM
+			kong_order
 	</select>
 
 	<!-- 특정 주문 목록 -->
 	<select id="orderView" resultType="com.kong.domain.OrderListVO">
-		select
-		o.orderId, o.userId,
-		o.orderRec,
-		o.userAddr1, o.userAddr2, o.userAddr3,
-		o.orderPhon,
-		o.amount, o.orderDate, o.delivery,
-		d.orderDetailsNum, d.itemNum,
-		d.cartStock,
-		g.itemName, g.itemThumbImg, g.itemPrice
-		from kong_order o
-		inner join kong_order_details d
-		on o.orderId = d.orderId
-		inner join
-		kong_item g
-		on d.itemNum = g.itemNum
-		where o.orderId = #{orderId}
+		SELECT
+			o.orderId,
+			o.userId,
+			o.orderRec,
+			o.userAddr1,
+			o.userAddr2,
+			o.userAddr3,
+			o.orderPhon,
+			o.amount,
+			o.orderDate,
+			o.delivery,
+			d.orderDetailsNum,
+			d.itemNum,
+			d.cartStock,
+			g.itemName,
+			g.itemThumbImg,
+			g.itemPrice
+		FROM
+			kong_order o
+		INNER JOIN 
+			kong_order_details d
+		ON
+			o.orderId = d.orderId
+		INEER JOIN
+			kong_item g
+		ON
+			d.itemNum = g.itemNum
+		WHERE
+			o.orderId = #{orderId}
 	</select>
 
 	<!-- 배송 상태 -->
 	<update id="delivery">
-		update kong_order
-		set delivery = #{delivery}
-		where
-		orderId = #{orderId}
+		UPDATE
+			kong_order
+		SET
+			delivery = #{delivery}
+		WHERE
+			orderId = #{orderId}
 	</update>
 
 	<!-- 상품 수량 조절 -->
 	<update id="changeStock">
-		update kong_item
-		set itemStock = itemStock -
-		#{itemStock}
-		where itemNum = #{itemNum}
+		UPDATE 
+			kong_item
+		SET 
+			itemStock = itemStock - #{itemStock}
+		WHERE 
+			itemNum = #{itemNum}
 	</update>
 
 	<!-- 상품 수량 조절 보조 -->
 	<select id="changeStock_sub"
 		resultType="com.kong.domain.OrderDetailVO">
-		select
-		orderId , itemNum , cartStock
-		from kong_order_details
-		where orderId =
-		#{orderId}
+		SELECT
+			orderId ,
+			itemNum ,
+			cartStock
+		FROM
+			kong_order_details
+		WHERE
+			orderId = #{orderId}
 	</select>
 
 	<!-- 모든 소감(댓글) -->
 	<select id="allReply" resultType="com.kong.domain.itemReplyListVO">
-		select
-		r.itemNum, r.userId, r.repNum, r.repCon, r.regDate,
-		m.userName
-		from kong_itemreply r
-		inner join kong_member m
-		on r.userId = m.userId
+		SELECT
+			r.itemNum,
+			r.userId,
+			r.repNum,
+			r.repCon,
+			r.regDate,
+			m.userName
+		FROM
+			kong_itemreply r
+		INNER JOIN 
+			kong_member m
+		ON
+			r.userId = m.userId
 	</select>
 
 	<!-- 소감(댓글) 지우기 -->
 	<delete id="deleteReply">
-		delete from kong_itemreply
-		where repNum = #{repNum}
+		DELETE
+		FROM
+			kong_itemreply
+		WHERE
+			repNum = #{repNum}
 	</delete>
 
 </mapper>

@@ -64,21 +64,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			dual
 		UNION ALL
 		SELECT
-			'행거' AS CATENAME ,
+			'행거' AS CATENAME,
 			202 AS CATECODE,
 			200 AS CATECODEREF
 		FROM
 			dual
 		UNION ALL
 		SELECT
-			'거울' AS CATENAME ,
+			'거울' AS CATENAME,
 			203 AS CATECODE,
 			200 AS CATECODEREF
 		FROM
 			dual
 		UNION ALL
 		SELECT
-			'서랍장' AS CATENAME ,
+			'서랍장' AS CATENAME,
 			204 AS CATECODE,
 			200 AS CATECODEREF
 		FROM

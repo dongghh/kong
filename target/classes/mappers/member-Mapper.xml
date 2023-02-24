@@ -9,81 +9,122 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.kong.mapper.MemberMapper">
 	<!-- 회원가입 -->
 	<insert id="register">
-		INSERT INTO kong_member(
-		USERID,USERPASS,USERNAME,USEREMAIL,USERADDRESS,USERPNUMBER,VERIFY)
-		VALUES(
-		#{userId}, #{userPass}, #{userName}, #{userEmail},
-		#{userAddress}, #{userPnumber}, 0)
+		INSERT 
+			INTO 
+				kong_member
+				(USERID,
+				USERPASS,
+				USERNAME,
+				USEREMAIL,
+				USERADDRESS,
+				USERPNUMBER,
+				VERIFY)
+		VALUES
+			(#{userId}, 
+			#{userPass}, 
+			#{userName}, 
+			#{userEmail},
+			#{userAddress}, 
+			#{userPnumber}, 
+			0)
 	</insert>
 
 	<!-- 로그인 -->
 	<select id="login" resultType="com.kong.domain.MemberVO">
-		SELECT USERID, USERPASS, USERNAME , USEREMAIL , USERADDRESS,
-		USERPNUMBER , VERIFY
-		FROM kong_member
-		WHERE USERID = #{userId}
-		<!--AND USERPASS = #{userPass} -->
+		SELECT 
+			USERID, 
+			USERPASS, 
+			USERNAME , 
+			USEREMAIL , 
+			USERADDRESS,
+			USERPNUMBER , 
+			VERIFY
+		FROM 
+			kong_member
+		WHERE 
+			USERID = #{userId}
 	</select>
 
 	<!-- 회원정보 수정 -->
 	<update id="memberUpdate">
-		UPDATE kong_member SET
-		USERNAME = #{userName},
-		USERPASS = #{userPass},
-		USEREMAIL = #{userEmail},
-		USERADDRESS = #{userAddress},
-		USERPNUMBER = #{userPnumber}
-		WHERE USERID = #{userId}
+		UPDATE 
+			kong_member 
+		SET
+			USERNAME = #{userName},
+			USERPASS = #{userPass},
+			USEREMAIL = #{userEmail},
+			USERADDRESS = #{userAddress},
+			USERPNUMBER = #{userPnumber}
+			WHERE USERID = #{userId}
 	</update>
 
 	<!-- 회원탈퇴 -->
 	<delete id="memberDelete">
-		DELETE FROM kong_member
-		WHERE USERID = #{userId}
-		AND
-		<!--USERPASS = #{userPass} -->
+		DELETE 
+		FROM 
+			kong_member
+		WHERE 
+			USERID = #{userId}
 	</delete>
 
 	<!-- 패스워드 체크 -->
 	<select id="passChk" resultType="int">
-		SELECT COUNT(*) FROM kong_member
-		WHERE USERID = #{userId}
-		AND USERPASS = #{userPass}
+		SELECT 
+			COUNT(*) 
+		FROM 
+			kong_member
+		WHERE 
+			USERID = #{userId} AND USERPASS = #{userPass}
 	</select>
 
 	<!-- 아이디 중복 체크 -->
 	<select id="idChk" resultType="int">
-		SELECT COUNT(*) FROM kong_member
-		WHERE USERID = #{userId}
+		SELECT 
+			COUNT(*) 
+		FROM 
+			kong_member
+		WHERE 
+			USERID = #{userId}
 	</select>
 	
 	<!-- 해당 아이디 조회 -->
 	<select id="readMember" resultType="com.kong.domain.MemberVO">
-		select *
-		from kong_member
-		where userId=#{userId}
+		SELECT
+			*
+		FROM 
+			kong_member
+		WHERE 
+			userId=#{userId}
 	</select>
 	
 	<!-- 아이디 찾기 -->
 	<select id="findId" resultType="com.kong.domain.MemberVO">
-		SELECT USERID
-		FROM kong_member
+		SELECT 
+			USERID
+		FROM 
+			kong_member
 		WHERE
-		username=#{userName} AND useremail=#{userEmail}
+			username=#{userName} AND useremail=#{userEmail}
 	</select>
 	
 	<!-- 패스워드 찾기 -->
 	<select id="findPw" resultType="com.kong.domain.MemberVO">
-		SELECT *
-		FROM kong_member
+		SELECT 
+			*
+		FROM 
+			kong_member
 		WHERE
-		USERID=#{userId} AND USEREMAIL=#{userEmail}
+			USERID=#{userId} AND USEREMAIL=#{userEmail}
 	</select>
 	
 	<!-- 패스워드 재설정 -->
 	<update id="updatePw">
-		UPDATE kong_member SET USERPASS=#{userPass} WHERE
-		USERID=#{userId}
+		UPDATE 
+			kong_member 
+		SET 
+			USERPASS=#{userPass} 
+		WHERE
+			USERID=#{userId}
 	</update>
 
 </mapper>

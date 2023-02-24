@@ -50,16 +50,12 @@ public class AdminController {
 	// 회원 목록
 	@RequestMapping(value = "/memberList")
 	public String memberList(Model model) throws Exception {
-		try {
 		List<MemberVO> list = service.memberList();
 
 		logger.info("회원 목록 로그입니다.");
 
 		model.addAttribute("list", list);
-		}catch(Exception e) {
-			throw new RuntimeException();
-		}
-
+		
 		return "admin/memberList";
 
 	}
@@ -164,7 +160,6 @@ public class AdminController {
 			// 기존 이미지를 그대로 사용
 			vo.setItemImg(req.getParameter("itemImg"));
 			vo.setItemThumbImg(req.getParameter("itemThumbImg"));
-
 		}
 
 		service.itemModify(vo);

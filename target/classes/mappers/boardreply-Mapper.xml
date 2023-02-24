@@ -7,43 +7,65 @@
 	<!-- 댓글 조회 -->
 	<select id="readReply" resultType="com.kong.domain.BoardReplyVO">
 		SELECT
-		RNO, CONTENT, WRITER,
-		REGDATE
-		FROM kong_boardreply
-		WHERE BNO = #{bno}
+			RNO, 
+			CONTENT, 
+			WRITER,
+			REGDATE
+		FROM 
+			kong_boardreply
+		WHERE 
+			BNO = #{bno}
 	</select>
 	
 	<!-- 댓글 쓰기 -->
 	<insert id="writeReply">
-		INSERT INTO kong_boardreply(
-		BNO, RNO, CONTENT, WRITER) VALUES
-		( #{bno}, #{rno}, #{content}, #{writer} )
+		INSERT
+			INTO
+			kong_boardreply(
+			BNO,
+			RNO,
+			CONTENT,
+			WRITER)
+		VALUES
+				(
+				#{bno}, 
+				#{rno}, 
+				#{content}, 
+				#{writer} 
+				)
 	</insert>
 
 	<!-- 댓글 수정 -->
 	<update id="updateReply" parameterType="com.kong.domain.BoardReplyVO">
-		UPDATE kong_boardreply SET
-		CONTENT = #{content}
-		WHERE RNO = #{rno}
+		UPDATE 
+			kong_boardreply 
+		SET
+			CONTENT = #{content}
+		WHERE 
+			RNO = #{rno}
 	</update>
 
 	<!-- 댓글 삭제 -->
 	<delete id="deleteReply" parameterType="com.kong.domain.BoardReplyVO">
-		DELETE FROM kong_boardreply
-		WHERE RNO = #{rno}
+		DELETE 
+		FROM 
+			kong_boardreply
+		WHERE 
+			RNO = #{rno}
 	</delete>
 
 	<!-- 선택된 댓글 조회 -->
 	<select id="selectReply" resultType="com.kong.domain.BoardReplyVO">
 		SELECT
-		BNO
-		, RNO
-		, CONTENT
-		,
-		WRITER
-		, REGDATE
-		FROM kong_boardreply
-		WHERE RNO = #{rno}
+			BNO, 
+			RNO, 
+			CONTENT,
+			WRITER, 
+			REGDATE
+		FROM 
+			kong_boardreply
+		WHERE 
+			RNO = #{rno}
 	</select>
 
 

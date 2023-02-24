@@ -12,25 +12,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT 
 			INTO 
 				kong_member
-				(
-				USERID,
+				(USERID,
 				USERPASS,
 				USERNAME,
 				USEREMAIL,
 				USERADDRESS,
 				USERPNUMBER,
-				VERIFY
-				)
+				VERIFY)
 		VALUES
-			(
-			#{userId}, 
+			(#{userId}, 
 			#{userPass}, 
 			#{userName}, 
 			#{userEmail},
 			#{userAddress}, 
 			#{userPnumber}, 
-			0
-			)
+			0)
 	</insert>
 
 	<!-- 로그인 -->

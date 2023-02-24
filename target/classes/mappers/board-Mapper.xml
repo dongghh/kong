@@ -9,54 +9,101 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.kong.mapper.BoardMapper">
 
 	<insert id="insert">
-		insert into kong_board (
-		title, content, writer )
-		values( #{title},#{content},#{writer} )
+		INSERT
+			into
+			kong_board (
+			title,
+			content,
+			writer )
+		VALUES(
+			#{title},
+			#{content},
+			#{writer} )
 	</insert>
 
 	<select id="list" resultType="com.kong.domain.BoardVO">
-		SELECTbno, TITLE, WRITER, REGDATE
-		FROM kong_board
-		ORDER BY bno DESC
+		SELECT
+			bno, TITLE, WRITER, REGDATE
+		FROM 
+			kong_board
+		ORDER BY 
+			bno DESC
 	</select>
 
 	<select id="read" parameterType="int"
 		resultType="com.kong.domain.BoardVO">
-		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE
-		FROM kong_board
-		WHERE bno = #{bno}
+		SELECT
+			BNO,
+			TITLE,
+			CONTENT,
+			WRITER,
+			REGDATE
+		FROM
+			kong_board
+		WHERE
+			bno = #{bno}
 	</select>
 
 	<update id="update" parameterType="com.kong.domain.BoardVO">
-		UPDATE kong_board
-		SET TITLE = #{title}, CONTENT = #{content}
-		WHERE BNO = #{bno}
+		UPDATE 
+			kong_board
+		SET 
+			TITLE = #{title}, 
+			CONTENT = #{content}
+		WHERE 
+			BNO = #{bno}
 	</update>
 
 	<delete id="delete" parameterType="int">
 		DELETE
-		FROM kong_board
-		WHERE BNO = #{bno}
+		FROM 
+			kong_board
+		WHERE 
+			BNO = #{bno}
 	</delete>
 
 	<select id="listPage" resultType="com.kong.domain.BoardVO" parameterType="com.kong.domain.Criteria">
-		SELECT BNO,TITLE,CONTENT,WRITER,REGDATE,CNT
-		FROM (SELECT BNO,TITLE,CONTENT,WRITER,REGDATE,CNT,
-		ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
-		FROM kong_board
-		WHERE 1=1
-		<include refid="search"></include>
-		) MP
-		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
-		ORDER BY BNO DESC
+		SELECT 
+			BNO,
+			TITLE,
+			CONTENT,
+			WRITER,
+			REGDATE,
+			CNT
+		FROM
+			(
+			SELECT
+				BNO,
+				TITLE,
+				CONTENT,
+				WRITER,
+				REGDATE,
+				CNT,
+				ROW_NUMBER() OVER(
+			ORDER BY
+				BNO DESC) AS RNUM
+			FROM
+				kong_board
+			WHERE
+				1 = 1
+				<include refid = "search"></include>
+				) MP
+		WHERE
+			RNUM BETWEEN
+			#{rowStart} AND #{rowEnd}
+		ORDER BY
+			BNO DESC
 	</select>
 
 	<select id="listCount" parameterType="com.kong.domain.SearchCriteria" resultType="int">
-		SELECT COUNT(BNO)
-		FROM kong_board
-		WHERE 1=1
-		<include refid="search"></include>
-		AND BNO > 0
+		SELECT
+			COUNT(BNO)
+		FROM
+			kong_board
+		WHERE
+			1 = 1
+				<include refid = "search"></include>
+			AND BNO > 0
 	</select>
 
 	<sql id="search">
@@ -71,9 +118,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 게시판 조회수 -->
 	<update id="boardCnt" parameterType="int">
-		UPDATE kong_board 
-		SET CNT = CNT+1
-		WHERE BNO = #{bno}
+		UPDATE
+			kong_board
+		SET
+			CNT = CNT + 1
+		WHERE
+			BNO = #{bno}
 	</update>
 
 </mapper>

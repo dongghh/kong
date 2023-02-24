@@ -35,7 +35,6 @@
 		</dependency>
 
 		<!-- project -->
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
