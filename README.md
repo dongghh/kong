@@ -55,6 +55,10 @@ Project Hosting : http://3.36.249.224:8080/ <br>
 
   <img width="700" src="https://user-images.githubusercontent.com/103232761/219443030-ebd73594-66a9-432b-82c1-7dc2e6e5c09d.gif"/>
   
+  - **관리자와 일반유저의 구분**
+  
+    + header부분 관리자(9)와 회원(0)의 verify를 지정하여 c:if를 사용해 header출력을 구분.
+  
   - **상품 전체 검색**
   
     + 검색 시 LIKE CONCAT('%',#{keyword},'%')를 이용해 상품의 이름을 비교하여 상품의 갯수와 데이터를 가져옴.
@@ -104,11 +108,9 @@ Project Hosting : http://3.36.249.224:8080/ <br>
     
     + 주문 버튼 클릭 시 해당 상품과 같이 결제 페이지로 이동.
 
----
+  <img width="700" height="600" src="https://user-images.githubusercontent.com/103232761/219449296-7437749e-fac1-467a-b004-39fbdabf0313.gif"/>
 
-  <img width="700" height="500" src="https://user-images.githubusercontent.com/103232761/219449296-7437749e-fac1-467a-b004-39fbdabf0313.gif"/>
-
-  <img width="400" height="700" src="https://user-images.githubusercontent.com/103232761/219449702-c1cb9e47-d4e5-42e8-a861-6615c80483a9.jpeg"><img width="400" height="700" src="https://user-images.githubusercontent.com/103232761/219501319-8c3cc0d7-a5ad-45b6-8ae9-e4b063d15c73.jpeg">
+  <img width="400" height="600" src="https://user-images.githubusercontent.com/103232761/219449702-c1cb9e47-d4e5-42e8-a861-6615c80483a9.jpeg"><img width="400" height="700" src="https://user-images.githubusercontent.com/103232761/219501319-8c3cc0d7-a5ad-45b6-8ae9-e4b063d15c73.jpeg">
 
   - **주문-결제**
     
@@ -119,9 +121,24 @@ Project Hosting : http://3.36.249.224:8080/ <br>
 
 ---
 
+### Interceptor
+
+  <img width="390" alt="페이지 접근권한 img" src="https://user-images.githubusercontent.com/103232761/236691192-290ed265-40c9-45dc-95f3-31f68aaf24c4.png">
+
+  <img width="798" alt="페이지 접근권한 img" src="https://user-images.githubusercontent.com/103232761/236691220-00210a08-0176-4aed-afa1-60699e0a0a36.png">
+
+  - **관리자만 접속 가능한 page**
+    
+    + 상품등록이나 상품수정 배송관리 같이 url에 /admin/이 붙은 페이지는 adminInterceptor.class를 거치게 되는데 
+    + verify가 관리자(9)이면 접근이 가능하고 일반회원(0)이거나 로그인 하지 않은 회원일 경우 메인 페이지로 리다이렉트 된다.
+    + 장바구니 또한 로그인하지 않은 유저라면 접근이 불가능하다.
+    + 이를 통해 일반 유저나 로그인 하지 않은 회원들이 url을 직접 작성해서 페이지를 접근하는 걸 방지할 수 있다. 
+
+
+
 - # Query Log 설정
 
-  <img width="600" alt="쿼리로그3" src="https://user-images.githubusercontent.com/103232761/219489670-    a4a5d5ef-cfbd-45fa-8985-0eadfd95cd75.png">
+  <img width="600" alt="쿼리로그3" src="https://user-images.githubusercontent.com/103232761/219489670-a4a5d5ef-cfbd-45fa-8985-0eadfd95cd75.png">
 
   <img width="523" alt="쿼리로그2" src="https://user-images.githubusercontent.com/103232761/219489483-bd58183b-c685-4d0b-887d-ecb1a28eb511.png">
 
@@ -130,6 +147,7 @@ Project Hosting : http://3.36.249.224:8080/ <br>
   - **목적**
 
     + 어떤 순서로 작업이 진행되고 SQL문을 확인 및 오류는 어디서 발생 되는지 확인할 수 있었습니다.
+    
     + Log4j를 이용하였고 SQL 및 MVC패턴의 흐름을 직접적으로 느낄 수 있었습니다. 
 
 
